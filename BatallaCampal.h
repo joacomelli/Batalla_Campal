@@ -1,6 +1,23 @@
 #ifndef BATALLACAMPAL_H_
 #define BATALLACAMPAL_H_
 #include "Tablero.h"
+#include "Jugador.h"
+
+const unsigned int MAXIMO_TABLERO_X = 15;
+const unsigned int MAXIMO_TABLERO_Y = 15;
+const unsigned int MAXIMO_TABLERO_Z = 5;
+
+const unsigned int MINIMO_DE_JUGADORES = 2;
+const unsigned int MAXIMO_DE_JUGADORES = 4;
+
+typedef enum TiposDeCartas{
+	AVION,
+	BARCO,
+	OTRO_TURNO,
+	RECONSTRUIR_TERRENO,
+	RONDA_SIN_CARTAS
+}
+	
 
 class BatallaCampal {
 private:
