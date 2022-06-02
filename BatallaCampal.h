@@ -23,7 +23,7 @@ typedef enum TiposDeCartas{
 class BatallaCampal {
 private:
 	Tablero * tablero;
-
+	Lista <Jugadores *> * jugadores;
 
 
 public:
