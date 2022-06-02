@@ -11,12 +11,12 @@ const unsigned int MINIMO_DE_JUGADORES = 2;
 const unsigned int MAXIMO_DE_JUGADORES = 4;
 
 typedef enum TiposDeCartas{
-	AVION,
-	BARCO,
-	MISIL,
-	OTRO_TURNO,
-	RECONSTRUIR_TERRENO,
-	RONDA_SIN_CARTAS
+	Avion,
+	Barco,
+	Misil,
+	OtroTurno,
+	ReconstruirTerreno,
+	RondaSinCartas
 }
 	
 
