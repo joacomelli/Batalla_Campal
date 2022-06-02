@@ -3,7 +3,7 @@
 #include "Ficha.h"
 
 enum EstadoDeCasilla{
-	Vacio,
+	Vacia,
 	Inactiva,
 	Ocupado
 };
@@ -12,6 +12,7 @@ enum TipoDeCasilla{
 	Tierra,
 	Agua,
 	Aire,
+	Fuego,
 	General
 };
 
