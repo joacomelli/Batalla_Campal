@@ -5,7 +5,7 @@
 enum EstadoDeCasilla{
 	Vacia,
 	Inactiva,
-	Ocupado
+	Ocupada
 };
 
 enum TipoDeCasilla{
