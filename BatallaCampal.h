@@ -16,7 +16,8 @@ typedef enum TiposDeCartas{
 	Misil,
 	OtroTurno,
 	ReconstruirTerreno,
-	RondaSinCartas
+	RondaSinCartas,
+	EnBlanco
 }
 	
 
