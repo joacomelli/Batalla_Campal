@@ -14,7 +14,7 @@ Casilla::Casilla(unsigned int x,unsigned int y,unsigned int z,TipoDeCasilla tipo
 	this->x = x;
 	this->y = y;
 	this->z = z;
-	this->estado = Vacio;
+	this->estado = Vacia;
 	this->tipo = tipo;
 	this->ficha = ficha;
 }
@@ -56,11 +56,11 @@ void Casilla::setFicha(const Ficha *&ficha){
 		throw "La ficha no puede estar vacia.";
 	}
 	this->ficha = ficha;
-	this->estado = Ocupado;
+	this->estado = Ocupada;
 }
 
 void Casilla::vaciar(){
-	this->estado = Vacio;
+	this->estado = Vacia;
 	this->ficha = NULL;
 }
 
@@ -69,7 +69,7 @@ void Casilla::setTipo(TipoDeCasilla tipo) {
 }
 
 bool Casilla::estaOcupado(){
-	return (this->estado == Ocupado);
+	return (this->estado == Ocupada);
 }
 
 
