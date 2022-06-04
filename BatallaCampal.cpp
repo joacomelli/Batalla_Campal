@@ -69,19 +69,25 @@ Vector<unsigned int> * BatallaCampal::pedirCoordenadas(){ //va en privado creo
 	}
 }
 
-//Habria q agregar una funcion que directamente devuelva la ficha de una casilla para no estar poniendo
-// this->tablero->getCasillero(vectorAux->get(1),vectorAux->get(2),vectorAux->get(3))->getFicha()  cada vez
 
-//REVISAR si lo hacemos asi y que genere un vector dinamico con dos vectores dinamicos a unsigned int (uno origen y otro destino)
+Ficha * obtenerFicha( unsigned int x, unsigned int y, unsigned int z){
+
+	return this->tablero->getCasillero(vectorAux->get(x),vectorAux->get(y),vectorAux->get(z))->getFicha();
+}
+
+//REVISAR si lo hacemos asi y que genere un vector dinamico con dos vectores dinamicos de unsigned int (uno origen y otro destino)
 // o si le pasamos 6 unsigned int* por parametro y los modifica
 Vector<Vector<unsigned int> *> * BatallaCampal::pedirMovimiento(Jugador * jugador){ //va en privado creo
 	Vector<unsigned int> * vectorAux;
-	bool soldadoNoValido = TRUE;
-	while(soldadoNoValido){
+	bool soldadoValido = FALSE;
+	while(!soldadoValido){
 		vectorAux = pedirCoordenadas();
-		soldadoNoValido = ((this->tablero->getCasillero(vectorAux->get(1),vectorAux->get(2),vectorAux->get(3))->getFicha()->getJugador() != jugador)
-				   || (this->tablero->getCasillero(vectorAux->get(1),vectorAux->get(2),vectorAux->get(3))->getFicha()->getTipo() != Soldado)); //meter la funcion que devuelve la ficha directo
-		if(soldadoNoValido){
+		//funcion soldadoValido o al pedo?
+		soldadoValido = ((obtenerFicha(vectorAux->get(1),vectorAux->get(2),vectorAux->get(3)) != NULL)
+				&& (obtenerFicha(vectorAux->get(1),vectorAux->get(2),vectorAux->get(3))->getJugador() == jugador)
+				&& (obtenerFicha(vectorAux->get(1),vectorAux->get(2),vectorAux->get(3))->getTipo() == Soldado)); 
+		
+		if(!soldadoValido){
 			std::cout << "No tienes ningun soldado en esa posicion" << std::endl;
 		} //seguir
 	}
