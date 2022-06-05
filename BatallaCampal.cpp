@@ -55,15 +55,15 @@ Vector<unsigned int> * BatallaCampal::pedirCoordenadas(){ //va en privado creo
 	unsigned int aux;
 	Vector<unsigned int> * coordenadas = new Vector<unsigned int> (3, NULL);
 	while(!coordenadasEnRango(coordenadas->obtener(1),coordenadas->obtener(2),coordenadas->obtener(3))){
-		std::cout << "Inserte coordenada X" << std::endl;
+		std::cout << "Ingrese coordenada X" << std::endl;
 		std::cin >> aux;
 		coordenadas->agregar(1,aux);
 		
-		std::cout "Inserte coordenada Y" << std::endl;
+		std::cout "Ingrese coordenada Y" << std::endl;
 		std::cin >> aux;
 		coordenadas->agregar(2,aux);
 
-		std::cout "Inserte coordenada z" << std::endl;
+		std::cout "Ingrese coordenada z" << std::endl;
 		std::cin >> aux;
 		coordenadas->agregar(3,aux);
 	}
