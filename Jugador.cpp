@@ -49,6 +49,4 @@ void Jugador::eliminarFicha(Ficha* ficha){
 	
 }
 
-
-
-Lista
+//Lista ?
