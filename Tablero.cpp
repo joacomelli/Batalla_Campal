@@ -51,7 +51,7 @@ Tablero::Tablero(unsigned int xMaximo, unsigned int yMaximo, unsigned int zMaxim
 		for(int y = 1; y <= this->yMaximo; y++){
 			this->casilleros->obtener(x)->agregar(new Lista<Casilla *> ());
 			for(int z = 1; z <= this->zMaximo; z++){
-				this->casilleros->obtener(x)->obtener(y)->agregar(new Casilla(x,y,z,General/*,Soldado*/));
+				this->casilleros->obtener(x)->obtener(y)->agregar(new Casilla(x,y,z,General,NULL));
 			}
 		}
 	}
