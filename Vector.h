@@ -3,40 +3,65 @@
 
 template<class T> class Vector {
 private:
-	T * datos;
-	int longitud;
+		T * datos;
+		int longitud;
 
 public:
 
 	/**
-	 * PRE: la longitud es mayor o igual a 1. Y el dato inicial puede ser NULL si es un puntero
-	 * POST: deja un vector con las posiciones solicitadas
+	 * pre: la longitud es mayor o igual a 1. Y el dato inicial puede ser NULL si es un puntero
+	 * pos: deja un vector con las posiciones solicitadas
 	 */
-	Vector(int longitud, T datoInicial);
+	Vector(int longitud, T datoInicial) {
+		if (longitud < 1) {
+			throw "La longitud debe ser mayor o igual a 1";
+		}
+		this->datos = new T[longitud];
+		this->longitud = longitud;
+		for(int i = 0; i < this->longitud; i++){
+			this->datos[i] = datoInicial;
+		}
+	}
 
 	/**
-	 * PRE:
-	 * POST: libera la memoria
+	 * pre:
+	 * post: libera la memoria
 	 */
-	virtual ~Vector();
+	virtual ~Vector() {
+		delete [] this->datos;
+	}
 
 	/**
-	 * PRE:
-	 * POST: devuelve la longitud actual del vector
+	 * pre:
+	 * post: devuelve la longitud actual del vector
 	 */
-	int getLongitud();
+	int getLongitud() {
+		return this->longitud;
+	}
 
 	/**
-	 * PRE: la posicion esta entre 1 y n (inclusive)
-	 * POST: guarda el dato en la posicion indicada, sino devuelve error
+	 * pre: la posicion esta entre 1 y n (inclusive)
+	 * pos: guarda el dato en la posicion indicada, sino devuelve error
 	 */
-	void agregar(int posicion, T dato);
+	void agregar(int posicion, T dato) {
+		if ((posicion < 1) ||
+		   (posicion > this->longitud)) {
+			throw "La " + posicion + " no esta en el rango 1 y " + this->longitud + " inclusive";
+		}
+		this->datos[posicion - 1] = dato;
+	}
 
 	/**
-	 * PRE: la posicion esta entre 1 y n (inclusive)
-	 * POST: guarda el dato en la posicion indicada, sino devuelve error
+	 * pre: la posicion esta entre 1 y n (inclusive)
+	 * pos: guarda el dato en la posicion indicada, sino devuelve error
 	 */
-	T& obtener(int posicion);
+	T& obtener(int posicion) {
+		if ((posicion < 1) ||
+		   (posicion > this->longitud)) {
+			throw "La " + posicion + " no esta en el rango 1 y " + this->longitud + " inclusive";
+		}
+		return this->datos[posicion - 1];
+	}
 };
 
 #endif /* VECTOR_H_ */
