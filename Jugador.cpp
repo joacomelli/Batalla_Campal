@@ -7,7 +7,7 @@ Jugador::Jugador(unsigned int numero, std::string nombre) {
 }
 
 Jugador::~Jugador() {
-	//falta lista.h tiene que destruir la lista de fichas
+	~this->fichas; //era asi?
 
 }
 
@@ -24,18 +24,26 @@ Lista<Ficha*> * Jugador::getFichas(){
 }
 
 void Jugador::agregarFicha(Ficha* ficha){
-	//falta lista.h
 	if(ficha == NULL){
 		throw "La ficha debe existir";
 	}
-	//agregar al principio
+	this->fichas->add(ficha);
 }	
 
+//REVISAR esta funcion me genera duda si solo tiene q sacar la ficha de la lista o si tambien la destruye pq el casillero va  a estar apuntando a la misma ficha
+// si uso la funcion remover de lista.h borra la ficha a menos q implementemos q la lista de fichas del jugador son todas copias de las fichas
 void Jugador::eliminarFicha(Ficha* ficha){
 	if(ficha == NULL){
 		throw "La ficha debe existir";
 	}
-	//eliminar dato  de lista.h
+	unsigned int pos = 0;
+	this->fichas->reiniciarCursor();
+	while(avanzarCursor()){
+		pos++;
+		if(getCursor() == ficha){
+			this->fichas->remover(pos);
+		}	
+	}
 }
 	
 }
