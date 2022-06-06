@@ -2,6 +2,8 @@
 #define BATALLACAMPAL_H_
 #include "Tablero.h"
 #include "Jugador.h"
+#include "Lista.h"
+#include "Vector.h"
 
 const unsigned int MAXIMO_TABLERO_X = 15;
 const unsigned int MAXIMO_TABLERO_Y = 15;
