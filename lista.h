@@ -5,7 +5,7 @@
 #define NULL 0
 #endif /* NULL */
 
-#include "nodo.h"
+#include "Nodo.h"
 
 template<class T> class Lista{
 private:
