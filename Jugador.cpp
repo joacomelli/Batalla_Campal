@@ -7,7 +7,7 @@ Jugador::Jugador(unsigned int numero, std::string nombre) {
 }
 
 Jugador::~Jugador() {
-	~this->fichas; //era asi?
+	delete this->fichas;
 
 }
 
