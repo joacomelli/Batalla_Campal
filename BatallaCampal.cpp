@@ -70,26 +70,46 @@ Vector<unsigned int> * BatallaCampal::pedirCoordenadas(){ //va en privado creo
 }
 
 
-Ficha * obtenerFicha( unsigned int x, unsigned int y, unsigned int z){
+Ficha * BatallaCampal::obtenerFicha( unsigned int x, unsigned int y, unsigned int z){
 
 	return this->tablero->getCasillero(vectorAux->get(x),vectorAux->get(y),vectorAux->get(z))->getFicha();
+}
+
+ //MODIFICAR: Ver si no permite ir al agua o si muere el soldado y si  lo verifica esta funcion o otra
+bool BatallaCampal::movimientoCercanoValido(unsigned int xOrigen, unsigned int yOrigen, unsigned int zOrigen,
+		   unsigned int xDestino,unsigned int yDestino,unsigned int zDestino){
+	if(zDestino > 1){
+		std::cout << "Los soldados solo pueden moverse por tierra. Elige otra coordenada" << std::endl;
+		return false;
+	}
+	int distX = (xOrigen-xDestino)*(xOrigen-xDestino);
+	int distY = (yOrigen-yDestino)*(yOrigen-yDestino);
+	if(distX > 1 || distY > 1){
+		std::cout << "Solo puedes moverte un casillero. Elige otra coordenada" << std::endl;
+		return false;
+	}
+	return true;
+}
+
+bool BatallaCampal::tieneUnSoldado(Jugador * jugador, unsigned int x, unsigned int y, unsigned int z){
+	return ((obtenerFicha(x, y, z) != NULL)
+		&& (obtenerFicha(x, y, z)->getJugador() == jugador)
+		&& (obtenerFicha(x, y, z)->getTipo() == Soldado));
 }
 
 //REVISAR si lo hacemos asi y que genere un vector dinamico con dos vectores dinamicos de unsigned int (uno origen y otro destino)
 // o si le pasamos 6 unsigned int* por parametro y los modifica
 Vector<Vector<unsigned int> *> * BatallaCampal::pedirMovimiento(Jugador * jugador){ //va en privado creo
 	Vector<unsigned int> * vectorAux;
-	bool soldadoValido = FALSE;
-	while(!soldadoValido){
+	bool valido = FALSE;
+	while(!valido){
+		std::cout << jugador->getNombre() << " ingresa la coordenada del soldado que desea mover." << std::endl;
 		vectorAux = pedirCoordenadas();
-		//funcion soldadoValido o al pedo?
-		soldadoValido = ((obtenerFicha(vectorAux->get(1),vectorAux->get(2),vectorAux->get(3)) != NULL)
-				&& (obtenerFicha(vectorAux->get(1),vectorAux->get(2),vectorAux->get(3))->getJugador() == jugador)
-				&& (obtenerFicha(vectorAux->get(1),vectorAux->get(2),vectorAux->get(3))->getTipo() == Soldado)); 
-		
-		if(!soldadoValido){
+		if(!tieneUnsoldado(jugador,vectorAux->get(1),vectorAux->get(2),vectorAux->get(3))){
 			std::cout << "No tienes ningun soldado en esa posicion" << std::endl;
-		} //seguir
+		}else{
+			//otro while que pide destino MODULARIZAR
+		}
 	}
 }
 		
