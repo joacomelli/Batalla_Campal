@@ -74,12 +74,12 @@ Ficha * BatallaCampal::obtenerFicha( unsigned int x, unsigned int y, unsigned in
 	return this->tablero->getCasillero(x,y,z)->getFicha();
 }
 
-EstadoDeCasilla BatallaCampal::obtenerEstadoDeCasilla(){
+EstadoDeCasilla BatallaCampal::obtenerEstadoDeCasilla(unsigned int x, unsigned int y, unsigned int z){
 	
 	return this->tablero->getCasillero(x,y,z)->getEstado();
 }
 
-TipoDeCasilla BatallaCampal::obtenerTipoDeCasilla(){
+TipoDeCasilla BatallaCampal::obtenerTipoDeCasilla(unsigned int x, unsigned int y, unsigned int z){
 
 	return this->tablero->getCasillero(x,y,z)->getTipo();
 }
@@ -197,9 +197,56 @@ void BatallaCampal::mover(Vector<Vector<unsigned int> *> * coordenadasOrigenYDes
 
 }
 
+	
+void BatallaCampal::colocarAvion(Jugador * jugador){
+	Vector<unsigned int> * vectorPosicion;
+	bool posicionValida = FALSE;
+	while(!posicionValida){
+		std::cout << jugador->getNombre() << ", ingresa la coordenada en la cual desea colocar su avion." << std::endl;
+		vectorPosicion = pedirCoordenadas();
+		unsigned int x = vectorPosicion->obtener(1);
+		unsigned int y = vectorPosicion->obtener(2);
+		unsigned int z = vectorPosicion->obtener(3);
+		if(obtenerTipoDeCasilla(x,y,z) != Aire){
+			std::cout << "Solo puedes colocar un avion en el aire. Intente de nuevo." << std::endl;
+			delete vectorPosicion;
+		
+		}else if(this->tablero->getCasillero(xDestino, yDestino, zDestino)->estaOcupado()){
+			Jugador * jugadorContrario = this->tablero->getCasillero(xDestino, yDestino, zDestino)->getFicha()->getJugador();
+			jugadorContrario->eliminarFicha(his->tablero->getCasillero(xDestino, yDestino, zDestino)->getFicha());
+			this->tablero->getCasillero(xDestino, yDestino, zDestino)->vaciar();
+			std::cout << "Tu avion choco con otro avion." << std::endl;
 
+		}else{
+			Ficha * fichaAvion = new Ficha(Avion, jugador, Activa);
+			this->tablero->getCasillero(x,y,z)->setFicha(fichaAvion);
+			jugador->agregarFicha(fichaAvion);
+			disparar();//completar
+			disparar();
+		}
+	}
+	
+	delete vectorDestino;
 
+}
 
-
-
+void BatallaCampal::sacarCarta(Jugador * jugador){//AL final del turno
+	
+	srand(time(NULL));
+	int numeroDeCarta  = rand() % 12;
+	
+	if(numeroDeCarta == Avion){
+		colocarAvion(jugador);
+	}else if(numeroDeCarta == Barco){
+		colocarBarco(jugador);
+	}else if(numeroDeCarta == Misil){
+		dispararMisil(jugador);
+	}else if(numeroDeCarta == OtroTurno){
+		jugarTurno(jugador);
+	}else if(numeroDeCarta == ReconstruirTerreno){
+		recontruirTerreno(jugador);
+	}else if(numeroDeCarta == RondaSinCartas){
+		jugarRonda()//revisar
+	}
+}
 
