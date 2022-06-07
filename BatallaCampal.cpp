@@ -143,7 +143,8 @@ Vector<unsigned int> * BatallaCampal::pedirDestinoDelMovimiento(Jugador *jugador
 //REVISAR si lo hacemos asi y que genere un vector dinamico con dos vectores dinamicos de unsigned int (uno origen y otro destino)
 // o si le pasamos 6 unsigned int* por parametro y los modifica
 Vector<Vector<unsigned int> *> * BatallaCampal::pedirMovimiento(Jugador *jugador){ //va en privado creo
-	Vector<Vector<unsigned int> *> * coordenadasDelMovimiento;
+	
+	Vector<Vector<unsigned int> *> * coordenadasDelMovimiento = new Vector<Vector<unsigned int> *>(2,NULL);
 	Vector<unsigned int> * origen;
 	Vector<unsigned int> * destino;
 	bool valido = FALSE;
@@ -151,37 +152,46 @@ Vector<Vector<unsigned int> *> * BatallaCampal::pedirMovimiento(Jugador *jugador
 		origen = pedirOrigenDelMovimiento(jugador);
 		destino = pedirDestinoDelMovimiento(jugador);
 		if(movimientoCercano(origen,destino)){
-			//agregar los vectores al  doble vector
-		
+			coordenadasDelMovimiento->agregar(1,origen);
+			coordenadasDelMovimiento->agregar(2,destino);
 			valido =  TRUE;
 		}else{
-			//borrar origen y  destino
+			delete origen;
+			delete destino;
 	}
 	return coordenadasDelMovimiento;
 }
+	
+void BatallaCampal::destruirCoordenadasDelMovimiento(Vector<Vector<unsigned int> *> * coordenadas){
+		
+	delete coordenadas->obtener(1);
+	delete coordenadas->obtener(2);
+	delete coordenadas;
+}
 		
 
-void BatallaCampal::mover(Vector<unsigned int> * origen, Vector<unsigned int> * destino){
+void BatallaCampal::mover(Vector<Vector<unsigned int> *> * coordenadasOrigenYDestino){
 	
-	unsigned int xOrigen = origen->get(1);
-	unsigned int yOrigen = origen->get(2);
-	unsigned int zOrigen = origen->get(3);
-	unsigned int xDestino = destino->get(1);
-	unsigned int yDestino = destino->get(2);
-	unsigned int zDestino = destino->get(3);
+	unsigned int xOrigen = coordenadasOrigenYDestino->get(1)->get(1);
+	unsigned int yOrigen = coordenadasOrigenYDestino->get(1)->get(2);
+	unsigned int zOrigen = coordenadasOrigenYDestino->get(1)->get(3);
+	unsigned int xDestino = coordenadasOrigenYDestino->get(2)->get(1);
+	unsigned int yDestino = coordenadasOrigenYDestino->get(2)->get(2);
+	unsigned int zDestino = coordenadasOrigenYDestino->get(2)->get(3);
 	
 	Ficha * ficha = this->tablero->getCasillero(xOrigen, yOrigen, zOrigen)->getFicha();
 	this->tablero->getCasillero(xOrigen, yOrigen, zOrigen)->vaciar();
 
 	if(this->tablero->getCasillero(xDestino, yDestino, zDestino)->estaOcupado()){
 		this->tablero->getCasillero(xDestino, yDestino, zDestino)->getFicha()->eliminar();
-		this->tablero->getCasillero(xDestino, yDestino, zDestino)->vaciar();
+		this->tablero->getCasillero(xDestino, yDestino, zDestino)->vaciar(); //seria destruir
 		ficha->eliminar();
 
 	}else{
 		this->tablero->getCasillero(xDestino, yDestino, zDestino)->setFicha(ficha);
 	}
 
+	destruirCoordenadasDelMovimiento(coordenadasOrigenYDestino);
 
 }
 
