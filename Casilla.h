@@ -71,6 +71,10 @@ public:
 	//PRE: la casilla debe existir.
 	//POST: Deja vacia la casilla actual.
 	void vaciar();
+	
+	//PRE: La casilla debe existir 
+	//POST: Deja inactiva la casilla
+	void destruir();
 
 	//PRE: La casilla debe estar creada
 	//POST: Cambiara el tipo de casilla.
