@@ -8,6 +8,7 @@ BatallaCampal::BatallaCampal() {
 BatallaCampal::~BatallaCampal() {
 
 }
+
 void BatallaCampal::iniciarEscenarioUno(unsigned int xMaximo, unsigned int yMaximo, unsigned int zMaximo){
 	this->tablero = new Tablero(xMaximo,yMaximo,zMaximo);
 	for(int x = 1; x <= xMaximo; x++){
@@ -48,8 +49,7 @@ void BatallaCampal::iniciarEscenarioDos(unsigned int xMaximo, unsigned int yMaxi
 
 
 
-//REVISAR si lo hacemos asi y que genere un vector dinamico de unsigned int o unsigned int* 
-// o si le pasamos tres punteros a unsigned int por parametro y los modifica
+//REVISAR
 Vector<unsigned int> * BatallaCampal::pedirCoordenadas(){ //va en privado creo
 	unsigned int aux;
 	Vector<unsigned int> * coordenadas = new Vector<unsigned int> (3, NULL);
@@ -84,7 +84,7 @@ TipoDeCasilla BatallaCampal::obtenerTipoDeCasilla(){
 	return this->tablero->getCasillero(vectorAux->get(x),vectorAux->get(y),vectorAux->get(z))->getTipo();
 }
 
- //MODIFICAR: Ver si no permite ir al agua o si muere el soldado y si  lo verifica esta funcion o otra
+ //REVISAR
 bool BatallaCampal::movimientoCercano(Vector<unsigned int> * origen, Vector<unsigned int> * destino){
 	int distX = (origen->get(1) - destino->get(1))
 	int distY = (origen->get(2) - destino->get(2));
@@ -101,6 +101,7 @@ bool BatallaCampal::tieneUnSoldado(Jugador * jugador, unsigned int x, unsigned i
 		&& (obtenerFicha(x, y, z)->getTipo() == Soldado));
 }
 
+//REVISAR
 Vector<unsigned int> * BatallaCampal::pedirOrigenDelMovimiento(Jugador *jugador){
 	Vector<unsigned int> * vectorOrigen;
 	bool origenValido = FALSE;
@@ -116,6 +117,7 @@ Vector<unsigned int> * BatallaCampal::pedirOrigenDelMovimiento(Jugador *jugador)
 	return vectorOrigen;
 }
 
+//REVISAR
 Vector<unsigned int> * BatallaCampal::pedirDestinoDelMovimiento(Jugador *jugador){
 	Vector<unsigned int> * vectorDestino;
 	bool destinoValido = FALSE;
@@ -140,8 +142,7 @@ Vector<unsigned int> * BatallaCampal::pedirDestinoDelMovimiento(Jugador *jugador
 
 
 
-//REVISAR si lo hacemos asi y que genere un vector dinamico con dos vectores dinamicos de unsigned int (uno origen y otro destino)
-// o si le pasamos 6 unsigned int* por parametro y los modifica
+//REVISAR
 Vector<Vector<unsigned int> *> * BatallaCampal::pedirMovimiento(Jugador *jugador){ //va en privado creo
 	
 	Vector<Vector<unsigned int> *> * coordenadasDelMovimiento = new Vector<Vector<unsigned int> *>(2,NULL);
@@ -169,7 +170,7 @@ void BatallaCampal::destruirCoordenadasDelMovimiento(Vector<Vector<unsigned int>
 	delete coordenadas;
 }
 		
-
+//REVISAR
 void BatallaCampal::mover(Vector<Vector<unsigned int> *> * coordenadasOrigenYDestino){
 	
 	unsigned int xOrigen = coordenadasOrigenYDestino->get(1)->get(1);
