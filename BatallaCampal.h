@@ -51,11 +51,43 @@ public:
 	//PRE:-
 	//POST: Inicia el tablero en el escenario 2 pre configurado.
 	void iniciarEscenarioDos(unsigned int xMaximo, unsigned int yMaximo, unsigned int zMaximo);
-
+	 
+	//
+	//
+	Ficha * obtenerFicha( unsigned int x, unsigned int y, unsigned int z);
+	
+	//
+	//
+	EstadoDeCasilla obtenerEstadoDeCasilla(unsigned int x, unsigned int y, unsigned int z);
+	
+	//
+	//
+	TipoDeCasilla obtenerTipoDeCasilla(unsigned int x, unsigned int y, unsigned int z);
+	
+	//
+	//
+	bool tieneUnSoldado(Jugador * jugador, unsigned int x, unsigned int y, unsigned int z);
+	
+	//
+	//
+	void destruirCoordenadasDelMovimiento(Vector<Vector<unsigned int> *> * coordenadas);
+	
+	//
+	//
+	bool movimientoCercano(Vector<unsigned int> * origen, Vector<unsigned int> * destino);
+	
 	//PRE:
 	//POST:
 	void mover(unsigned int xOrigen, unsigned int yOrigen, unsigned int zOrigen,
 			   unsigned int xDestino,unsigned int yDestino,unsigned int zDestino);
+	
+	//
+	//
+	void colocarAvion(Jugador * jugador);
+	
+	//
+	//
+	void sacarCarta(Jugador * jugador);
 
 };
 
