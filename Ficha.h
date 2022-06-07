@@ -49,6 +49,10 @@ public:
 	//PRE:-
 	//POST: Cambia al jugador
 	void setJugador(Jugador *jugador);
+	
+	//PRE:-
+	//POST: Devuelve el tipo
+	TipoDeFicha getTipo();
 
 };
 
