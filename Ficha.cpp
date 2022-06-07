@@ -36,6 +36,10 @@ void Ficha::setJugador(Jugador *jugador) {
 	this->jugador = jugador;
 }
 
+TipoDeFicha Ficha::getTipo(){
+	return this->tipo;
+}
+
 
 
 
