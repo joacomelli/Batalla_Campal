@@ -1,5 +1,10 @@
 #ifndef BATALLACAMPAL_H_
 #define BATALLACAMPAL_H_
+
+#include<iostream>
+#include <cstdlib>  /* Aqui estan contenidas  las funciones rand y srand */
+#include <ctime> /* de aqui  haremos uso de la función time para obtener un indicador 
+del tiempo actual del sistema, pese a que este cambia de segundo a segundo la semilla también cambiara */
 #include "Tablero.h"
 #include "Jugador.h"
 #include "Lista.h"
