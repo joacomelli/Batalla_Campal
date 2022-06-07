@@ -71,23 +71,23 @@ Vector<unsigned int> * BatallaCampal::pedirCoordenadas(){ //va en privado creo
 
 Ficha * BatallaCampal::obtenerFicha( unsigned int x, unsigned int y, unsigned int z){
 
-	return this->tablero->getCasillero(vectorAux->get(x),vectorAux->get(y),vectorAux->get(z))->getFicha();
+	return this->tablero->getCasillero(x,y,z)->getFicha();
 }
 
 EstadoDeCasilla BatallaCampal::obtenerEstadoDeCasilla(){
 	
-	return this->tablero->getCasillero(vectorAux->get(x),vectorAux->get(y),vectorAux->get(z))->getEstado();
+	return this->tablero->getCasillero(x,y,z)->getEstado();
 }
 
 TipoDeCasilla BatallaCampal::obtenerTipoDeCasilla(){
 
-	return this->tablero->getCasillero(vectorAux->get(x),vectorAux->get(y),vectorAux->get(z))->getTipo();
+	return this->tablero->getCasillero(x,y,z)->getTipo();
 }
 
  //REVISAR
 bool BatallaCampal::movimientoCercano(Vector<unsigned int> * origen, Vector<unsigned int> * destino){
-	int distX = (origen->get(1) - destino->get(1))
-	int distY = (origen->get(2) - destino->get(2));
+	int distX = (origen->obtener(1) - destino->obtener(1))
+	int distY = (origen->obtener(2) - destino->obtener(2));
 	if((distX*distX) > 1 || (distY*distY) > 1){
 		std::cout << "Solo puedes moverte un casillero. Elige otra coordenada" << std::endl;
 		return false;
@@ -108,7 +108,7 @@ Vector<unsigned int> * BatallaCampal::pedirOrigenDelMovimiento(Jugador *jugador)
 	while(!origenValido){
 		std::cout << jugador->getNombre() << ", ingresa la coordenada del soldado que desea mover." << std::endl;
 		vectorOrigen = pedirCoordenadas();
-		if(!tieneUnsoldado(jugador,vectorOrigen->get(1),vectorOrigen->get(2),vectorOrigen->get(3))){
+		if(!tieneUnsoldado(jugador,vectorOrigen->obtener(1),vectorOrigen->obtener(2),vectorOrigen->obtener(3))){
 			std::cout << "No tienes ningun soldado en esa posicion. Intente de nuevo." << std::endl;
 			delete vectorOrigen;
 		}else{
@@ -124,7 +124,7 @@ Vector<unsigned int> * BatallaCampal::pedirDestinoDelMovimiento(Jugador *jugador
 	while(!destinoValido){
 		std::cout << jugador->getNombre() << ", ingresa la coordenada a la cual desea mover su soldado." << std::endl;
 		vectorDestino = pedirCoordenadas();
-		if(tieneUnsoldado(jugador,vectorDestino->get(1),vectorDestino->get(2),vectorDestino->get(3))){
+		if(tieneUnsoldado(jugador,vectorDestino->obtener(1),vectorDestino->obtener(2),vectorDestino->obtener(3))){
 			std::cout << "Ya tienes un soldado en esa posicion. Intente de nuevo." << std::endl;
 			delete vectorDestino;
 		}else if(obtenerTipoDeCasilla != Tierra){
@@ -173,19 +173,20 @@ void BatallaCampal::destruirCoordenadasDelMovimiento(Vector<Vector<unsigned int>
 //REVISAR
 void BatallaCampal::mover(Vector<Vector<unsigned int> *> * coordenadasOrigenYDestino){
 	
-	unsigned int xOrigen = coordenadasOrigenYDestino->get(1)->get(1);
-	unsigned int yOrigen = coordenadasOrigenYDestino->get(1)->get(2);
-	unsigned int zOrigen = coordenadasOrigenYDestino->get(1)->get(3);
-	unsigned int xDestino = coordenadasOrigenYDestino->get(2)->get(1);
-	unsigned int yDestino = coordenadasOrigenYDestino->get(2)->get(2);
-	unsigned int zDestino = coordenadasOrigenYDestino->get(2)->get(3);
+	unsigned int xOrigen = coordenadasOrigenYDestino->obtener(1)->obtener(1);
+	unsigned int yOrigen = coordenadasOrigenYDestino->obtener(1)->obtener(2);
+	unsigned int zOrigen = coordenadasOrigenYDestino->obtener(1)->obtener(3);
+	unsigned int xDestino = coordenadasOrigenYDestino->obtener(2)->obtener(1);
+	unsigned int yDestino = coordenadasOrigenYDestino->obtener(2)->obtener(2);
+	unsigned int zDestino = coordenadasOrigenYDestino->obtener(2)->obtener(3);
 	
 	Ficha * ficha = this->tablero->getCasillero(xOrigen, yOrigen, zOrigen)->getFicha();
 	this->tablero->getCasillero(xOrigen, yOrigen, zOrigen)->vaciar();
 
 	if(this->tablero->getCasillero(xDestino, yDestino, zDestino)->estaOcupado()){
 		this->tablero->getCasillero(xDestino, yDestino, zDestino)->getFicha()->eliminar();
-		this->tablero->getCasillero(xDestino, yDestino, zDestino)->vaciar(); //seria destruir
+		this->tablero->getCasillero(xDestino, yDestino, zDestino)->vaciar();
+		this->tablero->getCasillero(xDestino, yDestino, zDestino)->destruir();
 		ficha->eliminar();
 
 	}else{
