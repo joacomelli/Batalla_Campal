@@ -51,7 +51,11 @@ public:
 	//PRE:-
 	//POST: Inicia el tablero en el escenario 2 pre configurado.
 	void iniciarEscenarioDos(unsigned int xMaximo, unsigned int yMaximo, unsigned int zMaximo);
-	 
+	
+	//PRE:-
+	//POST: Pide por consola unas coordenadas (x,y,z) y las retorna como vector dinamico.
+	Vector<unsigned int> * pedirCoordenadas();
+	
 	//
 	//
 	Ficha * obtenerFicha( unsigned int x, unsigned int y, unsigned int z);
