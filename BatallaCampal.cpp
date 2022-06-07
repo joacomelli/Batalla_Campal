@@ -1,7 +1,8 @@
 #include "BatallaCampal.h"
 
 BatallaCampal::BatallaCampal() {
-
+	this->tablero = NULL;
+	this->jugadores = NULL;
 
 }
 
@@ -11,9 +12,9 @@ BatallaCampal::~BatallaCampal() {
 
 void BatallaCampal::iniciarEscenarioUno(unsigned int xMaximo, unsigned int yMaximo, unsigned int zMaximo){
 	this->tablero = new Tablero(xMaximo,yMaximo,zMaximo);
-	for(int x = 1; x <= xMaximo; x++){
-		for(int y = 1; y <= yMaximo; y++){
-			for(int z = 1; z <= zMaximo; z++){
+	for(unsigned int x = 1; x <= xMaximo; x++){
+		for(unsigned int y = 1; y <= yMaximo; y++){
+			for(unsigned int z = 1; z <= zMaximo; z++){
 				if(x == 1){
 					this->tablero->getCasillero(x,y,z)->setTipo(Tierra);
 				}
@@ -27,9 +28,9 @@ void BatallaCampal::iniciarEscenarioUno(unsigned int xMaximo, unsigned int yMaxi
 
 void BatallaCampal::iniciarEscenarioDos(unsigned int xMaximo, unsigned int yMaximo, unsigned int zMaximo){
 	this->tablero = new Tablero(xMaximo,yMaximo,zMaximo);
-	for(int x = 1; x <= xMaximo; x++){
-		for(int y = 1; y <= yMaximo; y++){
-			for(int z = 1; z <= zMaximo; z++){
+	for(unsigned int x = 1; x <= xMaximo; x++){
+		for(unsigned int y = 1; y <= yMaximo; y++){
+			for(unsigned int z = 1; z <= zMaximo; z++){
 				if(x == 1){
 					if(y < z){
 
@@ -58,14 +59,16 @@ Vector<unsigned int> * BatallaCampal::pedirCoordenadas(){ //va en privado creo
 		std::cin >> aux;
 		coordenadas->agregar(1,aux);
 		
-		std::cout "Ingrese coordenada Y" << std::endl;
+		std::cout << "Ingrese coordenada Y" << std::endl;
 		std::cin >> aux;
 		coordenadas->agregar(2,aux);
 
-		std::cout "Ingrese coordenada z" << std::endl;
+		std::cout << "Ingrese coordenada z" << std::endl;
 		std::cin >> aux;
 		coordenadas->agregar(3,aux);
 	}
+	
+	return coordenadas;
 }
 
 
@@ -86,7 +89,7 @@ TipoDeCasilla BatallaCampal::obtenerTipoDeCasilla(unsigned int x, unsigned int y
 
  //REVISAR
 bool BatallaCampal::movimientoCercano(Vector<unsigned int> * origen, Vector<unsigned int> * destino){
-	int distX = (origen->obtener(1) - destino->obtener(1))
+	int distX = (origen->obtener(1) - destino->obtener(1));
 	int distY = (origen->obtener(2) - destino->obtener(2));
 	if((distX*distX) > 1 || (distY*distY) > 1){
 		std::cout << "Solo puedes moverte un casillero. Elige otra coordenada" << std::endl;
