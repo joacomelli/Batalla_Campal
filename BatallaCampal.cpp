@@ -50,11 +50,10 @@ void BatallaCampal::iniciarEscenarioDos(unsigned int xMaximo, unsigned int yMaxi
 
 //REVISAR si lo hacemos asi y que genere un vector dinamico de unsigned int o unsigned int* 
 // o si le pasamos tres punteros a unsigned int por parametro y los modifica
-// falta crear la funcion coordenadasEnRango en tablero.h
 Vector<unsigned int> * BatallaCampal::pedirCoordenadas(){ //va en privado creo
 	unsigned int aux;
 	Vector<unsigned int> * coordenadas = new Vector<unsigned int> (3, NULL);
-	while(!coordenadasEnRango(coordenadas->obtener(1),coordenadas->obtener(2),coordenadas->obtener(3))){
+	while(!this->tablero->existeElCasillero(coordenadas->obtener(1),coordenadas->obtener(2),coordenadas->obtener(3))){
 		std::cout << "Ingrese coordenada X" << std::endl;
 		std::cin >> aux;
 		coordenadas->agregar(1,aux);
@@ -75,16 +74,21 @@ Ficha * BatallaCampal::obtenerFicha( unsigned int x, unsigned int y, unsigned in
 	return this->tablero->getCasillero(vectorAux->get(x),vectorAux->get(y),vectorAux->get(z))->getFicha();
 }
 
+EstadoDeCasilla BatallaCampal::obtenerEstadoDeCasilla(){
+	
+	return this->tablero->getCasillero(vectorAux->get(x),vectorAux->get(y),vectorAux->get(z))->getEstado();
+}
+
+TipoDeCasilla BatallaCampal::obtenerTipoDeCasilla(){
+
+	return this->tablero->getCasillero(vectorAux->get(x),vectorAux->get(y),vectorAux->get(z))->getTipo();
+}
+
  //MODIFICAR: Ver si no permite ir al agua o si muere el soldado y si  lo verifica esta funcion o otra
-bool BatallaCampal::movimientoCercanoValido(unsigned int xOrigen, unsigned int yOrigen, unsigned int zOrigen,
-		   unsigned int xDestino,unsigned int yDestino,unsigned int zDestino){
-	if(zDestino > 1){
-		std::cout << "Los soldados solo pueden moverse por tierra. Elige otra coordenada" << std::endl;
-		return false;
-	}
-	int distX = (xOrigen-xDestino)*(xOrigen-xDestino);
-	int distY = (yOrigen-yDestino)*(yOrigen-yDestino);
-	if(distX > 1 || distY > 1){
+bool BatallaCampal::movimientoCercano(Vector<unsigned int> * origen, Vector<unsigned int> * destino){
+	int distX = (origen->get(1) - destino->get(1))
+	int distY = (origen->get(2) - destino->get(2));
+	if((distX*distX) > 1 || (distY*distY) > 1){
 		std::cout << "Solo puedes moverte un casillero. Elige otra coordenada" << std::endl;
 		return false;
 	}
@@ -97,26 +101,75 @@ bool BatallaCampal::tieneUnSoldado(Jugador * jugador, unsigned int x, unsigned i
 		&& (obtenerFicha(x, y, z)->getTipo() == Soldado));
 }
 
+Vector<unsigned int> * BatallaCampal::pedirOrigenDelMovimiento(Jugador *jugador){
+	Vector<unsigned int> * vectorOrigen;
+	bool origenValido = FALSE;
+	while(!origenValido){
+		std::cout << jugador->getNombre() << ", ingresa la coordenada del soldado que desea mover." << std::endl;
+		vectorOrigen = pedirCoordenadas();
+		if(!tieneUnsoldado(jugador,vectorOrigen->get(1),vectorOrigen->get(2),vectorOrigen->get(3))){
+			std::cout << "No tienes ningun soldado en esa posicion. Intente de nuevo." << std::endl;
+			delete vectorOrigen;
+		}else{
+			origenValido = TRUE;
+	}
+	return vectorOrigen;
+}
+
+Vector<unsigned int> * BatallaCampal::pedirDestinoDelMovimiento(Jugador *jugador){
+	Vector<unsigned int> * vectorDestino;
+	bool destinoValido = FALSE;
+	while(!destinoValido){
+		std::cout << jugador->getNombre() << ", ingresa la coordenada a la cual desea mover su soldado." << std::endl;
+		vectorDestino = pedirCoordenadas();
+		if(tieneUnsoldado(jugador,vectorDestino->get(1),vectorDestino->get(2),vectorDestino->get(3))){
+			std::cout << "Ya tienes un soldado en esa posicion. Intente de nuevo." << std::endl;
+			delete vectorDestino;
+		}else if(obtenerTipoDeCasilla != Tierra){
+			std::cout << "Los soldados solo pueden moverse por tierra. Intente de nuevo." << std::endl;
+			delete vectorDestino;
+		}else if(obtenerEstadoDeCasilla == Inactiva){
+			std::cout << "El casillero al que deseas moverte esta destruido. Intente de nuevo." << std::endl;
+			delete vectorDestino;
+		}else{
+			destinoValido = TRUE;
+		}	
+	}
+	return vectorDestino;
+}
+
+
+
 //REVISAR si lo hacemos asi y que genere un vector dinamico con dos vectores dinamicos de unsigned int (uno origen y otro destino)
 // o si le pasamos 6 unsigned int* por parametro y los modifica
-Vector<Vector<unsigned int> *> * BatallaCampal::pedirMovimiento(Jugador * jugador){ //va en privado creo
-	Vector<unsigned int> * vectorAux;
+Vector<Vector<unsigned int> *> * BatallaCampal::pedirMovimiento(Jugador *jugador){ //va en privado creo
+	Vector<Vector<unsigned int> *> * coordenadasDelMovimiento;
+	Vector<unsigned int> * origen;
+	Vector<unsigned int> * destino;
 	bool valido = FALSE;
 	while(!valido){
-		std::cout << jugador->getNombre() << " ingresa la coordenada del soldado que desea mover." << std::endl;
-		vectorAux = pedirCoordenadas();
-		if(!tieneUnsoldado(jugador,vectorAux->get(1),vectorAux->get(2),vectorAux->get(3))){
-			std::cout << "No tienes ningun soldado en esa posicion" << std::endl;
+		origen = pedirOrigenDelMovimiento(jugador);
+		destino = pedirDestinoDelMovimiento(jugador);
+		if(movimientoCercano(origen,destino)){
+			//agregar los vectores al  doble vector
+		
+			valido =  TRUE;
 		}else{
-			//otro while que pide destino MODULARIZAR
-		}
+			//borrar origen y  destino
 	}
+	return coordenadasDelMovimiento;
 }
 		
 
-void BatallaCampal::mover(unsigned int xOrigen, unsigned int yOrigen, unsigned int zOrigen,
-		   unsigned int xDestino,unsigned int yDestino,unsigned int zDestino){
-
+void BatallaCampal::mover(Vector<unsigned int> * origen, Vector<unsigned int> * destino){
+	
+	unsigned int xOrigen = origen->get(1);
+	unsigned int yOrigen = origen->get(2);
+	unsigned int zOrigen = origen->get(3);
+	unsigned int xDestino = destino->get(1);
+	unsigned int yDestino = destino->get(2);
+	unsigned int zDestino = destino->get(3);
+	
 	Ficha * ficha = this->tablero->getCasillero(xOrigen, yOrigen, zOrigen)->getFicha();
 	this->tablero->getCasillero(xOrigen, yOrigen, zOrigen)->vaciar();
 
