@@ -73,7 +73,7 @@ public:
 	void vaciar();
 	
 	//PRE: La casilla debe existir 
-	//POST: Deja inactiva la casilla
+	//POST: Deja inactiva la casilla y deja la ficha en NULL
 	void destruir();
 
 	//PRE: La casilla debe estar creada
