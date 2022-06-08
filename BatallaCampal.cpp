@@ -107,7 +107,7 @@ bool BatallaCampal::tieneUnSoldado(Jugador * jugador, unsigned int x, unsigned i
 //REVISAR
 Vector<unsigned int> * BatallaCampal::pedirOrigenDelMovimiento(Jugador *jugador){
 	Vector<unsigned int> * vectorOrigen;
-	bool origenValido = FALSE;
+	bool origenValido = false;
 	while(!origenValido){
 		std::cout << jugador->getNombre() << ", ingresa la coordenada del soldado que desea mover." << std::endl;
 		vectorOrigen = pedirCoordenadas();
@@ -115,7 +115,7 @@ Vector<unsigned int> * BatallaCampal::pedirOrigenDelMovimiento(Jugador *jugador)
 			std::cout << "No tienes ningun soldado en esa posicion. Intente de nuevo." << std::endl;
 			delete vectorOrigen;
 		}else{
-			origenValido = TRUE;
+			origenValido = true;
 		}
 	}
 	return vectorOrigen;
@@ -124,7 +124,7 @@ Vector<unsigned int> * BatallaCampal::pedirOrigenDelMovimiento(Jugador *jugador)
 //REVISAR
 Vector<unsigned int> * BatallaCampal::pedirDestinoDelMovimiento(Jugador *jugador){
 	Vector<unsigned int> * vectorDestino;
-	bool destinoValido = FALSE;
+	bool destinoValido = false;
 	while(!destinoValido){
 		std::cout << jugador->getNombre() << ", ingresa la coordenada a la cual desea mover su soldado." << std::endl;
 		vectorDestino = pedirCoordenadas();
@@ -138,7 +138,7 @@ Vector<unsigned int> * BatallaCampal::pedirDestinoDelMovimiento(Jugador *jugador
 			std::cout << "El casillero al que deseas moverte esta destruido. Intente de nuevo." << std::endl;
 			delete vectorDestino;
 		}else{
-			destinoValido = TRUE;
+			destinoValido = true;
 		}	
 	}
 	return vectorDestino;
@@ -152,14 +152,14 @@ Vector<Vector<unsigned int> *> * BatallaCampal::pedirMovimiento(Jugador *jugador
 	Vector<Vector<unsigned int> *> * coordenadasDelMovimiento = new Vector<Vector<unsigned int> *>(2,NULL);
 	Vector<unsigned int> * origen;
 	Vector<unsigned int> * destino;
-	bool valido = FALSE;
+	bool valido = false;
 	while(!valido){
 		origen = pedirOrigenDelMovimiento(jugador);
 		destino = pedirDestinoDelMovimiento(jugador);
 		if(movimientoCercano(origen,destino)){
 			coordenadasDelMovimiento->agregar(1,origen);
 			coordenadasDelMovimiento->agregar(2,destino);
-			valido = TRUE;
+			valido = true;
 		}else{
 			delete origen;
 			delete destino;
@@ -205,7 +205,7 @@ void BatallaCampal::mover(Vector<Vector<unsigned int> *> * coordenadasOrigenYDes
 	
 void BatallaCampal::colocarAvion(Jugador * jugador){
 	Vector<unsigned int> * vectorPosicion;
-	bool posicionValida = FALSE;
+	bool posicionValida = false;
 	while(!posicionValida){
 		std::cout << jugador->getNombre() << ", ingresa la coordenada en la cual desea colocar su avion." << std::endl;
 		vectorPosicion = pedirCoordenadas();
