@@ -193,8 +193,8 @@ void BatallaCampal::mover(Vector<Vector<unsigned int> *> * coordenadasOrigenYDes
 	this->tablero->getCasillero(xOrigen, yOrigen, zOrigen)->vaciar();
 
 	if(this->tablero->getCasillero(xDestino, yDestino, zDestino)->estaOcupado()){
-		this->tablero->getCasillero(xDestino, yDestino, zDestino)->getFicha()->eliminar();
-		this->tablero->getCasillero(xDestino, yDestino, zDestino)->vaciar();
+		Jugador * jugadorContrario = this->tablero->getCasillero(x, y, z)->getFicha()->getJugador();
+		jugadorContrario->eliminarFicha(this->tablero->getCasillero(x, y, z)->getFicha());
 		this->tablero->getCasillero(xDestino, yDestino, zDestino)->destruir();
 		ficha->eliminar();
 
@@ -204,6 +204,27 @@ void BatallaCampal::mover(Vector<Vector<unsigned int> *> * coordenadasOrigenYDes
 
 	destruirCoordenadasDelMovimiento(coordenadasOrigenYDestino);
 
+}
+
+void BatallaCampal::disparar(Jugador * jugador){
+	Vector<unsigned int> * vectorPosicion;
+	std::cout << jugador->getNombre() << ", ingresa la coordenada a la cual desea disparar." << std::endl;
+	vectorPosicion = pedirCoordenadas();
+	unsigned int x = vectorPosicion->obtener(1);
+	unsigned int y = vectorPosicion->obtener(2);
+	unsigned int z = vectorPosicion->obtener(3);
+	
+	if(obtenerEstadoDeCasilla(x,y,z) != Vacia){
+		Jugador * jugadorContrario = this->tablero->getCasillero(x, y, z)->getFicha()->getJugador();
+		jugadorContrario->eliminarFicha(this->tablero->getCasillero(x, y, z)->getFicha());
+		std::cout << "Has conseguido una baja." << std::endl;
+	}
+	
+	if(obtenerTipoDeCasilla(x,y,z) == Tierra){
+			this->tablero->getCasillero(x,y,z)->destruir();
+	}else{
+			this->tablero->getCasillero(x,y,z)->vaciar();
+	}
 }
 
 	
@@ -230,14 +251,48 @@ void BatallaCampal::colocarAvion(Jugador * jugador){
 			Ficha * fichaAvion = new Ficha(FAvion, jugador, Activa);
 			this->tablero->getCasillero(x,y,z)->setFicha(fichaAvion);
 			jugador->agregarFicha(fichaAvion);
-			//disparar();       //completar
-			//disparar();
+			disparar(jugador);
+			disparar(jugador);
 		}
 	}
 	
 	delete vectorPosicion;
 
 }
+
+void BatallaCampal::colocarBarco(Jugador * jugador){
+	Vector<unsigned int> * vectorPosicion;
+	bool posicionValida = false;
+	while(!posicionValida){
+		std::cout << jugador->getNombre() << ", ingresa la coordenada en la cual desea colocar su avion." << std::endl;
+		vectorPosicion = pedirCoordenadas();
+		unsigned int x = vectorPosicion->obtener(1);
+		unsigned int y = vectorPosicion->obtener(2);
+		unsigned int z = vectorPosicion->obtener(3);
+		if(obtenerTipoDeCasilla(x,y,z) != Agua){
+			std::cout << "Solo puedes colocar un barco en el agua. Intente de nuevo." << std::endl;
+			delete vectorPosicion;
+		
+		}else if(this->tablero->getCasillero(x, y, z)->estaOcupado()){
+			Jugador * jugadorContrario = this->tablero->getCasillero(x, y, z)->getFicha()->getJugador();
+			jugadorContrario->eliminarFicha(this->tablero->getCasillero(x, y, z)->getFicha());
+			this->tablero->getCasillero(x, y, z)->vaciar();
+			std::cout << "Tu barco choco con otro barco." << std::endl;
+
+		}else{
+			Ficha * fichaBarco = new Ficha(FBarco, jugador, Activa);
+			this->tablero->getCasillero(x,y,z)->setFicha(fichaBarco);
+			jugador->agregarFicha(fichaBarco;
+			//lanzarMisil();       //completar
+			
+		}
+	}
+	
+	delete vectorPosicion;
+
+}
+
+
 
 void BatallaCampal::sacarCarta(Jugador * jugador){//AL final del turno
 	
