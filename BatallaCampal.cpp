@@ -249,7 +249,7 @@ void BatallaCampal::sacarCarta(Jugador * jugador){//AL final del turno
 	}else if(numeroDeCarta == Barco){
 		colocarBarco(jugador);
 	}else if(numeroDeCarta == Misil){
-		dispararMisil(jugador);
+		lanzarMisil(jugador);
 	}else if(numeroDeCarta == OtroTurno){
 		jugarTurno(jugador);
 	}else if(numeroDeCarta == ReconstruirTerreno){
