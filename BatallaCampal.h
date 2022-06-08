@@ -1,10 +1,12 @@
 #ifndef BATALLACAMPAL_H_
 #define BATALLACAMPAL_H_
 
-#include<iostream>
+#include <iostream>
 #include <cstdlib>  /* Aqui estan contenidas  las funciones rand y srand */
 #include <ctime> /* de aqui  haremos uso de la función time para obtener un indicador 
 del tiempo actual del sistema, pese a que este cambia de segundo a segundo la semilla también cambiara */
+
+
 #include "Tablero.h"
 #include "Jugador.h"
 #include "Lista.h"
@@ -25,13 +27,13 @@ typedef enum TiposDeCartas{
 	ReconstruirTerreno,
 	RondaSinCartas,
 	EnBlanco
-}
+};
 	
 
 class BatallaCampal {
 private:
 	Tablero * tablero;
-	Lista <Jugadores *> * jugadores;
+	Lista <Jugador *> * jugadores;
 
 
 public:
@@ -51,11 +53,11 @@ public:
 	//PRE:-
 	//POST: Inicia el tablero en el escenario 2 pre configurado.
 	void iniciarEscenarioDos(unsigned int xMaximo, unsigned int yMaximo, unsigned int zMaximo);
-	
+
 	//PRE:-
-	//POST: Pide por consola unas coordenadas (x,y,z) y las retorna como vector dinamico.
+	//POST: Pide por consola una coordenada (x,y,z) y la retorna como vector dinamico.
 	Vector<unsigned int> * pedirCoordenadas();
-	
+	 
 	//
 	//
 	Ficha * obtenerFicha( unsigned int x, unsigned int y, unsigned int z);
@@ -74,8 +76,24 @@ public:
 	
 	//
 	//
+	Vector<unsigned int> * pedirOrigenDelMovimiento(Jugador *jugador);
+
+	//
+	//
+	Vector<unsigned int> * pedirDestinoDelMovimiento(Jugador *jugador);
+
+	//
+	//
+	Vector<Vector<unsigned int> *> * pedirMovimiento(Jugador *jugador);
+
+	//
+	//
 	void destruirCoordenadasDelMovimiento(Vector<Vector<unsigned int> *> * coordenadas);
 	
+	//
+	//
+	void mover(Vector<Vector<unsigned int> *> * coordenadasOrigenYDestino);
+
 	//
 	//
 	bool movimientoCercano(Vector<unsigned int> * origen, Vector<unsigned int> * destino);

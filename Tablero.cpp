@@ -1,5 +1,4 @@
 #include "Tablero.h"
-#include "Casilla.h"
 
 
 // TABLERO CON VECTOR ------------- BORRAR -----------------------

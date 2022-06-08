@@ -9,7 +9,7 @@ class Jugador {
 private:
 	unsigned int numero;
 	std::string nombre;
-	Lista<Ficha*> * fichas; 
+	Lista <Ficha*> * fichas;
 
 public:
 	//PRE: El numero debe ser mayor o igual a 1, y el nombre no puede estar vacio.

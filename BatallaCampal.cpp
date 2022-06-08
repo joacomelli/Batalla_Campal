@@ -53,7 +53,7 @@ void BatallaCampal::iniciarEscenarioDos(unsigned int xMaximo, unsigned int yMaxi
 //REVISAR
 Vector<unsigned int> * BatallaCampal::pedirCoordenadas(){ //va en privado creo
 	unsigned int aux;
-	Vector<unsigned int> * coordenadas = new Vector<unsigned int> (3, NULL);
+	Vector<unsigned int> * coordenadas = new Vector<unsigned int> (3, 0);
 	while(!this->tablero->existeElCasillero(coordenadas->obtener(1),coordenadas->obtener(2),coordenadas->obtener(3))){
 		std::cout << "Ingrese coordenada X" << std::endl;
 		std::cin >> aux;
@@ -67,7 +67,7 @@ Vector<unsigned int> * BatallaCampal::pedirCoordenadas(){ //va en privado creo
 		std::cin >> aux;
 		coordenadas->agregar(3,aux);
 	}
-	
+
 	return coordenadas;
 }
 
@@ -101,7 +101,7 @@ bool BatallaCampal::movimientoCercano(Vector<unsigned int> * origen, Vector<unsi
 bool BatallaCampal::tieneUnSoldado(Jugador * jugador, unsigned int x, unsigned int y, unsigned int z){
 	return ((obtenerFicha(x, y, z) != NULL)
 		&& (obtenerFicha(x, y, z)->getJugador() == jugador)
-		&& (obtenerFicha(x, y, z)->getTipo() == Soldado));
+		&& (obtenerFicha(x, y, z)->getTipo() == FSoldado));
 }
 
 //REVISAR
@@ -111,11 +111,12 @@ Vector<unsigned int> * BatallaCampal::pedirOrigenDelMovimiento(Jugador *jugador)
 	while(!origenValido){
 		std::cout << jugador->getNombre() << ", ingresa la coordenada del soldado que desea mover." << std::endl;
 		vectorOrigen = pedirCoordenadas();
-		if(!tieneUnsoldado(jugador,vectorOrigen->obtener(1),vectorOrigen->obtener(2),vectorOrigen->obtener(3))){
+		if(!tieneUnSoldado(jugador,vectorOrigen->obtener(1),vectorOrigen->obtener(2),vectorOrigen->obtener(3))){
 			std::cout << "No tienes ningun soldado en esa posicion. Intente de nuevo." << std::endl;
 			delete vectorOrigen;
 		}else{
 			origenValido = TRUE;
+		}
 	}
 	return vectorOrigen;
 }
@@ -127,7 +128,7 @@ Vector<unsigned int> * BatallaCampal::pedirDestinoDelMovimiento(Jugador *jugador
 	while(!destinoValido){
 		std::cout << jugador->getNombre() << ", ingresa la coordenada a la cual desea mover su soldado." << std::endl;
 		vectorDestino = pedirCoordenadas();
-		if(tieneUnsoldado(jugador,vectorDestino->obtener(1),vectorDestino->obtener(2),vectorDestino->obtener(3))){
+		if(tieneUnSoldado(jugador,vectorDestino->obtener(1),vectorDestino->obtener(2),vectorDestino->obtener(3))){
 			std::cout << "Ya tienes un soldado en esa posicion. Intente de nuevo." << std::endl;
 			delete vectorDestino;
 		}else if(obtenerTipoDeCasilla != Tierra){
@@ -158,10 +159,11 @@ Vector<Vector<unsigned int> *> * BatallaCampal::pedirMovimiento(Jugador *jugador
 		if(movimientoCercano(origen,destino)){
 			coordenadasDelMovimiento->agregar(1,origen);
 			coordenadasDelMovimiento->agregar(2,destino);
-			valido =  TRUE;
+			valido = TRUE;
 		}else{
 			delete origen;
 			delete destino;
+		}
 	}
 	return coordenadasDelMovimiento;
 }
@@ -214,14 +216,14 @@ void BatallaCampal::colocarAvion(Jugador * jugador){
 			std::cout << "Solo puedes colocar un avion en el aire. Intente de nuevo." << std::endl;
 			delete vectorPosicion;
 		
-		}else if(this->tablero->getCasillero(xDestino, yDestino, zDestino)->estaOcupado()){
-			Jugador * jugadorContrario = this->tablero->getCasillero(xDestino, yDestino, zDestino)->getFicha()->getJugador();
-			jugadorContrario->eliminarFicha(his->tablero->getCasillero(xDestino, yDestino, zDestino)->getFicha());
-			this->tablero->getCasillero(xDestino, yDestino, zDestino)->vaciar();
+		}else if(this->tablero->getCasillero(x, y, z)->estaOcupado()){
+			Jugador * jugadorContrario = this->tablero->getCasillero(x, y, z)->getFicha()->getJugador();
+			jugadorContrario->eliminarFicha(this->tablero->getCasillero(x, y, z)->getFicha());
+			this->tablero->getCasillero(x, y, z)->vaciar();
 			std::cout << "Tu avion choco con otro avion." << std::endl;
 
 		}else{
-			Ficha * fichaAvion = new Ficha(Avion, jugador, Activa);
+			Ficha * fichaAvion = new Ficha(FAvion, jugador, Activa);
 			this->tablero->getCasillero(x,y,z)->setFicha(fichaAvion);
 			jugador->agregarFicha(fichaAvion);
 			disparar();//completar

@@ -46,7 +46,7 @@ public:
 	void agregar(int posicion, T dato) {
 		if ((posicion < 1) ||
 		   (posicion > this->longitud)) {
-			throw "La " + posicion + " no esta en el rango 1 y " + this->longitud + " inclusive";
+			//throw "La " + posicion + " no esta en el rango 1 y " + this->longitud + " inclusive";
 		}
 		this->datos[posicion - 1] = dato;
 	}
@@ -58,7 +58,7 @@ public:
 	T& obtener(int posicion) {
 		if ((posicion < 1) ||
 		   (posicion > this->longitud)) {
-			throw "La " + posicion + " no esta en el rango 1 y " + this->longitud + " inclusive";
+			//throw "La " + posicion + " no esta en el rango 1 y " + this->longitud + " inclusive";
 		}
 		return this->datos[posicion - 1];
 	}

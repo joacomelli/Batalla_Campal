@@ -39,14 +39,14 @@ void Jugador::eliminarFicha(Ficha* ficha){
 	}
 	unsigned int pos = 0;
 	this->fichas->iniciarCursor();
-	while(avanzarCursor()){
+	while(this->fichas->avanzarCursor()){
 		pos++;
-		if(getCursor() == ficha){
+		if(this->fichas->obtenerCursor() == ficha){
 			this->fichas->remover(pos);
 		}	
 	}
 }
 	
-}
+
 
 //Lista ?

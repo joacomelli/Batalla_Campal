@@ -4,9 +4,9 @@
 
 
 enum TipoDeFicha{
-	Soldado,
-	Avion,
-	Barco
+	FSoldado,
+	FAvion,
+	FBarco
 };
 enum EstadoDeFicha{
 	Eliminada,
@@ -42,14 +42,18 @@ public:
 	//POST: ELimina la casilla.
 	void eliminar();
 
+	//
+	//
+	Jugador* getJugador();
+
 	//PRE:-
 	//POST: Devuelve el jugador
-	const Jugador* getJugador() const;
+	Jugador* getJugador() const;
 
 	//PRE:-
 	//POST: Cambia al jugador
 	void setJugador(Jugador *jugador);
-	
+
 	//PRE:-
 	//POST: Devuelve el tipo
 	TipoDeFicha getTipo();

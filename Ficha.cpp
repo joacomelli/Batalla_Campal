@@ -28,7 +28,7 @@ void Ficha::eliminar(){
 	this->estado = Eliminada;
 }
 
-const Jugador* Ficha::getJugador() const {
+Jugador* Ficha::getJugador() const {
 	return jugador;
 }
 
@@ -39,7 +39,6 @@ void Ficha::setJugador(Jugador *jugador) {
 TipoDeFicha Ficha::getTipo(){
 	return this->tipo;
 }
-
 
 
 

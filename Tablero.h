@@ -1,5 +1,7 @@
 #ifndef TABLERO_H_
 #define TABLERO_H_
+
+#include <iostream>
 #include "Vector.h"
 #include "Casilla.h"
 #include "Lista.h"
