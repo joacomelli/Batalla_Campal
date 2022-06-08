@@ -19,7 +19,7 @@ const unsigned int MAXIMO_TABLERO_Z = 5;
 const unsigned int MINIMO_DE_JUGADORES = 2;
 const unsigned int MAXIMO_DE_JUGADORES = 4;
 
-typedef enum TiposDeCartas{
+enum TiposDeCartas{
 	Avion,
 	Barco,
 	Misil,
