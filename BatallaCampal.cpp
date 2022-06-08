@@ -246,6 +246,7 @@ void BatallaCampal::colocarAvion(Jugador * jugador){
 			jugadorContrario->eliminarFicha(this->tablero->getCasillero(x, y, z)->getFicha());
 			this->tablero->getCasillero(x, y, z)->vaciar();
 			std::cout << "Tu avion choco con otro avion." << std::endl;
+			posicionValida = true;
 
 		}else{
 			Ficha * fichaAvion = new Ficha(FAvion, jugador, Activa);
@@ -253,6 +254,7 @@ void BatallaCampal::colocarAvion(Jugador * jugador){
 			jugador->agregarFicha(fichaAvion);
 			disparar(jugador);
 			disparar(jugador);
+			posicionValida = true;
 		}
 	}
 	
@@ -278,12 +280,14 @@ void BatallaCampal::colocarBarco(Jugador * jugador){
 			jugadorContrario->eliminarFicha(this->tablero->getCasillero(x, y, z)->getFicha());
 			this->tablero->getCasillero(x, y, z)->vaciar();
 			std::cout << "Tu barco choco con otro barco." << std::endl;
+			posicionValida = true;
 
 		}else{
 			Ficha * fichaBarco = new Ficha(FBarco, jugador, Activa);
 			this->tablero->getCasillero(x,y,z)->setFicha(fichaBarco);
 			jugador->agregarFicha(fichaBarco;
 			//lanzarMisil();       //completar
+			posicionValida = true;
 			
 		}
 	}
