@@ -128,13 +128,17 @@ Vector<unsigned int> * BatallaCampal::pedirDestinoDelMovimiento(Jugador *jugador
 	while(!destinoValido){
 		std::cout << jugador->getNombre() << ", ingresa la coordenada a la cual desea mover su soldado." << std::endl;
 		vectorDestino = pedirCoordenadas();
-		if(tieneUnSoldado(jugador,vectorDestino->obtener(1),vectorDestino->obtener(2),vectorDestino->obtener(3))){
+		unsigned int x = vectorDestino->obtener(1);
+		unsigned int y = vectorDestino->obtener(2);
+		unsigned int z = vectorDestino->obtener(3);
+
+		if(tieneUnSoldado(jugador,x,y,z)){
 			std::cout << "Ya tienes un soldado en esa posicion. Intente de nuevo." << std::endl;
 			delete vectorDestino;
-		}else if(obtenerTipoDeCasilla != Tierra){
+		}else if(obtenerTipoDeCasilla(x,y,z) != Tierra){
 			std::cout << "Los soldados solo pueden moverse por tierra. Intente de nuevo." << std::endl;
 			delete vectorDestino;
-		}else if(obtenerEstadoDeCasilla == Inactiva){
+		}else if(obtenerEstadoDeCasilla(x,y,z) == Inactiva){
 			std::cout << "El casillero al que deseas moverte esta destruido. Intente de nuevo." << std::endl;
 			delete vectorDestino;
 		}else{
@@ -226,12 +230,12 @@ void BatallaCampal::colocarAvion(Jugador * jugador){
 			Ficha * fichaAvion = new Ficha(FAvion, jugador, Activa);
 			this->tablero->getCasillero(x,y,z)->setFicha(fichaAvion);
 			jugador->agregarFicha(fichaAvion);
-			disparar();//completar
-			disparar();
+			//disparar();       //completar
+			//disparar();
 		}
 	}
 	
-	delete vectorDestino;
+	delete vectorPosicion;
 
 }
 
