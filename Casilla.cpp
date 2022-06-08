@@ -68,6 +68,7 @@ void Casilla::vaciar(){
 
 void Casilla::destruir(){
 	this->estado = Inactiva;
+	this->ficha = NULL;
 }
 
 void Casilla::setTipo(TipoDeCasilla tipo) {
