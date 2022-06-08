@@ -244,18 +244,33 @@ void BatallaCampal::sacarCarta(Jugador * jugador){//AL final del turno
 	srand(time(NULL));
 	int numeroDeCarta  = rand() % 12;
 	
-	if(numeroDeCarta == Avion){
-		colocarAvion(jugador);
-	}else if(numeroDeCarta == Barco){
-		colocarBarco(jugador);
-	}else if(numeroDeCarta == Misil){
-		lanzarMisil(jugador);
-	}else if(numeroDeCarta == OtroTurno){
-		jugarTurno(jugador);
-	}else if(numeroDeCarta == ReconstruirTerreno){
-		recontruirTerreno(jugador);
-	}else if(numeroDeCarta == RondaSinCartas){
-		jugarRonda()//revisar
+	switch(numeroDeCarta){
+   		case Avion:
+			//cout
+			colocarAvion(jugador);
+   			break;
+   		case Barco:
+			//cout
+			colocarBarco(jugador);
+    			break;
+   		case Misil:
+			//cout
+			lanzarMisil(jugador);
+   			break;
+		case OtroTurno:
+			//cout
+			jugarTurno(jugador);
+			break;
+		case ReconstruirTerreno:
+			//cout
+			reconstruirTerreno(jugador);
+			break;
+		case RondaSinCartas:
+			//cout
+			jugarRonda(//cartas desactivadas)
+   		default:
+			//cout
+			break;
 	}
 }
 
