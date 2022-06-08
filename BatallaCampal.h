@@ -99,11 +99,7 @@ public:
 	//
 	bool movimientoCercano(Vector<unsigned int> * origen, Vector<unsigned int> * destino);
 	
-	//PRE:
-	//POST:
-	void mover(unsigned int xOrigen, unsigned int yOrigen, unsigned int zOrigen,
-			   unsigned int xDestino,unsigned int yDestino,unsigned int zDestino);
-	
+
 	//
 	//
 	void colocarAvion(Jugador * jugador);
