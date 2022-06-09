@@ -17,7 +17,7 @@ class Imagen {
 public:
   Imagen();
   void definirMapa(std::string background); 
-  void obtenerEstado();
+  void obtenerEstado(Jugador * jugador);
   
 };
 
