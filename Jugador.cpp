@@ -22,7 +22,7 @@ int Jugador::getNumero() const {
 Lista<Ficha*> * Jugador::getFichas(){
 	return this->fichas;
 }
-// ES .AGREGAR POR QUE ES LA NUEVA LISTA
+
 void Jugador::agregarFicha(Ficha* ficha){
 	if(ficha == NULL){
 		throw "La ficha debe existir";
@@ -48,5 +48,3 @@ void Jugador::eliminarFicha(Ficha* ficha){
 }
 	
 
-
-//Lista ?
