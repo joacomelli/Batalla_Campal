@@ -11,6 +11,7 @@ del tiempo actual del sistema, pese a que este cambia de segundo a segundo la se
 #include "Jugador.h"
 #include "Lista.h"
 #include "Vector.h"
+#include "Imagen.h"
 
 const unsigned int MAXIMO_TABLERO_X = 15;
 const unsigned int MAXIMO_TABLERO_Y = 15;
