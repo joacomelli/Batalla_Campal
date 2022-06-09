@@ -208,6 +208,10 @@ void BatallaCampal::mover(Vector<Vector<unsigned int> *> * coordenadasOrigenYDes
 
 void BatallaCampal::lanzarMisil(Jugador * jugador){
 
+	
+	
+	
+	
 }
 
 void BatallaCampal::disparar(Jugador * jugador){
@@ -310,6 +314,19 @@ void BatallaCampal::jugarRonda(){
 
 }
 void BatallaCampal::reconstruirTerreno(Jugador * jugador){
+	Vector<unsigned int> * vectorPosicion;
+	std::cout << jugador->getNombre() << ", ingresa la coordenada de la casilla que quiera reconstruir." << std::endl;
+	vectorPosicion = pedirCoordenadas();
+	unsigned int x = vectorPosicion->obtener(1);
+	unsigned int y = vectorPosicion->obtener(2);
+	unsigned int z = vectorPosicion->obtener(3);
+	if(obtenerEstadoDeCasilla(x,y,z) == Vacia){
+		
+		
+		
+	}
+	
+	
 	
 }
 
