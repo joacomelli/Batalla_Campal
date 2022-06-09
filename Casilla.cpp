@@ -51,8 +51,6 @@ Ficha * Casilla::getFicha(){
 	return ficha;
 }
 
-/*modificacion (Ficha * ficha) --------------------------------------------------------------
- */
 void Casilla::setFicha(Ficha * ficha){
 	if(ficha == NULL){
 		throw "La ficha no puede estar vacia.";
