@@ -285,7 +285,7 @@ void BatallaCampal::colocarBarco(Jugador * jugador){
 		}else{
 			Ficha * fichaBarco = new Ficha(FBarco, jugador, Activa);
 			this->tablero->getCasillero(x,y,z)->setFicha(fichaBarco);
-			jugador->agregarFicha(fichaBarco;
+			jugador->agregarFicha(fichaBarco);
 			//lanzarMisil();       //completar
 			posicionValida = true;
 			
