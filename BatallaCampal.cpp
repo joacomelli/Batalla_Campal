@@ -301,30 +301,30 @@ void BatallaCampal::colocarBarco(Jugador * jugador){
 void BatallaCampal::sacarCarta(Jugador * jugador){//AL final del turno
 	srand(time(NULL));
 	int numeroDeCarta  = rand() % 12;
-	std::cout << "jugador->getNombre() saco la carta ";
+	std::cout << jugador->getNombre() << " saco la carta ";
 	switch(numeroDeCarta){
    		case Avion:
-			std::cout << "Avion." << std::endl;
+			std::cout << "de Avion." << std::endl;
 			colocarAvion(jugador);
    			break;
    		case Barco:
-			std::cout << "Barco." << std::endl;
+			std::cout << "de Barco." << std::endl;
 			colocarBarco(jugador);
     			break;
    		case Misil:
-			std::cout << "Misil." << std::endl;
+			std::cout << "de Misil." << std::endl;
 			lanzarMisil(jugador);
    			break;
 		case OtroTurno:
-			std::cout << "OtroTurno." << std::endl;
+			std::cout << "Otro Turno. Juega de nuevo." << std::endl;
 			jugarTurno(jugador);
 			break;
 		case ReconstruirTerreno:
-			std::cout << "ReconstruirTerreno." << std::endl;
+			std::cout << "de Reconstruir Terreno." << std::endl;
 			reconstruirTerreno(jugador);
 			break;
 		case RondaSinCartas:
-			std::cout << "RondaSinCartas." << std::endl;
+			std::cout << "de Ronda Sin Cartas." << std::endl;
 			jugarRonda(//cartas desactivadas);
 			break;
    		default:
