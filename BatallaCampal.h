@@ -74,8 +74,8 @@ public:
 	//POST: Devolvera true si hay un soldado en las posiciones pasadas por parametro, false si no hay un soldado. 
 	bool tieneUnSoldado(Jugador * jugador, unsigned int x, unsigned int y, unsigned int z);
 	
-	//
-	//
+	//PRE: Debe existir el jugador y tener minimo un soldado en el tablero. 
+	//POS:Pide al jugador las coordenadas donde se ubica uno de sus soldados para seleccionar el soldado que quiere mover.
 	Vector<unsigned int> * pedirOrigenDelMovimiento(Jugador *jugador);
 
 	//PRE: Debe existir el jugador.
@@ -91,21 +91,31 @@ public:
 	//POST: Destruira las coordenadas que se les pase por consola el jugador.
 	void destruirCoordenadasDelMovimiento(Vector<Vector<unsigned int> *> * coordenadas);
 	
-	//
-	//
+	//PRE: -
+	//POST: movera el soldado elegido por el jugador a una casilla destino, verifica si la casilla esta ocupada o no.
 	void mover(Vector<Vector<unsigned int> *> * coordenadasOrigenYDestino);
-
-	//PRE: Recibe coordendas en
-	//
+	
+	//PRE: Recibe coordendas en donde se ubica el soldado del jugador y las coordendas de la casilla a la que se lo quiere mover.
+	//POST: Compara si las coordendas destino estan a una casilla de distancia de las coordenadas origen que son las del soldado.
 	bool movimientoCercano(Vector<unsigned int> * origen, Vector<unsigned int> * destino);
 	
-
-	//
-	//
+	//PRE: El jugador tiene que estar en juego.
+	//POST:Pedira coordenadas (x,y,z) para que el jugador dispare y si la casilla no esta Vacia, eliminara una ficha del jugador contrario,
+	//      destruira la casilla si es tierra dejandola inactiva, de lo contrario la vaciara.
+	void disparar(Jugador * jugador);
+	
+	//PRE: -
+	//POST: Pedira al jugador coordenadas (x,y,z) para ubicar su Avion, solo se puede ubicar en una casilla que sea del tipo Aire, y si hay un
+	//      Avion contrario se eliminan los dos Aviones.
 	void colocarAvion(Jugador * jugador);
 	
-	//
-	//
+	//PRE: -
+	//POST: Pedira al jugador coordenadas (x,y,z) para ubicar su Barco, solo se puede ubicar en una casilla que sea del tipo Agua, y si hay un
+	//      Barco contrario se eliminan los dos Barcos.
+	void colocarBarco(Jugador * jugador);
+
+	//PRE: -
+	//POST: El jugador sacara una carta al finalizar el turno y ..
 	void sacarCarta(Jugador * jugador);
 
 };
