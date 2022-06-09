@@ -28,7 +28,7 @@ void Ficha::eliminar(){
 	this->estado = Eliminada;
 }
 
-Jugador* Ficha::getJugador() const {
+Jugador* Ficha::getJugador(){
 	return jugador;
 }
 
