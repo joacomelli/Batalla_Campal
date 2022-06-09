@@ -215,7 +215,7 @@ void BatallaCampal::disparar(Jugador * jugador){
 	unsigned int z = vectorPosicion->obtener(3);
 	
 	if(obtenerEstadoDeCasilla(x,y,z) != Vacia){
-		Jugador * jugadorContrario = this->tablero->getCasillero(x, y, z)->getFicha()->getJugador();
+		Jugador * jugadorContrario = this->tablero->getCasillero(x, y, z)->getFicha()->getNombre();
 		jugadorContrario->eliminarFicha(this->tablero->getCasillero(x, y, z)->getFicha());
 		std::cout << "Has conseguido una baja." << std::endl;
 	}
