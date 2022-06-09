@@ -32,7 +32,7 @@ public:
 
 	//PRE: -
 	//POST: Devuelve en el estado que esta la ficha
-	EstadoDeFicha getEstado() const ;
+	EstadoDeFicha getEstado() const;
 
 	//PRE: -
 	//POST: Cambia el estado de la casilla.
@@ -42,13 +42,9 @@ public:
 	//POST: ELimina la casilla.
 	void eliminar();
 
-	//
-	//
+	//PRE: Debe existir el jugador 
+	//POST: Retorna el jugador actual.
 	Jugador* getJugador();
-
-	//PRE:-
-	//POST: Devuelve el jugador
-	Jugador* getJugador() const;
 
 	//PRE:-
 	//POST: Cambia al jugador
