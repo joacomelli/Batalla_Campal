@@ -39,7 +39,7 @@ public:
 	void setEstado(EstadoDeFicha estado);
 
 	//PRE: -
-	//POST: ELimina la casilla.
+	//POST: Elimina la ficha.
 	void eliminar();
 
 	//PRE: Debe existir el jugador 
