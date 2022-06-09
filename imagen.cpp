@@ -8,7 +8,7 @@ Imagen::Imagen(){
     this->avion.ReadFromFile("avion.bmp");
     this->barco.ReadFromFile("barco.bmp");
     this->soldado.ReadFromFile("soldado.bmp");
-    this->estado.SetBitDeph(24);
+    this->estado.SetBitDepth(24);
 }
 
 void Imagen::definirMapa(string background){
