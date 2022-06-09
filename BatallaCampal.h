@@ -101,6 +101,10 @@ public:
 	//POST: Compara si las coordendas destino estan a una casilla de distancia de las coordenadas origen que son las del soldado.
 	bool movimientoCercano(Vector<unsigned int> * origen, Vector<unsigned int> * destino);
 	
+	//PRE: -
+	//POST: Lanzara un misil que destruye 27 casilleros en el tablero (3x3x3).
+	void lanzarMisil(Jugador * jugador);
+	
 	//PRE: El jugador tiene que estar en juego.
 	//POST:Pedira coordenadas (x,y,z) para que el jugador dispare y si la casilla no esta Vacia, eliminara una ficha del jugador contrario,
 	//      destruira la casilla si es tierra dejandola inactiva, de lo contrario la vaciara.
@@ -116,6 +120,18 @@ public:
 	//      Barco contrario se eliminan los dos Barcos.
 	void colocarBarco(Jugador * jugador);
 
+	//PRE:
+	//POST:
+	void jugarTurno(Jugador * jugador);
+	
+	//PRE:
+	//POST:
+        void jugarRonda();
+	
+	//PRE:-
+	//POST:Volvera activa la casilla que elija el jugador actual
+	void reconstruirTerreno(Jugador * jugador);
+		
 	//PRE: -
 	//POST: El jugador sacara una carta al finalizar el turno y ..
 	void sacarCarta(Jugador * jugador);
