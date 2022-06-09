@@ -1,36 +1,5 @@
 #include "Tablero.h"
 
-
-// TABLERO CON VECTOR ------------- BORRAR -----------------------
-/*
-Tablero::Tablero(unsigned int xMaximo, unsigned int yMaximo, unsigned int zMaximo){
-	if(xMaximo < 1){
-		throw " X no puede ser menor a 1";
-	}
-	if(yMaximo < 1){
-		throw " Y no puede ser menor a 1";
-	}
-	if(zMaximo < 1){
-		throw " Z no puede ser menor a 1";
-	}
-	this->xMaximo = xMaximo;
-	this->yMaximo = yMaximo;
-	this->zMaximo = zMaximo;
-	this->casilleros = new Vector<Vector<Vector<Casilla *> *> *> (xMaximo, NULL);
-	for(int x = 1; x <= this->xMaximo; x++){
-		this->casilleros->agregar(x, new Vector<Vector<Casilla *> *> (yMaximo, NULL));
-		for(int y = 1; y <= this->yMaximo; y++){
-			this->casilleros->obtener(x)->agregar(y, new Vector<Casilla *> (zMaximo, NULL));
-			for(int z = 1; z <= this->zMaximo; z++){
-				this->casilleros->obtener(x)->obtener(y)->agregar(z, new Casilla (x,y,z, General));
-			}
-		}
-	}
-}
-*/
-
-//TABLERO CON LISTA --------------- CASILLA RECIBE (X,Y, Z, GENERAL, --> Y UN PUNTERO A FICHA )  ---  UTILIZAR ESTE -----------
-// cambiar lo que recibe casilla a lo ultimo.
 Tablero::Tablero(unsigned int xMaximo, unsigned int yMaximo, unsigned int zMaximo){
 	if(xMaximo < 1){
 		throw " X no puede ser menor a 1";
