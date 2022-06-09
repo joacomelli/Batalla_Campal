@@ -1,5 +1,6 @@
 #include "BatallaCampal.h"
 
+
 BatallaCampal::BatallaCampal() {
 	this->tablero = NULL;
 	this->jugadores = NULL;
