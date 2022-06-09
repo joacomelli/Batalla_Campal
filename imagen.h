@@ -5,7 +5,7 @@
 
 class Imagen {
   private:
-	  BMP background; 
+    BMP background; 
     BMP inactiva;
     BMP avion; 
     BMP barco;
