@@ -55,5 +55,4 @@ public:
 	TipoDeFicha getTipo();
 
 };
-
 #endif
