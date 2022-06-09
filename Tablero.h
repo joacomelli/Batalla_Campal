@@ -10,8 +10,7 @@
 
 class Tablero {
 private:
-	//BORRAR--
-	//Vector<Vector<Vector<Casilla *> *> *> * casilleros;
+
 	Lista<Lista<Lista< Casilla *> *> *> * casilleros;
 	unsigned int xMaximo;
 	unsigned int yMaximo;
