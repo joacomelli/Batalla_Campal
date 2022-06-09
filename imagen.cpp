@@ -26,7 +26,7 @@ void Imagen::agregarFondoAEstado(){
                          this->estado,0,0); 
 }
 
-void obtenerEstado(Jugador *jugador){
+void Imagen::obtenerEstado(Jugador *jugador){
   this->medidaDeEstado();
   this->agregarFondoAEstado();
   this->estado.WriteToFile("estadoTableroDe"+ jugador->getNombre + ".bmp");
