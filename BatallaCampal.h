@@ -34,6 +34,7 @@ class BatallaCampal {
 private:
 	Tablero * tablero;
 	Lista <Jugador *> * jugadores;
+	Imagen imagen;
 
 
 public:
@@ -117,6 +118,10 @@ public:
 	//PRE: -
 	//POST: El jugador sacara una carta al finalizar el turno y ..
 	void sacarCarta(Jugador * jugador);
+	
+	//PRE: -
+	//POST: Devuelve imagen del tablero segun el jugador actual. 
+	void mostrarEstadoTablero(Jugador * jugador);
 
 };
 
