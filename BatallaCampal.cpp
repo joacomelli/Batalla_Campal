@@ -206,6 +206,10 @@ void BatallaCampal::mover(Vector<Vector<unsigned int> *> * coordenadasOrigenYDes
 
 }
 
+void BatallaCampal::lanzarMisil(Jugador * jugador){
+
+}
+
 void BatallaCampal::disparar(Jugador * jugador){
 	Vector<unsigned int> * vectorPosicion;
 	std::cout << jugador->getNombre() << ", ingresa la coordenada a la cual desea disparar." << std::endl;
@@ -296,6 +300,18 @@ void BatallaCampal::colocarBarco(Jugador * jugador){
 
 }
 
+
+void BatallaCampal::jugarTurno(Jugador * jugador){
+	
+}
+
+void BatallaCampal::jugarRonda(){
+	
+
+}
+void BatallaCampal::reconstruirTerreno(Jugador * jugador){
+	
+}
 
 
 void BatallaCampal::sacarCarta(Jugador * jugador){//AL final del turno
