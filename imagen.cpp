@@ -21,7 +21,7 @@ void Imagen::medidaDeEstado(){
 }
  
 void Imagen::agregarFondoAEstado(){
-  RangedPixelToPixelCopy(this->background,0,this->backgroun.TellWidth(),
+  RangedPixelToPixelCopy(this->background,0,this->background.TellWidth(),
                          this->background.TellHeight(),0
                          this->estado,0,0); 
 }
