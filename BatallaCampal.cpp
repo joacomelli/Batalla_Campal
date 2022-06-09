@@ -325,7 +325,7 @@ void BatallaCampal::sacarCarta(Jugador * jugador){//AL final del turno
 			break;
 		case RondaSinCartas:
 			std::cout << "de Ronda Sin Cartas." << std::endl;
-			jugarRonda(//cartas desactivadas);
+			jugarRonda();//cartas desactivadas);
 			break;
    		default:
 			std::cout << "en Blanco." << std::endl;
