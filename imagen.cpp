@@ -8,7 +8,7 @@ Imagen::Imagen(){
     this->avion.ReadFromFile("avion.bmp");
     this->barco.ReadFromFile("barco.bmp");
     this->soldado.ReadFromFile("soldado.bmp");
-    this->estado.SetBitDepth(24);
+    this->estado.SetBitDeph(24);
 }
 
 void Imagen::definirMapa(string background){
@@ -26,7 +26,7 @@ void Imagen::agregarFondoAEstado(){
                          this->estado,0,0); 
 }
 
-void Imagen::obtenerEstado(Jugador *jugador){
+void Imagen::obtenerEstado( Tablero * tablero, Jugador *jugador){
   this->medidaDeEstado();
   this->agregarFondoAEstado();
   this->estado.WriteToFile("estadoTableroDe"+ jugador->getNombre + ".bmp");
