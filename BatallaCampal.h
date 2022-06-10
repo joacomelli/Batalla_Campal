@@ -91,7 +91,7 @@ public:
 	//PRE: Debe existir el jugador.
 	//POST: Se le pedira al jugador que ingrese coordenadas donde desee mover su jugador, comparara la posicion si hay otro soldado,
 	//      si la casilla no es tierra y si la casilla no esta inactiva, retorta el destino del soldado.
-	Vector<unsigned int> * pedirDestinoDelMovimiento(Jugador *jugador);
+	Vector<unsigned int> * pedirDestinoDelSoldado(Jugador *jugador);
 
 	//PRE: Debe existir el jugador
 	//POST: Pedira al jugador coordenadas para mover sus fichas. 
