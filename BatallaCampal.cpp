@@ -11,9 +11,14 @@ BatallaCampal::~BatallaCampal() {
 
 }
 
+// TERMINAR
 void BatallaCampal::menuDeJuego(Jugador * jugador){
+	int cantidadJugadores;
 	std::cout << "Bienvenido a la BatallaCampal." << std::endl;
 	std::cout << "Ingrese la cantidad de jugadores que van a participar." << std::endl;
+	std::cin >> cantidadJugadores;
+	this->jugadores = new Lista <Jugador *> * ();
+	jugadores->
 	
 	
 
@@ -216,6 +221,8 @@ void BatallaCampal::mover(Vector<Vector<unsigned int> *> * coordenadasOrigenYDes
 
 }
 
+
+//TERMINAR
 void BatallaCampal::lanzarMisil(Jugador * jugador){
 
 	
@@ -314,15 +321,18 @@ void BatallaCampal::colocarBarco(Jugador * jugador){
 
 }
 
-
+//TERMINAR
 void BatallaCampal::jugarTurno(Jugador * jugador){
 	
 }
 
+//TERMINAR
 void BatallaCampal::jugarRonda(){
 	
 
 }
+
+//TERMINAR
 void BatallaCampal::reconstruirTerreno(Jugador * jugador){
 	Vector<unsigned int> * vectorPosicion;
 	std::cout << jugador->getNombre() << ", ingresa la coordenada de la casilla que quiera reconstruir." << std::endl;
