@@ -104,7 +104,7 @@ public:
 	
 	//PRE: -
 	//POST: Coloca un soldado en un posicion valida, fijandose si hay otro soldado propio o enemigo.
-	void colocarSoldado(Ficha * ficha);
+	void colocarSoldado(Ficha * ficha, Vector<unsigned int> * posicion);
 	
 	//PRE: -
 	//POST: movera el soldado elegido por el jugador a una casilla destino, verifica si la casilla esta ocupada o no.
