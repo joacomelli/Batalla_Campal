@@ -405,7 +405,7 @@ void BatallaCampal::sacarCarta(Jugador * jugador){//AL final del turno
 			std::cout << "Otro Turno. Juega de nuevo." << std::endl;
 			jugarTurno(jugador);
 			break;
-		case ReconstruirTerreno:
+		case OtroSoldado:
 			std::cout << "de Otro Soldado" << std::endl;
 			if(//chequea cuantos soldados tiene){
 				Vector<unsigned int> * posicion = pedirDestinoDelSoldado(jugador);
