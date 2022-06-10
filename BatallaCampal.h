@@ -21,6 +21,7 @@ const unsigned int MINIMO_DE_JUGADORES = 2;
 const unsigned int MAXIMO_DE_JUGADORES = 4;
 
 const unsigned int NUM_MAPA_MAXIMO = 2;
+const unsigned int SOLDADOS_INICIALES = 3;
 
 
 enum TiposDeCartas{
