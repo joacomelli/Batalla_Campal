@@ -4,6 +4,7 @@
 BatallaCampal::BatallaCampal() {
 	this->tablero = NULL;
 	this->jugadores = NULL;
+	this->cantidadDeJugadores = 0;
 
 }
 
@@ -12,16 +13,33 @@ BatallaCampal::~BatallaCampal() {
 }
 
 // TERMINAR
-void BatallaCampal::menuDeJuego(Jugador * jugador){
-	int cantidadJugadores;
+void BatallaCampal::menuDeJuego(unsigned int * numeroDeEscenario){
+	
 	std::cout << "Bienvenido a la BatallaCampal." << std::endl;
-	std::cout << "Ingrese la cantidad de jugadores que van a participar." << std::endl;
-	std::cin >> cantidadJugadores;
-	this->jugadores = new Lista <Jugador *> * ();
-	jugadores->
+	while(cantidadDeJugadores > MAXIMO_DE_JUGADORES || cantidadDeJugadores < MINIMO_DE_JUGADORES){ 
+		std::cout << "Ingrese la cantidad de jugadores que van a participar. (" << MINIMO_DE_JUGADORES << " a " << MAXIMO_DE_JUGADORES << ")" << std::endl;
+		std::cin >> this->cantidadDeJugadores;
+		if(cantidadDeJugadores > MAXIMO_DE_JUGADORES || cantidadDeJugadores < MINIMO_DE_JUGADORES){
+			std::cout << "La cantidad de jugadores elegida no es valida. (" << MINIMO_DE_JUGADORES << " a " << MAXIMO_DE_JUGADORES << ")" << std::endl;
+		}
+	}
 	
-	
-
+	this->jugadores = new Lista <Jugador *>();
+	for(unsigned int i = 1; i <= cantidadDeJugadores; i++){
+		std::string nombreJugador;
+		std::cout << "Jugador " <<  i << " ingrese su nombre." << std::endl;
+		std::cin >> nombreJugador;
+		
+		this->jugadores->agregar(new Jugador(i,nombreJugador),i);
+		
+	}
+	*numeroDeEscenario = 0;
+	while(numeroDeEscenario < 1 || numeroDeEscenario > NUM_MAPA_MAXIMO){ 
+		std::cout << "Ingrese el numero de mapa que desea jugar. (1 a " << NUM_MAPA_MAXIMO << ")" << std::endl;
+		std::cin >> *numeroDeEscenario;
+		if(numeroDeEscenario < 1 || numeroDeEscenario > NUM_MAPA_MAXIMO){
+			std::cout << "El numero de mapa ingresado no es valido. (1 a " << NUM_MAPA_MAXIMO << ")" << std::endl;
+		}
 }
 
 
@@ -85,6 +103,16 @@ Vector<unsigned int> * BatallaCampal::pedirCoordenadas(){ //va en privado creo
 
 	return coordenadas;
 }
+	
+void BatallaCampal::inicializarSoldados(){
+	for(unsigned int i = 1; i <= SOLDADOS_INICIALES; i++){
+		for(unsigned int j = 1; j <= this->cantidadDeJugadores; j++){
+			std::cout << "Jugador " << this->jugadores->obtener(j)->getNombre() << " ingrese la coordenada para su soldado " << i << std::endl;
+			Vector<unsigned int> * coordenadas = pedirDestinoDelSoldado(Jugador * jugador);
+			colocarSoldado(new Ficha(Soldado,this->jugadores->obtener(j),Activa),coordenadas);
+		}
+	}
+}
 
 
 Ficha * BatallaCampal::obtenerFicha( unsigned int x, unsigned int y, unsigned int z){
@@ -137,11 +165,11 @@ Vector<unsigned int> * BatallaCampal::pedirOrigenDelMovimiento(Jugador *jugador)
 }
 
 //REVISAR
-Vector<unsigned int> * BatallaCampal::pedirDestinoDelMovimiento(Jugador *jugador){
+Vector<unsigned int> * BatallaCampal::pedirDestinoDelSoldado(Jugador *jugador){
 	Vector<unsigned int> * vectorDestino;
 	bool destinoValido = false;
 	while(!destinoValido){
-		std::cout << jugador->getNombre() << ", ingresa la coordenada a la cual desea mover su soldado." << std::endl;
+		std::cout << jugador->getNombre() << ", ingresa la coordenada en la cual desea colocar su soldado." << std::endl;
 		vectorDestino = pedirCoordenadas();
 		unsigned int x = vectorDestino->obtener(1);
 		unsigned int y = vectorDestino->obtener(2);
@@ -174,7 +202,7 @@ Vector<Vector<unsigned int> *> * BatallaCampal::pedirMovimiento(Jugador *jugador
 	bool valido = false;
 	while(!valido){
 		origen = pedirOrigenDelMovimiento(jugador);
-		destino = pedirDestinoDelMovimiento(jugador);
+		destino = pedirDestinoDelSoldado(jugador);
 		if(movimientoCercano(origen,destino)){
 			coordenadasDelMovimiento->agregar(1,origen);
 			coordenadasDelMovimiento->agregar(2,destino);
@@ -193,29 +221,34 @@ void BatallaCampal::destruirCoordenadasDelMovimiento(Vector<Vector<unsigned int>
 	delete coordenadas->obtener(2);
 	delete coordenadas;
 }
-		
+
+void BatallaCampal::colocarSoldado(Ficha * fichaSoldado, Vector<unsigned int> * posicion){
+	unsigned int x = posicion->obtener(1);
+	unsigned int y = posicion->obtener(2);
+	unsigned int z = posicion->obtener(3);
+
+	if(this->tablero->getCasillero(x,y,z)->estaOcupado()){
+		Jugador * jugadorContrario = this->tablero->getCasillero(x,y,z)->getFicha()->getJugador();
+		jugadorContrario->eliminarFicha(this->tablero->getCasillero(x,y,z)->getFicha());
+		this->tablero->getCasillero(x,y,z)->destruir();
+		ficha->eliminar();
+
+	}else{
+		this->tablero->getCasillero(x,y,z)->setFicha(ficha);
+	}
+}
+
 //REVISAR
 void BatallaCampal::mover(Vector<Vector<unsigned int> *> * coordenadasOrigenYDestino){
 	
 	unsigned int xOrigen = coordenadasOrigenYDestino->obtener(1)->obtener(1);
 	unsigned int yOrigen = coordenadasOrigenYDestino->obtener(1)->obtener(2);
 	unsigned int zOrigen = coordenadasOrigenYDestino->obtener(1)->obtener(3);
-	unsigned int xDestino = coordenadasOrigenYDestino->obtener(2)->obtener(1);
-	unsigned int yDestino = coordenadasOrigenYDestino->obtener(2)->obtener(2);
-	unsigned int zDestino = coordenadasOrigenYDestino->obtener(2)->obtener(3);
 	
 	Ficha * ficha = this->tablero->getCasillero(xOrigen, yOrigen, zOrigen)->getFicha();
 	this->tablero->getCasillero(xOrigen, yOrigen, zOrigen)->vaciar();
 
-	if(this->tablero->getCasillero(xDestino, yDestino, zDestino)->estaOcupado()){
-		Jugador * jugadorContrario = this->tablero->getCasillero(x, y, z)->getFicha()->getJugador();
-		jugadorContrario->eliminarFicha(this->tablero->getCasillero(x, y, z)->getFicha());
-		this->tablero->getCasillero(xDestino, yDestino, zDestino)->destruir();
-		ficha->eliminar();
-
-	}else{
-		this->tablero->getCasillero(xDestino, yDestino, zDestino)->setFicha(ficha);
-	}
+	colocarSoldado(ficha,coordenadasOrigenYDestino->obtener(2));
 
 	destruirCoordenadasDelMovimiento(coordenadasOrigenYDestino);
 
@@ -373,8 +406,12 @@ void BatallaCampal::sacarCarta(Jugador * jugador){//AL final del turno
 			jugarTurno(jugador);
 			break;
 		case ReconstruirTerreno:
-			std::cout << "de Reconstruir Terreno." << std::endl;
-			reconstruirTerreno(jugador);
+			std::cout << "de Otro Soldado" << std::endl;
+			if(//chequea cuantos soldados tiene){
+				Vector<unsigned int> * posicion = pedirDestinoDelSoldado(jugador);
+				colocarSoldado(new Ficha(Soldado,jugador,Activa),posicion);
+			}	
+				
 			break;
 		case RondaSinCartas:
 			std::cout << "de Ronda Sin Cartas." << std::endl;
