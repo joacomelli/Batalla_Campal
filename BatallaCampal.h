@@ -29,7 +29,7 @@ enum TiposDeCartas{
 	Barco,
 	Misil,
 	OtroTurno,
-	ReconstruirTerreno,
+	OtroSoldado,
 	RondaSinCartas,
 	EnBlanco
 };
@@ -141,9 +141,6 @@ public:
 	//POST:
         void jugarRonda();
 	
-	//PRE:-
-	//POST:Volvera activa la casilla que elija el jugador actual
-	void reconstruirTerreno(Jugador * jugador);
 		
 	//PRE: -
 	//POST: El jugador sacara una carta al finalizar el turno y ..
