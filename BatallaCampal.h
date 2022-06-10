@@ -20,6 +20,9 @@ const unsigned int MAXIMO_TABLERO_Z = 5;
 const unsigned int MINIMO_DE_JUGADORES = 2;
 const unsigned int MAXIMO_DE_JUGADORES = 4;
 
+const unsigned int NUM_MAPA_MAXIMO = 2;
+
+
 enum TiposDeCartas{
 	Avion,
 	Barco,
