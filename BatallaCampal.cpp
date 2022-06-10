@@ -11,6 +11,15 @@ BatallaCampal::~BatallaCampal() {
 
 }
 
+void BatallaCampal::menuDeJuego(Jugador * jugador){
+	std::cout << "Bienvenido a la BatallaCampal." << std::endl;
+	std::cout << "Ingrese la cantidad de jugadores que van a participar." << std::endl;
+	
+	
+
+}
+
+
 void BatallaCampal::iniciarEscenarioUno(unsigned int xMaximo, unsigned int yMaximo, unsigned int zMaximo){
 	this->tablero = new Tablero(xMaximo,yMaximo,zMaximo);
 	for(unsigned int x = 1; x <= xMaximo; x++){
