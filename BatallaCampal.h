@@ -35,6 +35,7 @@ class BatallaCampal {
 private:
 	Tablero * tablero;
 	Lista <Jugador *> * jugadores;
+	unsigned int * cantidadDeJugadores;
 	Imagen imagen;
 
 
@@ -50,7 +51,7 @@ public:
 	
 	//PRE:-
 	//POST: Pedira la cantidad de jugadores.
-	void menuDeJuego(unsigned int * cantidadDeJugadores, unsigned int * numeroDeEscenario, Lista <Jugador *> * jugadores);
+	void menuDeJuego(unsigned int * numeroDeEscenario);
 
 	//PRE:-
 	//POST: Inicia el tablero en el escenario 1 pre configurado con sus maximos.
