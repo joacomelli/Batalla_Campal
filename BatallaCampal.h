@@ -47,6 +47,10 @@ public:
 	//PRE:
 	//POST:
 	virtual ~BatallaCampal();
+	
+	//PRE:-
+	//POST: Pedira la cantidad de jugadores.
+	void menuDeJuego(Jugador * jugador);
 
 	//PRE:-
 	//POST: Inicia el tablero en el escenario 1 pre configurado con sus maximos.
