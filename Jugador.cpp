@@ -47,6 +47,15 @@ void Jugador::eliminarFicha(Ficha* ficha){
 	}
 }
 
-
+bool  Jugador::tieneLaFicha(TipoDeFicha tipo){
+	this->fichas->iniciarCursor();
+	while(this->fichas->avanzarCursor()){
+		if(this->fichas->obtenerCursor()->getTipo() == tipo){
+			return true;
+		}
+	}
+	
+	return false;
+}
 
 
