@@ -140,11 +140,7 @@ public:
 	//POST:Pedira coordenadas (x,y,z) para que el jugador dispare y si la casilla no esta Vacia, eliminara una ficha del jugador contrario,
 	//      destruira la casilla si es tierra dejandola inactiva, de lo contrario la vaciara.
 	void disparar(Jugador * jugador);
-	
-	//PRE: -
-	//POST: Devuelve la cantidad de soldados actuales.
-	unsigned int cantidadDeSoldados(Jugador * jugador);
-	
+		
 	//PRE:
 	//POST: Retorta true si queda un solo jugador en el juego, de lo contrario false.
 	bool juegoTerminado();
