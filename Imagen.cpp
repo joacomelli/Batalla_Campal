@@ -91,8 +91,7 @@ void Imagen::recorrerCasilla(<Lista<Casilla *> * casillas, Jugador * jugadorActu
         while(casillas->avanzarCursor()){
             Casilla * casilla = casillas->obtenerCursor();
             if((casilla->estaOcupado()) && (casilla->getFicha()->getJugador()->getNombre() == jugadorActual->getNombre())){
-		TipoDeFicha tipo = casilla->getFicha()->getTipo();
-               	this->chequearFicha(tipo, casilla); 
+               	this->chequearFicha(casilla); 
             }
             else if(casilla->getEstado() == Inactiva){
             	if (casilla->getZ() == 1){
@@ -108,7 +107,8 @@ void Imagen::recorrerCasilla(<Lista<Casilla *> * casillas, Jugador * jugadorActu
     }
 }
  
-void Imagen::chequearFicha(TipoDeFicha tipo, Casilla * casilla){
+void Imagen::chequearFicha(Casilla * casilla){
+	TipoDeFicha tipo = casilla->getFicha()->getTipo();
 	if (tipo == FAvion) {
 		this->agregarAvionAEstado(casilla->getX(), casilla->getY(),casilla->getZ());
 	} else if (tipo == FSoldado){
