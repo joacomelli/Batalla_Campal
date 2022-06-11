@@ -8,7 +8,7 @@
 #include "Ficha.h"
 #include "Jugador.h"
 #include "Tablero.h"
-#include "BatallaCampal.h"
+
 
 class Imagen {
   private:
