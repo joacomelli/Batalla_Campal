@@ -194,7 +194,7 @@ void BatallaCampal::iniciarEscenarioTres(unsigned int xMaximo, unsigned int yMax
 				if(z == 1){
 					if((y ==1) && (x <= 7)){
 						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
-					else if((y ==1) && (7 < x) && (x <= 15))){
+					else if(((y ==1) && (7 < x) && (x <= 15))){
 						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
 					else if((y ==2) && (x <= 2)){
 						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
