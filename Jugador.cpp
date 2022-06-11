@@ -11,12 +11,12 @@ Jugador::~Jugador() {
 
 }
 
-const std::string& Jugador::getNombre() const {
-	return nombre;
+std::string& Jugador::getNombre() {
+	return this->nombre;
 }
 
-int Jugador::getNumero() const {
-	return numero;
+int Jugador::getNumero()  {
+	return this->numero;
 }
 
 Lista<Ficha*> * Jugador::getFichas(){
