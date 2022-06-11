@@ -46,5 +46,22 @@ void Jugador::eliminarFicha(Ficha* ficha){
 		}	
 	}
 }
+
+unsigned int Jugador::cantidadDeSoldados(){
+	unsigned int contador = 0;
+	this->fichas->iniciarCursor();
+	while(this->fichas->avanzarCursor()){
+		if(this->fichas->obtenerCursor()->getTipo() == Soldado){
+			contador++;
+		}
+	}
 	
+	return contador;
+}
+
+bool Jugador::estaMuerto(){
+
+	return (this->cantidadDeSoldados == 0);
+}
+
 
