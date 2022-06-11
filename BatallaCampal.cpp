@@ -10,8 +10,11 @@ BatallaCampal::BatallaCampal() {
 
 }
 
-BatallaCampal::~BatallaCampal() { //borrar todo
-
+BatallaCampal::~BatallaCampal() {
+	
+	delete this->jugadores;
+	delete this->tablero;
+	
 }
 
 // TERMINAR
