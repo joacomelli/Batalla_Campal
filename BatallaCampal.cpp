@@ -308,7 +308,7 @@ void BatallaCampal::inicializarSoldados(){
 		for(unsigned int j = 1; j <= this->cantidadDeJugadores; j++){
 			std::cout << "Jugador " << this->jugadores->obtener(j)->getNombre() << " ingrese la coordenada para su soldado " << i << std::endl;
 			Vector<unsigned int> * coordenadas = pedirDestinoDelSoldado(this->jugadores->obtener(j));
-			colocarSoldado(new Ficha(Soldado,this->jugadores->obtener(j),Activa),coordenadas);
+			colocarSoldado(new Ficha(FSoldado,this->jugadores->obtener(j),Activa),coordenadas);
 			delete coordenadas;
 		}
 	}
