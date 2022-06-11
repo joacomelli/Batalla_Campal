@@ -346,6 +346,7 @@ bool BatallaCampal::movimientoCercano(Vector<unsigned int> * origen, Vector<unsi
 	return true;
 }
 
+/*
 bool BatallaCampal::tieneUnSoldado(Jugador * jugador, unsigned int x, unsigned int y, unsigned int z){ //RECIBE VECTOR??
 	return ((obtenerFicha(x, y, z) != NULL)
 		&& (obtenerFicha(x, y, z)->getJugador() == jugador)
@@ -363,7 +364,7 @@ bool BatallaCampal::tieneUnBarco(Jugador * jugador, unsigned int x, unsigned int
             && (obtenerFicha(x, y, z)->getJugador() == jugador)
             && (obtenerFicha(x, y, z)->getTipo() == FBarco));
 }
-
+*/
 //REVISAR
 Vector<unsigned int> * BatallaCampal::pedirOrigenDelMovimiento(Jugador *jugador){
     Vector<unsigned int> * vectorOrigen;
@@ -394,7 +395,7 @@ Vector<unsigned int> * BatallaCampal::pedirDestinoDelSoldado(Jugador *jugador, V
         unsigned int y = vectorDestino->obtener(2);
         unsigned int z = vectorDestino->obtener(3);
 
-        if(tieneUnSoldado(jugador,x,y,z) || tieneUnAvion(jugador,x,y,z) || tieneUnBarco(jugador,x,y,z)){
+        if(jugador->tieneLaFicha(obtenerFicha(x, y, z)->getTipo())){
             std::cout << "Ya tienes una ficha en esa posicion. Intente de nuevo." << std::endl;
             delete vectorDestino;
         }else if((obtenerTipoDeCasilla(x,y,z) != Tierra && (obtenerTipoDeCasilla(origen->obtener(1),origen->obtener(2),origen->obtener(3)) == Tierra) && (origen != NULL)){
