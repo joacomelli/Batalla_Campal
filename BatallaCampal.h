@@ -138,9 +138,9 @@ public:
 	//      Barco contrario se eliminan los dos Barcos.
 	void colocarBarco(Jugador * jugador);
 
-	//PRE:
-	//POST:
-	void jugarTurno(Jugador * jugador);
+	//PRE: -
+	//POST: 
+	void jugarTurno(Jugador * jugador, bool castarActivadas);
 	
 	//PRE:
 	//POST:
