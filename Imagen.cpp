@@ -2,7 +2,7 @@
 #include <string>
 
 using namespace std; 
-/////Falta armamento!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+/////Falta que el armamento se mueva!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //chequear si puede usar la libreria easy y las imagenes desde la carpeta
 //hay q ver el tema de manejo de archivos
 Imagen::Imagen(){
