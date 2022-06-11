@@ -136,6 +136,7 @@ public:
 	//POST: Devolvera true si el jugador actual se queda sin soldados en el tablero.
 	bool estaMuerto(Jugador * jugador);
 	
+	
 	//PRE: -
 	//POST: Pedira al jugador coordenadas (x,y,z) para ubicar su Avion, solo se puede ubicar en una casilla que sea del tipo Aire, y si hay un
 	//      Avion contrario se eliminan los dos Aviones.
