@@ -140,6 +140,10 @@ public:
 	//POST: Devuelve la cantidad de soldados actuales.
 	unsigned int cantidadDeSoldados(Jugador * jugador);
 	
+	//PRE:
+	//POST: Retorta true si queda un solo jugador en el juego, de lo contrario false.
+	bool juegoTerminado();
+	
 	//PRE: -
 	//POST: Devolvera true si el jugador actual se queda sin soldados en el tablero.
 	bool estaMuerto(Jugador * jugador);
