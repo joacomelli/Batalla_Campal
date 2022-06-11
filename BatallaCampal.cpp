@@ -50,7 +50,7 @@ void BatallaCampal::iniciarEscenarioUno(unsigned int xMaximo, unsigned int yMaxi
 		for(unsigned int y = 1; y <= yMaximo; y++){
 			for(unsigned int z = 1; z <= zMaximo; z++){
 				if(z == 1){
-					if((y ==1) ││ (y == 2) ││ (y == 14)││ (y == 15)){
+					if((y ==1) || (y == 2) || (y == 14)|| (y == 15)){
 						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
 					else if((y ==3) && (x <= 4)){
 						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
@@ -133,7 +133,7 @@ void BatallaCampal::iniciarEscenarioDos(unsigned int xMaximo, unsigned int yMaxi
 		for(unsigned int y = 1; y <= yMaximo; y++){
 			for(unsigned int z = 1; z <= zMaximo; z++){
 				if(z == 1){
-					if((y ==1) ││ (y == 2)││ (y == 3)││ (y == 4)││ (y == 12)││ (y == 13)││ (y == 14)││ (y == 15)){
+					if((y ==1) || (y == 2)|| (y == 3)|| (y == 4)|| (y == 12)|| (y == 13)|| (y == 14)|| (y == 15)){
 						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
 					else if((y ==5) && (x <= 6)){
 						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
@@ -270,7 +270,7 @@ void BatallaCampal::iniciarEscenarioTres(unsigned int xMaximo, unsigned int yMax
 						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
 					else if((y ==13)&& (12 < x) && (x <= 15)){
 						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
-					else if((y ==14) ││ (y == 15)){
+					else if((y ==14) || (y == 15)){
 						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
 
 				}
