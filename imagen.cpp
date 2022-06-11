@@ -59,7 +59,7 @@ void Imagen::obtenerEstado( Tablero * tablero, Jugador *jugador){
             if((casilla->getEstado() == Ocupada) && (getFicha()->getJugador()->getNombre() == jugadorActual->getNombre())){
                 //printear casilla en el tablero
             }
-            else if((casilla->getEstado() == Inactiva) && (getFicha()->getJugador()->getNombre() == jugadorActual->getNombre())){
+            else if(casilla->getEstado() == Inactiva){
                 //printear casilla inactiva
             }
         }
