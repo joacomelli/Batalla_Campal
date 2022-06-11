@@ -1,4 +1,4 @@
-#include "imagen.h"
+#include "Imagen.h"
 #include <string>
 
 using namespace std; 
