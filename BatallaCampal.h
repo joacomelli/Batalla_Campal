@@ -39,7 +39,7 @@ class BatallaCampal {
 private:
 	Tablero * tablero;
 	Lista <Jugador *> * jugadores;
-	unsigned int * cantidadDeJugadores;
+	unsigned int cantidadDeJugadores;
 	unsigned int numeroDeMapa;
 	Imagen imagen;
 
