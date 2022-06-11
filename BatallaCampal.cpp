@@ -5,10 +5,12 @@ BatallaCampal::BatallaCampal() {
 	this->tablero = NULL;
 	this->jugadores = NULL;
 	this->cantidadDeJugadores = 0;
+	this->numeroDeMapa = 0;
+	//inicializar imagen
 
 }
 
-BatallaCampal::~BatallaCampal() {
+BatallaCampal::~BatallaCampal() { //borrar todo
 
 }
 
@@ -474,7 +476,7 @@ void BatallaCampal::lanzarMisil(Jugador * jugador){
 	bool coordenadaValida = false;
 	while(!coordenadaValida){
 		delete vectorPosicion;
-		vectorPosicion = pedirCoordenadas(jugador);
+		vectorPosicion = pedirCoordenadas();
 		coordenadaValida = posicionDeMisilValida(vectorPosicion); 
 	}
 	
@@ -523,27 +525,12 @@ void BatallaCampal::disparar(Jugador * jugador){
 	delete vectorPosicion;
 	
 }
-	
-unsigned int BatallaCampal::cantidadDeSoldados(Jugador * jugador){ //revisar no deberia meterse en la lista del jugador
-	unsigned int contador = 0;
-	jugador->fichas->iniciarCursor();
-	while(jugador->fichas->avanzarCursor()){
-		if(jugador->fichas->obtenerCursor()->getTipo() == Soldado){
-			contador++;
-		}
-	}
-	
-	return contador;
-}
 
 bool BatallaCampal::estaMuerto(Jugador * jugador){
 
-	return (jugador->cantidadDeSoldados == 0);
+	return (jugador->cantidadDeLaFicha(FSoldado) == 0);
 }
 
-
-
-	
 void BatallaCampal::colocarAvion(Jugador * jugador){
 	Vector<unsigned int> * vectorPosicion;
 	bool posicionValida = false;
@@ -614,6 +601,7 @@ void BatallaCampal::colocarBarco(Jugador * jugador){
 
 //TERMINAR
 void BatallaCampal::jugarTurno(Jugador * jugador, bool cartasActivadas){
+	
 	disparar(jugador);
 	
 	Vector<Vector<unsigned int> *> * movimiento = pedirMovimiento(jugador);
@@ -631,14 +619,51 @@ void BatallaCampal::jugarTurno(Jugador * jugador, bool cartasActivadas){
 	}
 }
 
-//TERMINAR
-void BatallaCampal::jugarRonda(){
+void BatallaCampal::recuentoDeJugadores(){
+	this->jugadores->iniciarCursor();
+	unsigned int contador = 0;
+	while( this->jugadores->avanzarCursor()){
+		contador++;
+		if( estaMuerto(this->jugadores->obtenerCursor()){
+			std::cout << this->jugadores->obtenerCursor()->getNombre() << " ha muerto." << std::endl;
+			this->jugadores->remover(contador);
+			(this->cantidadDeJugadores)--;
+		}
+	}
+}
+		   
+bool BatallaCampal::juegoTerminado(){
+	if(this->cantidadDeJugadores == 1){
+		return true;
+	}
 	
-
+	return false;
+}
+		   
+void BatallaCampal::jugar(){
+		 
+	menuDeJuego(this->numeroDeMapa);
+	inicializarSoldados();
+	while(!juegoTerminado()){
+		jugarRonda(true);
+	}
+	std::cout << this->jugadores->obtener(1)->getNombre() << " se queda con la victoria." << std::endl << "GAME OVER" << std::endl;
+}
+		  
+//TERMINAR
+void BatallaCampal::jugarRonda(bool cartasActivadas){
+	
+	bool terminado = false;
+	this->jugadores->iniciarCursor();
+	while( this->jugadores->avanzarCursor() && !terminado){
+		jugarTurno( this->jugadores->obtenerCursor(), cartasActivadas);
+		terminado = juegoTerminado();
+	}
 }
 
 
-void BatallaCampal::sacarCarta(Jugador * jugador){//AL final del turno
+
+void BatallaCampal::sacarCarta(Jugador * jugador){
 	srand(time(NULL));
 	int numeroDeCarta  = rand() % 12;
 	std::cout << jugador->getNombre() << " saco la carta ";
@@ -646,7 +671,7 @@ void BatallaCampal::sacarCarta(Jugador * jugador){//AL final del turno
    		case Avion:
 			std::cout << "de Avion." << std::endl;
 			
-			if(!jugador->tieneLaCarta(Avion)){
+			if(!jugador->tieneLaFicha(Avion)){
 				colocarAvion(jugador);
 			}else{
 				std::cout << "Ya tienes la cantidad maxima de aviones." << std::endl;
@@ -657,7 +682,7 @@ void BatallaCampal::sacarCarta(Jugador * jugador){//AL final del turno
    		case Barco:
 			std::cout << "de Barco." << std::endl;
 			
-			if(!jugador->tieneLaCarta(Barco)){
+			if(!jugador->tieneLaFicha(Barco)){
 				colocarBarco(jugador);
 			}else{
 				std::cout << "Ya tienes la cantidad maxima de barcos." << std::endl;
@@ -677,7 +702,7 @@ void BatallaCampal::sacarCarta(Jugador * jugador){//AL final del turno
 			
 		case OtroSoldado:
 			std::cout << "de Otro Soldado" << std::endl;
-			if(cantidadDeSoldados(jugador) < SOLDADOS_INICIALES){
+			if(this->cantidadDeLaFicha(FSoldado) < SOLDADOS_INICIALES){
 				Vector<unsigned int> * posicion = pedirDestinoDelSoldado(jugador);
 				colocarSoldado(new Ficha(FSoldado,jugador,Activa),posicion);
 			}else{
@@ -687,7 +712,7 @@ void BatallaCampal::sacarCarta(Jugador * jugador){//AL final del turno
 			
 		case RondaSinCartas:
 			std::cout << "de Ronda Sin Cartas." << std::endl;
-			jugarRonda();//cartas desactivadas);
+			jugarRonda(false);
 			break;
 			
    		default:
