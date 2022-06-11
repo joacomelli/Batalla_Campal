@@ -64,6 +64,10 @@ public:
 	//PRE:-
 	//POST: Inicia el tablero en el escenario 2 pre configurado con sus maximos.
 	void iniciarEscenarioDos(unsigned int xMaximo, unsigned int yMaximo, unsigned int zMaximo);
+	
+	//PRE:-
+	//POST: Inicia el tablero en el escenario 2 pre configurado con sus maximos.
+	void iniciarEscenarioTres(unsigned int xMaximo, unsigned int yMaximo, unsigned int zMaximo);
 
 	//PRE:-
 	//POST: Pide por consola una coordenada (x,y,z) y la retorna como vector dinamico.
