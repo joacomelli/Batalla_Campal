@@ -7,7 +7,7 @@ Imagen::Imagen(){
     this->inactiva.ReadFromFile("inactiva.bmp");
     this->avion.ReadFromFile("avion.bmp");
     this->barco.ReadFromFile("barco.bmp");
-    this->soldado.ReadFromFile("soldado.bmp");
+    this->soldado.ReadFromFile("Soldado.bmp");
     this->estado.SetBitDeph(24);
 }
 
