@@ -45,6 +45,10 @@ public:
 	//POST: Devuelve True si el jugador tiene una ficha TipoDeFicha.
 	bool tieneLaFicha(TipoDeFicha tipo);
 	
+	//PRE: la ficha debe exisitir y no ser null.
+	//POST: Cuenta la cantidad de tichas del tipo que se pasa por parametro
+	unsigned int cantidadDeLaFicha(TipoDeFicha tipo);
+	
 };
 
 #endif
