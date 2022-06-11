@@ -427,7 +427,7 @@ void BatallaCampal::destruirCoordenadasDelMovimiento(Vector<Vector<unsigned int>
 	delete coordenadas;
 }
 
-void BatallaCampal::colocarSoldado(Ficha * fichaSoldado, Vector<unsigned int> * posicion){
+void BatallaCampal::colocarSoldado(Ficha * ficha, Vector<unsigned int> * posicion){
 	unsigned int x = posicion->obtener(1);
 	unsigned int y = posicion->obtener(2);
 	unsigned int z = posicion->obtener(3);
