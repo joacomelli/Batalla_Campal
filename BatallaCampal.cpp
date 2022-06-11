@@ -619,9 +619,9 @@ void BatallaCampal::jugarTurno(Jugador * jugador, bool cartasActivadas){
 	Vector<Vector<unsigned int> *> * movimiento = pedirMovimiento(jugador);
 	mover(movimiento);
 	
-	if(jugador->tieneLaFicha(Barco){
+	if(jugador->tieneLaFicha(Barco)){
 		lanzarMisil(jugador);
-	}else if(jugador->tieneLaFicha(Avion){
+	}else if(jugador->tieneLaFicha(Avion)){
 		disparar(jugador);
 		disparar(jugador);
 	}
