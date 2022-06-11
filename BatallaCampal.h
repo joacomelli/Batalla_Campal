@@ -57,7 +57,11 @@ public:
 	//PRE:-
 	//POST: Pedira la cantidad de jugadores.
 	void menuDeJuego(unsigned int * numeroDeEscenario);
-
+	
+	//PRE: -
+	//POST: 
+	void jugar();
+	
 	//PRE:-
 	//POST: Inicia el tablero en el escenario 1 pre configurado con sus maximos.
 	void iniciarEscenarioUno(unsigned int xMaximo, unsigned int yMaximo, unsigned int zMaximo);
@@ -170,7 +174,7 @@ public:
 	
 	//PRE:
 	//POST:
-        void jugarRonda();
+        void jugarRonda(bool );
 	
 		
 	//PRE: -
