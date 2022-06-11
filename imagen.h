@@ -13,6 +13,11 @@ class Imagen {
     BMP estado;
     void medidaDeEstado();
     void agregarFondoDeEstado(); 
+    void agregarObjetosAEstado();
+    void agregarAvionAEstado(int coordenadaX, int coordenadaY, int coordenadaZ);
+    void agregarBarcoAEstado(int coordenadaX, int coordenadaY);
+    void agregarSoldadoAEstdo(int coordenadaX, int coordenadaY);
+    void agregarInactivaAEstdo(int coordenadaX, int coordenadaY);
 
 public:
   Imagen();
