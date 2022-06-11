@@ -29,7 +29,7 @@ void Ficha::eliminar(){
 }
 
 Jugador* Ficha::getJugador(){
-	return jugador;
+	return this->jugador;
 }
 
 void Ficha::setJugador(Jugador *jugador) {
