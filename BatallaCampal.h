@@ -73,6 +73,10 @@ public:
 	//POST: Pide por consola una coordenada (x,y,z) y la retorna como vector dinamico.
 	Vector<unsigned int> * pedirCoordenadas();
 	 
+	//PRE:-
+	//POST: Inicializa los soldados de los jugadores.
+	void inicializarSoldados();
+	
 	// PRE: Debe existir una ficha.
 	// POS: Devuelve la ficha que se ubica en la posicion que se pasa por parametro.
 	Ficha * obtenerFicha( unsigned int x, unsigned int y, unsigned int z);
