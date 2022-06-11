@@ -34,10 +34,10 @@ void Imagen::obtenerEstado( Tablero * tablero, Jugador *jugador){
 
 //||||||||||||||||||||||||||||||||||||||||||
 //Lista<Lista<Lista<Casilla *> *> *> casillas
-    void Imagen::recorrerTablero(Tablero casillas){
-        casillas->iniciarCursor();
-        while(casillas->avanzarCursor()){
-            <Lista<Lista<Casilla *> *> casillasPlanoXY = casillas->obtenerCursor();//PLANO XY
+    void Imagen::recorrerTablero(Tablero tablero){
+        tablero->getCasilleros()->iniciarCursor();
+        while(tablero->getCasilleros()->avanzarCursor()){
+            <Lista<Lista<Casilla *> *> casillasPlanoXY = tablero->getCasilleros()->obtenerCursor();//PLANO XY
             //Casilla casilla = recorrerPlanoXY(casillasPlanoXY);
             recorrerPlanoXY(casillasPlanoXY);
         }
