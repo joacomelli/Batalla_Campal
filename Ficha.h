@@ -32,7 +32,7 @@ public:
 
 	//PRE: -
 	//POST: Devuelve en el estado que esta la ficha
-	EstadoDeFicha getEstado() const;
+	EstadoDeFicha getEstado();
 
 	//PRE: -
 	//POST: Cambia el estado de la casilla.
