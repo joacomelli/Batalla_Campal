@@ -11,11 +11,6 @@ Imagen::Imagen(){
     this->estado.SetBitDeph(24);
 }
 
-void Imagen::definirMapa(string background){
-  if (background == 'background1' ││ background == 'background2' ││ background == 'background3'){
-    this->background.ReadfromFile( background + ".bmp"); 
- }
-  
 void Imagen::medidaDeEstado(){
   this->estado.SetSize( this->background.TellWidth(), this->background.TellHeight()); 
 }
@@ -26,6 +21,44 @@ void Imagen::agregarFondoAEstado(){
                          this->estado,0,0); 
 }
 
+void EstadoTablero::agregarAvionAEstado(int coordenadaX, int coordenadaY, int coordenadaZ){
+		RangedPixelToPixelCopyTransparent( this->avion, 0, this->avion.TellWidth(),
+						this->avion.TellHeight(), 0,this->estado, 1030 - coordenadaZ*40,
+						85 + coordenadaX*40,*this->avion(0,0) );
+
+		RangedPixelToPixelCopyTransparent( this->avion, 0, this->avion.TellWidth(),
+						this->avion.TellHeight(), 0,this->estado, 116 + coordenadaY*40,
+						995 - coordenadaZ*40,*this->avion(0,0) );
+}
+
+void EstadoTablero::agregarSoldadoAEstado(int coordenadaX, int coordenadaY){
+		RangedPixelToPixelCopyTransparent( this->soldado, 0, this->soldado.TellWidth(),
+						this->soldado.TellHeight(), 0,this->estado, 116 + coordenadaY*40,
+						85 + coordenadaX*40,*this->soldado(0,0) );
+}
+
+void EstadoTablero::agregarBarcoAEstado(int coordenadaX, int coordenadaY){
+		RangedPixelToPixelCopyTransparent( this->barco, 0, this->barco.TellWidth(),
+						this->barco.TellHeight(), 0,this->estado, 116+ coordenadaY*40,
+						85 + coordenadaX*40,*this->barco(0,0) );
+}
+
+void EstadoTablero::agregarInactivaAEstado(int coordenadaX, int coordenadaY){
+		RangedPixelToPixelCopyTransparent( this->inactiva, 0, this->inactiva.TellWidth(),
+				this->inactiva.TellHeight(), 0,this->estado, 116+ coordenadaY*40,
+				85 + coordenadaX*40,*this->inactiva(0,0) );
+}
+
+void Imagen::definirMapa(string background){
+  if (background == 'Background1'){
+    this->background.ReadfromFile( "Background1.bmp"); 
+  } else if  (background == 'Background2'){
+    this->background.ReadfromFile( "Background2.bmp"); 
+  } else if  (background == 'Background3'){
+    this->background.ReadfromFile( "Background3.bmp"); 
+  }
+ }
+  
 void Imagen::obtenerEstado( Tablero * tablero, Jugador *jugador){
   this->medidaDeEstado();
   this->agregarFondoAEstado();
