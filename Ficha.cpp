@@ -13,8 +13,8 @@ Ficha::~Ficha() {
 
 }
 
-EstadoDeFicha Ficha::getEstado() const {
-	return estado;
+EstadoDeFicha Ficha::getEstado()  {
+	return this->estado;
 }
 
 void Ficha::setEstado(EstadoDeFicha estado) {
