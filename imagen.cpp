@@ -32,5 +32,37 @@ void Imagen::obtenerEstado( Tablero * tablero, Jugador *jugador){
   this->estado.WriteToFile("estadoTableroDe"+ jugador->getNombre + ".bmp");
 }
 
+//||||||||||||||||||||||||||||||||||||||||||
+//Lista<Lista<Lista<Casilla *> *> *> casillas
+    void Imagen::recorrerTablero(Tablero casillas){
+        casillas->iniciarCursor();
+        while(casillas->avanzarCursor()){
+            <Lista<Lista<Casilla *> *> casillasPlanoXY = casillas->obtenerCursor();//PLANO XY
+            //Casilla casilla = recorrerPlanoXY(casillasPlanoXY);
+            recorrerPlanoXY(casillasPlanoXY);
+        }
+    }
+
+    void Imagen::recorrerPlanoXY(<Lista<Lista<Casilla *> *> casillas){
+        casillas->iniciarCursor();
+        while(casillas->avanzarCursor()){
+            <Lista<Casilla *> casillasRecta = casillas->obtenerCursor();
+            //Casilla casilla = recorrerCasilla();
+            recorrerCasilla();
+        }
+    }
+
+    void Imagen::recorrerCasilla(<Lista<Casilla *> casillas, Jugador jugadorActual){
+        casillas->iniciarCursor();
+        while(casillas->avanzarCursor()){
+            Casilla* casilla = casillas->obtenerCursor();
+            if((casilla->getEstado() == Ocupada) && (getFicha()->getJugador()->getNombre() == jugadorActual->getNombre())){
+                //printear casilla en el tablero
+            }
+            else if((casilla->getEstado() == Inactiva) && (getFicha()->getJugador()->getNombre() == jugadorActual->getNombre())){
+                //printear casilla inactiva
+            }
+        }
+    }
  
   
