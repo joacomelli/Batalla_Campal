@@ -679,7 +679,7 @@ void BatallaCampal::sacarCarta(Jugador * jugador){//AL final del turno
 			std::cout << "de Otro Soldado" << std::endl;
 			if(cantidadDeSoldados(jugador) < SOLDADOS_INICIALES){
 				Vector<unsigned int> * posicion = pedirDestinoDelSoldado(jugador);
-				colocarSoldado(new Ficha(Soldado,jugador,Activa),posicion);
+				colocarSoldado(new Ficha(FSoldado,jugador,Activa),posicion);
 			}else{
 				std::cout << "Ya tienes la cantidad maxima de soldados." << std::endl;
 			}
