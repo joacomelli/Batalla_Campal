@@ -61,22 +61,12 @@ void EstadoTablero::agregarInactivaAEstado(int coordenadaX, int coordenadaY, in 
 }
 
 void Imagen::definirMapa(string background){
-  if (background == 'Background1'){
-    this->background.ReadfromFile( "Background1.bmp"); 
-  } else if  (background == 'Background2'){
-    this->background.ReadfromFile( "Background2.bmp"); 
-  } else if  (background == 'Background3'){
-    this->background.ReadfromFile( "Background3.bmp"); 
-  }
+  if (background == "Background1" || background == "Background2"  || background == "Background3"){
+    string fileName = background + ".bmp";	 
+    this->background.ReadfromFile(fileName.c_str()); 
+  } 
  }
   
-void Imagen::obtenerEstadoTablero( Tablero * tablero, Jugador *jugador){
-  this->medidaDeEstado();
-  this->agregarFondoAEstado();
-  this->recorrerTablero(tablero, jugador);
-  string fileName = "estadoTableroDe"+ jugador->getNombre + ".bmp";
-  this->estado.WriteToFile(fileName.c_str());
-}
 
 //Lista<Lista<Lista<Casilla *> *> *> casillas
 void Imagen::recorrerTablero(Tablero * tablero, Jugador * jugador){
@@ -126,3 +116,11 @@ void Imagen chequearFicha(TipoDeFicha tipo, Casilla * casilla){
 		this->agregarBarcoAEstado(casilla->getX(), casilla->getY());
 	}
 }	
+	       
+void Imagen::obtenerEstadoTablero( Tablero * tablero, Jugador *jugador){
+  this->medidaDeEstado();
+  this->agregarFondoAEstado();
+  this->recorrerTablero(tablero, jugador);
+  string fileName = "estadoTableroDe"+ jugador->getNombre + ".bmp";
+  this->estado.WriteToFile(fileName.c_str());
+}
