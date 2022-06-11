@@ -94,17 +94,12 @@ void Imagen::recorrerCasilla(<Lista<Casilla *> * casillas, Jugador * jugadorActu
                	this->chequearFicha(casilla); 
             }
             else if(casilla->getEstado() == Inactiva){
-            	if (casilla->getZ() == 1){
-			agregarInactivaAEstado(casilla->getX(), casilla->getY(),casilla->getZ());
-		} else if (casilla->getFicha() != NULL)	{
-			agregarInactivaAEstado(casilla->getX(), casilla->getY(),casilla->getZ());
-		//la casilla esta inactiva pero podria haber estado vacia antes (creo) esto se fija q si devuelve
-		// null el get ficha es xq taba vacia antes y no tenia ninguna ficha, en cambio al ser z mayor a 1 
-		// son solo aviones las posibles fichas y como (creo) queremos mostrar solo las casillas inactivas del plano
-		//ZY y ZX q taban ocupados x aviones, esto hace eso. 
+		if (casilla->getFicha() != NULL){
+			this->chequearFicha(casilla); 
+		}
+		agregarInactivaAEstado(casilla->getX(), casilla->getY(),casilla->getZ());
             }
         }
-    }
 }
  
 void Imagen::chequearFicha(Casilla * casilla){
