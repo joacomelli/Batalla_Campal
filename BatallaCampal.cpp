@@ -696,7 +696,6 @@ void BatallaCampal::sacarCarta(Jugador * jugador){//AL final del turno
 }
 
 void BatallaCampal::mostrarEstadoTablero(Jugador * jugador){
-	//va a recorrer tablero, x casilla se fija en las de estado ocupada, segun el 
-	//jugador va a agregar a la imagen el tipo de ficha, y tmb las de estado inactiva. 
+	imagen.obtenerEstadoTablero(this->tablero, jugador);
 }
 					      
