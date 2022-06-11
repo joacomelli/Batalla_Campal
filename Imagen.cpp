@@ -59,7 +59,7 @@ void Imagen::definirMapa(string background){
   }
  }
   
-void Imagen::obtenerEstado( Tablero * tablero, Jugador *jugador){
+void Imagen::obtenerEstadoTablero( Tablero * tablero, Jugador *jugador){
   this->medidaDeEstado();
   this->agregarFondoAEstado();
   this->estado.WriteToFile("estadoTableroDe"+ jugador->getNombre + ".bmp");
