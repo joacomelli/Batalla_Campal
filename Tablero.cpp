@@ -67,6 +67,10 @@ Tablero::~Tablero() {
 	delete this->casilleros;
 }
 
+Lista<Lista<Lista<Casilla *> *> *> * Tablero::getCasilleros(){
+    return this->casilleros;
+}
+
 int Tablero::getxMaximo(){
 	return this->xMaximo;
 }
