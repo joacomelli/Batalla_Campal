@@ -2,7 +2,7 @@
 #include <string>
 
 using namespace std; 
-
+/////Falta armamento!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 Imagen::Imagen(){
     this->inactiva.ReadFromFile("inactiva.bmp");
     this->avion.ReadFromFile("avion.bmp");
