@@ -104,6 +104,7 @@ void Imagen::recorrerCasilla(<Lista<Casilla *> * casillas, Jugador * jugadorActu
             }
         }
     }
+}
  
 void Imagen::chequearFicha(TipoDeFicha tipo, Casilla * casilla){
 	if (tipo == FAvion) {
