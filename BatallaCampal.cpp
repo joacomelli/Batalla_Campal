@@ -108,8 +108,9 @@ void BatallaCampal::inicializarSoldados(){
 	for(unsigned int i = 1; i <= SOLDADOS_INICIALES; i++){
 		for(unsigned int j = 1; j <= this->cantidadDeJugadores; j++){
 			std::cout << "Jugador " << this->jugadores->obtener(j)->getNombre() << " ingrese la coordenada para su soldado " << i << std::endl;
-			Vector<unsigned int> * coordenadas = pedirDestinoDelSoldado(Jugador * jugador);
+			Vector<unsigned int> * coordenadas = pedirDestinoDelSoldado(this->jugadores->obtener(j));
 			colocarSoldado(new Ficha(Soldado,this->jugadores->obtener(j),Activa),coordenadas);
+			delete coordenadas;
 		}
 	}
 }
@@ -141,7 +142,7 @@ bool BatallaCampal::movimientoCercano(Vector<unsigned int> * origen, Vector<unsi
 	return true;
 }
 
-bool BatallaCampal::tieneUnSoldado(Jugador * jugador, unsigned int x, unsigned int y, unsigned int z){
+bool BatallaCampal::tieneUnSoldado(Jugador * jugador, unsigned int x, unsigned int y, unsigned int z){ //RECIBE VECTOR??
 	return ((obtenerFicha(x, y, z) != NULL)
 		&& (obtenerFicha(x, y, z)->getJugador() == jugador)
 		&& (obtenerFicha(x, y, z)->getTipo() == FSoldado));
@@ -236,6 +237,7 @@ void BatallaCampal::colocarSoldado(Ficha * fichaSoldado, Vector<unsigned int> * 
 	}else{
 		this->tablero->getCasillero(x,y,z)->setFicha(ficha);
 	}
+	delete posicion;
 }
 
 //REVISAR
@@ -254,14 +256,50 @@ void BatallaCampal::mover(Vector<Vector<unsigned int> *> * coordenadasOrigenYDes
 
 }
 
+	
+bool BatallaCampal::posicionDeMisilValida(Vector<unsigned int> * posicion){
+	unsigned int x = posicion->obtener(1);
+	unsigned int y = posicion->obtener(2);
+	unsigned int z = posicion->obtener(3);
+	
+	return (x != 1  &&  x != MAXIMO_TABLERO_X && 
+		y != 1  &&  y != MAXIMO_TABLERO_Y &&
+		z != 1  &&  z != MAXIMO_TABLERO_Z); 			
+}
+	
 
 //TERMINAR
 void BatallaCampal::lanzarMisil(Jugador * jugador){
-
+	Vector<unsigned int> * vectorPosicion = NULL;
+	std::cout << jugador->getNombre() << ", ingresa la coordenada a la cual desea lanzar su misil. (NO LO PUEDE LANZAR A LOS LIMITES DEL MAPA)" << std::endl;
+	bool coordenadaValida = false;
+	while(!coordenadaValida){
+		delete vectorPosicion;
+		vectorPosicion = pedirCoordenadas(jugador);
+		coordenadaValida = posicionDeMisilValida(vectorPosicion); 
+	}
 	
-	
-	
-	
+	unsigned int x = vectorPosicion->obtener(1);
+	unsigned int y = vectorPosicion->obtener(2);
+	unsigned int z = vectorPosicion->obtener(3);
+	for(unsigned int i = x-1; i <= x+1 ; i++){
+		for(unsigned int j = y-1; j <= y+1 ; j++){
+			for(unsigned int k = z-1; k <= z+1 ; k++){
+				if(this->tablero->getCasillero(i,j,k)->estaOcupado()){
+					Jugador * jugador = this->tablero->getCasillero(i,j,k)->getFicha()->getJugador;
+					jugador->eliminarFicha(this->tablero->getCasillero(i,j,k)->getFicha());
+					std::cout << "Hubo una baja." << std::endl;
+				}
+				if(obtenerTipoDeCasilla(i,j,k) == Tierra){
+					this->tablero->getCasillero(i,j,k)->destruir();
+				}else{
+					this->tablero->getCasillero(i,j,k)->vaciar();
+				}
+				
+			}
+		}
+	}
+	delete vectorPosicion;
 }
 
 void BatallaCampal::disparar(Jugador * jugador){
@@ -272,7 +310,7 @@ void BatallaCampal::disparar(Jugador * jugador){
 	unsigned int y = vectorPosicion->obtener(2);
 	unsigned int z = vectorPosicion->obtener(3);
 	
-	if(obtenerEstadoDeCasilla(x,y,z) != Vacia){
+	if(this->tablero->getCasillero(x,y,z)->estaOcupado()){
 		Jugador * jugadorContrario = this->tablero->getCasillero(x, y, z)->getFicha()->getNombre();
 		jugadorContrario->eliminarFicha(this->tablero->getCasillero(x, y, z)->getFicha());
 		std::cout << "Has conseguido una baja." << std::endl;
@@ -283,7 +321,28 @@ void BatallaCampal::disparar(Jugador * jugador){
 	}else{
 			this->tablero->getCasillero(x,y,z)->vaciar();
 	}
+	delete vectorPosicion;
+	
 }
+	
+unsigned int BatallaCampal::cantidadDeSoldados(Jugador * jugador){ //revisar no deberia meterse en la lista del jugador
+	unsigned int contador = 0;
+	jugador->fichas->iniciarCursor();
+	while(jugador->fichas->avanzarCursor()){
+		if(jugador->fichas->obtenerCursor()->getTipo() == Soldado){
+			contador++;
+		}
+	}
+	
+	return contador;
+}
+
+bool BatallaCampal::estaMuerto(Jugador * jugador){
+
+	return (jugador->cantidadDeSoldados == 0);
+}
+
+
 
 	
 void BatallaCampal::colocarAvion(Jugador * jugador){
@@ -344,7 +403,7 @@ void BatallaCampal::colocarBarco(Jugador * jugador){
 			Ficha * fichaBarco = new Ficha(FBarco, jugador, Activa);
 			this->tablero->getCasillero(x,y,z)->setFicha(fichaBarco);
 			jugador->agregarFicha(fichaBarco);
-			//lanzarMisil();       //completar
+			lanzarMisil(jugador);      
 			posicionValida = true;
 			
 		}
@@ -355,32 +414,28 @@ void BatallaCampal::colocarBarco(Jugador * jugador){
 }
 
 //TERMINAR
-void BatallaCampal::jugarTurno(Jugador * jugador){
+void BatallaCampal::jugarTurno(Jugador * jugador, bool cartasActivadas){
+	disparar(jugador);
 	
+	Vector<Vector<unsigned int> *> * movimiento = pedirMovimiento(jugador);
+	mover(movimiento);
+	
+	if(jugador->tieneLaFicha(Barco){
+		lanzarMisil(jugador);
+	}else if(jugador->tieneLaFicha(Avion){
+		disparar(jugador);
+		disparar(jugador);
+	}
+		 
+	if(cartasActivadas){
+		sacarCarta(jugador);
+	}
 }
 
 //TERMINAR
 void BatallaCampal::jugarRonda(){
 	
 
-}
-
-//TERMINAR
-void BatallaCampal::reconstruirTerreno(Jugador * jugador){
-	Vector<unsigned int> * vectorPosicion;
-	std::cout << jugador->getNombre() << ", ingresa la coordenada de la casilla que quiera reconstruir." << std::endl;
-	vectorPosicion = pedirCoordenadas();
-	unsigned int x = vectorPosicion->obtener(1);
-	unsigned int y = vectorPosicion->obtener(2);
-	unsigned int z = vectorPosicion->obtener(3);
-	if(obtenerEstadoDeCasilla(x,y,z) == Vacia){
-		
-		
-		
-	}
-	
-	
-	
 }
 
 
@@ -391,32 +446,51 @@ void BatallaCampal::sacarCarta(Jugador * jugador){//AL final del turno
 	switch(numeroDeCarta){
    		case Avion:
 			std::cout << "de Avion." << std::endl;
-			colocarAvion(jugador);
+			
+			if(!jugador->tieneLaCarta(Avion)){
+				colocarAvion(jugador);
+			}else{
+				std::cout << "Ya tienes la cantidad maxima de aviones." << std::endl;
+			}
+			
    			break;
+			
    		case Barco:
 			std::cout << "de Barco." << std::endl;
-			colocarBarco(jugador);
-    			break;
+			
+			if(!jugador->tieneLaCarta(Barco)){
+				colocarBarco(jugador);
+			}else{
+				std::cout << "Ya tienes la cantidad maxima de barcos." << std::endl;
+			}
+    			
+			break;
+			
    		case Misil:
 			std::cout << "de Misil." << std::endl;
 			lanzarMisil(jugador);
    			break;
+			
 		case OtroTurno:
 			std::cout << "Otro Turno. Juega de nuevo." << std::endl;
 			jugarTurno(jugador);
 			break;
+			
 		case OtroSoldado:
 			std::cout << "de Otro Soldado" << std::endl;
-			if(//chequea cuantos soldados tiene){
+			if(cantidadDeSoldados(jugador) < SOLDADOS_INICIALES){
 				Vector<unsigned int> * posicion = pedirDestinoDelSoldado(jugador);
 				colocarSoldado(new Ficha(Soldado,jugador,Activa),posicion);
-			}	
-				
+			}else{
+				std::cout << "Ya tienes la cantidad maxima de soldados." << std::endl;
+			}
 			break;
+			
 		case RondaSinCartas:
 			std::cout << "de Ronda Sin Cartas." << std::endl;
 			jugarRonda();//cartas desactivadas);
 			break;
+			
    		default:
 			std::cout << "en Blanco." << std::endl;
 			break;
