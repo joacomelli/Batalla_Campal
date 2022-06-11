@@ -18,7 +18,10 @@ public:
   Imagen();
   void definirMapa(std::string background); 
   void obtenerEstado(Jugador * jugador);
-  
+  //||||||||||||||||||||||||||||||||||||||||||||||||||||
+  void recorrerTablero(Tablero casillas);
+  void recorrerPlanoXY(<Lista<Lista<Casilla *> *> casillas);
+  void recorrerCasilla(<Lista<Casilla *> casillas, Jugador jugadorActual);
 };
 
 #endif
