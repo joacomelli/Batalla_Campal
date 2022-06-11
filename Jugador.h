@@ -41,7 +41,9 @@ public:
 	void eliminarFicha(Ficha* ficha);
 	
 
-	
+	//PRE: Debe existir la ficha
+	//POST: Devuelve True si el jugador tiene una ficha TipoDeFicha.
+	bool tieneLaFicha(TipoDeFicha tipo);
 	
 };
 
