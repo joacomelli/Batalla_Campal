@@ -2,6 +2,13 @@
 #define IMAGEN_H_
 
 #include "EasyBMP.h"
+#include "Vector.h"
+#include "Casilla.h"
+#include "Lista.h"
+#include "Ficha.h"
+#include "Jugador.h"
+#include "Tablero.h"
+#include "BatallaCampal.h"
 
 class Imagen {
   private:
