@@ -26,8 +26,8 @@ class Imagen {
     void agregarSoldadoAEstdo(int coordenadaX, int coordenadaY);
     void agregarInactivaAEstdo(int coordenadaX, int coordenadaY, int coordenadaZ, std::string plano);
     void recorrerTablero(Tablero * tablero, Jugador * jugador);
-    void recorrerPlanoXY(<Lista<Lista<Casilla *> *> *casillas, Jugador * jugador);
-    void recorrerCasilla(<Lista<Casilla *> casillas, Jugador * jugadorActual);
+    void recorrerPlanoXY(Lista<Lista<Casilla *> *> *casillas, Jugador * jugador);
+    void recorrerCasilla(Lista<Casilla *> casillas, Jugador * jugadorActual);
     void chequearFicha(Casilla * casilla);
 
 
