@@ -56,7 +56,7 @@ public:
 	
 	//PRE:-
 	//POST: Pedira la cantidad de jugadores.
-	void menuDeJuego(unsigned int * numeroDeEscenario);
+	void menuDeJuego();
 	
 	//PRE: -
 	//POST: 
