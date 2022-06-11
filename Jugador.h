@@ -40,6 +40,11 @@ public:
 	//POST: Elimina el nodo de la lista correspondiente a esa ficha.
 	void eliminarFicha(Ficha* ficha);
 	
+	//PRE: -
+	//POST: Devuelve la cantidad de soldados actuales.
+	unsigned int cantidadDeSoldados();
+	
+	
 };
 
 #endif
