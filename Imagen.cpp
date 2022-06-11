@@ -94,9 +94,9 @@ void Imagen::recorrerCasilla(<Lista<Casilla *> * casillas, Jugador * jugadorActu
                	this->chequearFicha(casilla); 
             }
             else if(casilla->getEstado() == Inactiva){
-		if (casilla->getFicha() != NULL){
+		if ((casilla->getFicha() != NULL)&& (casilla->getFicha()->getJugador()->getNombre() == jugadorActual->getNombre())){
 			this->chequearFicha(casilla); 
-		}
+		} ///mostramos los soldados barcos aviones que perdio el otro jugador? x ahora no 
 		agregarInactivaAEstado(casilla->getX(), casilla->getY(),casilla->getZ());
             }
         }
