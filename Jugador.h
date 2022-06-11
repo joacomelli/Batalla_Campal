@@ -22,11 +22,11 @@ public:
 
 	//PRE: El jugador debe existir.
 	//POST: Muestra el nombre del jugador
-	const std::string& getNombre() const;
+	std::string& getNombre();
 
 	//PRE: El jugador debe existir.
 	//POST: Muestra el numero del jugador.
-	int getNumero() const;
+	int getNumero();
 	
 	//PRE: El jugador debe existir.
 	//POST: Devuelve un puntero a la lista de fichas del jugador.
