@@ -17,16 +17,17 @@ class Imagen {
     void agregarAvionAEstado(int coordenadaX, int coordenadaY, int coordenadaZ);
     void agregarBarcoAEstado(int coordenadaX, int coordenadaY);
     void agregarSoldadoAEstdo(int coordenadaX, int coordenadaY);
-    void agregarInactivaAEstdo(int coordenadaX, int coordenadaY);
+    void agregarInactivaAEstdo(int coordenadaX, int coordenadaY, int coordenadaZ, std::string plano);
+    void recorrerTablero(Tablero * tablero, Jugador * jugador);
+    void recorrerPlanoXY(<Lista<Lista<Casilla *> *> *casillas, Jugador * jugador);
+    void recorrerCasilla(<Lista<Casilla *> casillas, Jugador * jugadorActual);
+    void chequearFicha(TipoDeFicha tipo, Casilla * casilla);
+
 
 public:
   Imagen();
   void definirMapa(std::string background); 
-  void obtenerEstado(Jugador * jugador);
-  //||||||||||||||||||||||||||||||||||||||||||||||||||||
-  void recorrerTablero(Tablero casillas);
-  void recorrerPlanoXY(<Lista<Lista<Casilla *> *> casillas);
-  void recorrerCasilla(<Lista<Casilla *> casillas, Jugador jugadorActual);
+  void obtenerEstadoTablero(Tablero * tablero,Jugador * jugador);
 };
 
 #endif
