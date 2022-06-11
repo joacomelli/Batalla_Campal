@@ -130,11 +130,11 @@ public:
 	
 	//PRE: -
 	//POST: Devuelve la cantidad de soldados actuales.
-	unsigned int cantidadDeSoldados();
+	unsigned int cantidadDeSoldados(Jugador * jugador);
 	
 	//PRE: -
 	//POST: Devolvera true si el jugador actual se queda sin soldados en el tablero.
-	bool estaMuerto();
+	bool estaMuerto(Jugador * jugador);
 	
 	//PRE: -
 	//POST: Pedira al jugador coordenadas (x,y,z) para ubicar su Avion, solo se puede ubicar en una casilla que sea del tipo Aire, y si hay un
