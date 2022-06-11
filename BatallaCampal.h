@@ -159,6 +159,10 @@ public:
 	//POST: 
 	void jugarTurno(Jugador * jugador, bool castarActivadas);
 	
+	//PRE: Deben exisitir jugadores.
+	//POST: Cuenta la cantidad de jugadores que se encuentran jugando
+	void recuentoDeJugadores();
+	
 	//PRE:
 	//POST:
         void jugarRonda();
