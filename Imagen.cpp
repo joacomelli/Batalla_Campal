@@ -89,8 +89,7 @@ void Imagen::recorrerCasilla(<Lista<Casilla *> * casillas, Jugador * jugadorActu
         casillas->iniciarCursor();
         while(casillas->avanzarCursor()){
             Casilla * casilla = casillas->obtenerCursor();
-            if((casilla->estaOcupado()) && (casilla->getFicha()->getJugador()->getNombre() == jugadorActual->getNombre()) 
-	       && (casilla->getFicha()->getEstado() == Activa ){
+            if((casilla->estaOcupado()) && (casilla->getFicha()->getJugador()->getNombre() == jugadorActual->getNombre())){
 		TipoDeFicha tipo = casilla->getFicha()->getTipo();
                	this->chequearFicha(tipo, casilla); 
             }
