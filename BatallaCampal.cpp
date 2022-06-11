@@ -18,19 +18,19 @@ BatallaCampal::~BatallaCampal() {
 }
 
 // TERMINAR
-void BatallaCampal::menuDeJuego(unsigned int * numeroDeEscenario){
+void BatallaCampal::menuDeJuego(){
 	
 	std::cout << "Bienvenido a la BatallaCampal." << std::endl;
-	while(cantidadDeJugadores > MAXIMO_DE_JUGADORES || cantidadDeJugadores < MINIMO_DE_JUGADORES){ 
+	while(this->cantidadDeJugadores > MAXIMO_DE_JUGADORES || this->cantidadDeJugadores < MINIMO_DE_JUGADORES){ 
 		std::cout << "Ingrese la cantidad de jugadores que van a participar. (" << MINIMO_DE_JUGADORES << " a " << MAXIMO_DE_JUGADORES << ")" << std::endl;
 		std::cin >> this->cantidadDeJugadores;
-		if(cantidadDeJugadores > MAXIMO_DE_JUGADORES || cantidadDeJugadores < MINIMO_DE_JUGADORES){
+		if(this->cantidadDeJugadores > MAXIMO_DE_JUGADORES || this->cantidadDeJugadores < MINIMO_DE_JUGADORES){
 			std::cout << "La cantidad de jugadores elegida no es valida. (" << MINIMO_DE_JUGADORES << " a " << MAXIMO_DE_JUGADORES << ")" << std::endl;
 		}
 	}
 	
 	this->jugadores = new Lista <Jugador *>();
-	for(unsigned int i = 1; i <= cantidadDeJugadores; i++){
+	for(unsigned int i = 1; i <= this->cantidadDeJugadores; i++){
 		std::string nombreJugador;
 		std::cout << "Jugador " <<  i << " ingrese su nombre." << std::endl;
 		std::cin >> nombreJugador;
@@ -38,11 +38,11 @@ void BatallaCampal::menuDeJuego(unsigned int * numeroDeEscenario){
 		this->jugadores->agregar(new Jugador(i,nombreJugador),i);
 		
 	}
-	*numeroDeEscenario = 0;
-	while(numeroDeEscenario < 1 || numeroDeEscenario > NUM_MAPA_MAXIMO){ 
+	
+	while(this->numeroDeMapa < 1 || this->numeroDeMapa > NUM_MAPA_MAXIMO){ 
 		std::cout << "Ingrese el numero de mapa que desea jugar. (1 a " << NUM_MAPA_MAXIMO << ")" << std::endl;
-		std::cin >> *numeroDeEscenario;
-		if(numeroDeEscenario < 1 || numeroDeEscenario > NUM_MAPA_MAXIMO){
+		std::cin >> this->numeroDeMapa;
+		if(this->numeroDeMapa < 1 || this->numeroDeMapa > NUM_MAPA_MAXIMO){
 			std::cout << "El numero de mapa ingresado no es valido. (1 a " << NUM_MAPA_MAXIMO << ")" << std::endl;
 		}
         }
@@ -627,7 +627,7 @@ void BatallaCampal::recuentoDeJugadores(){
 	unsigned int contador = 0;
 	while( this->jugadores->avanzarCursor()){
 		contador++;
-		if( estaMuerto(this->jugadores->obtenerCursor()){
+		if( estaMuerto(this->jugadores->obtenerCursor())){
 			std::cout << this->jugadores->obtenerCursor()->getNombre() << " ha muerto." << std::endl;
 			this->jugadores->remover(contador);
 			(this->cantidadDeJugadores)--;
@@ -645,7 +645,7 @@ bool BatallaCampal::juegoTerminado(){
 		   
 void BatallaCampal::jugar(){
 		 
-	menuDeJuego(this->numeroDeMapa);
+	menuDeJuego();
 	inicializarSoldados();
 	while(!juegoTerminado()){
 		jugarRonda(true);
@@ -705,7 +705,7 @@ void BatallaCampal::sacarCarta(Jugador * jugador){
 			
 		case OtroSoldado:
 			std::cout << "de Otro Soldado" << std::endl;
-			if(this->cantidadDeLaFicha(FSoldado) < SOLDADOS_INICIALES){
+			if(jugador->cantidadDeLaFicha(FSoldado) < SOLDADOS_INICIALES){
 				Vector<unsigned int> * posicion = pedirDestinoDelSoldado(jugador);
 				colocarSoldado(new Ficha(FSoldado,jugador,Activa),posicion);
 			}else{
