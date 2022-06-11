@@ -21,7 +21,7 @@ class Imagen {
     void recorrerTablero(Tablero * tablero, Jugador * jugador);
     void recorrerPlanoXY(<Lista<Lista<Casilla *> *> *casillas, Jugador * jugador);
     void recorrerCasilla(<Lista<Casilla *> casillas, Jugador * jugadorActual);
-    void chequearFicha(TipoDeFicha tipo, Casilla * casilla);
+    void chequearFicha(Casilla * casilla);
 
 
 public:
