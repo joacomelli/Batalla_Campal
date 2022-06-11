@@ -3,6 +3,8 @@
 
 using namespace std; 
 /////Falta armamento!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+/////hay que fijarse que las funciones que ubican las imagenes y las mueven en casillas se manejan desde la casilla
+/// (0,0) q para nos es la (1,1) hay que modificar los valores antes o en las mismas funciones y cada casilla vale 40 dentro de las func 
 Imagen::Imagen(){
     this->inactiva.ReadFromFile("inactiva.bmp");
     this->avion.ReadFromFile("avion.bmp");
