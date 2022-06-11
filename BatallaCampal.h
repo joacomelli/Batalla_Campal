@@ -66,7 +66,7 @@ public:
 	void iniciarEscenarioDos(unsigned int xMaximo, unsigned int yMaximo, unsigned int zMaximo);
 	
 	//PRE:-
-	//POST: Inicia el tablero en el escenario 2 pre configurado con sus maximos.
+	//POST: Inicia el tablero en el escenario 3 pre configurado con sus maximos.
 	void iniciarEscenarioTres(unsigned int xMaximo, unsigned int yMaximo, unsigned int zMaximo);
 
 	//PRE:-
