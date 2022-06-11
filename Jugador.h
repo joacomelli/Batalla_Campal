@@ -40,13 +40,7 @@ public:
 	//POST: Elimina el nodo de la lista correspondiente a esa ficha.
 	void eliminarFicha(Ficha* ficha);
 	
-	//PRE: -
-	//POST: Devuelve la cantidad de soldados actuales.
-	unsigned int cantidadDeSoldados();
-	
-	//PRE: -
-	//POST: Devolvera true si el jugador actual se queda sin soldados en el tablero.
-	bool estaMuerto();
+
 	
 	
 };
