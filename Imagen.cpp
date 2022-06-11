@@ -44,12 +44,12 @@ void EstadoTablero::agregarBarcoAEstado(int coordenadaX, int coordenadaY){
 }
 
 //mejor un bool en vez de string pero no tengo ganas de pensar
-void EstadoTablero::agregarInactivaAEstado(int coordenadaX, int coordenadaY, in coordenadaZ, string plano){
-	if (plano == 'XY'){
+void EstadoTablero::agregarInactivaAEstado(int coordenadaX, int coordenadaY, int coordenadaZ){
+	if (coordenadaZ == 1){
 		RangedPixelToPixelCopyTransparent( this->inactiva, 0, this->inactiva.TellWidth(),
 				this->inactiva.TellHeight(), 0,this->estado, 76+ coordenadaY*40,
 				45 + coordenadaX*40,*this->inactiva(0,0) );
-	} else if (plano == 'XYZ'){
+	} else{
 		RangedPixelToPixelCopyTransparent( this->inactiva, 0, this->inactiva.TellWidth(),
 						this->inactiva.TellHeight(), 0,this->estado, 1070 - coordenadaZ*40,
 						45 + coordenadaX*40,*this->inactiva(0,0) );
@@ -95,9 +95,9 @@ void Imagen::recorrerCasilla(<Lista<Casilla *> * casillas, Jugador * jugadorActu
             }
             else if(casilla->getEstado() == Inactiva){
             	if (casilla->getZ() == 1){
-			agregarInactivaAEstado(casilla->getX(), casilla->getY(),casilla->getZ(), "XY");
+			agregarInactivaAEstado(casilla->getX(), casilla->getY(),casilla->getZ());
 		} else if (casilla->getFicha() != NULL)	{
-			agregarInactivaAEstado(casilla->getX(), casilla->getY(),casilla->getZ(), "XYZ");
+			agregarInactivaAEstado(casilla->getX(), casilla->getY(),casilla->getZ());
 		//la casilla esta inactiva pero podria haber estado vacia antes (creo) esto se fija q si devuelve
 		// null el get ficha es xq taba vacia antes y no tenia ninguna ficha, en cambio al ser z mayor a 1 
 		// son solo aviones las posibles fichas y como (creo) queremos mostrar solo las casillas inactivas del plano
