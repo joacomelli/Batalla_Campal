@@ -107,7 +107,7 @@ void Imagen::recorrerCasilla(<Lista<Casilla *> * casillas, Jugador * jugadorActu
         }
     }
  
-void Imagen chequearFicha(TipoDeFicha tipo, Casilla * casilla){
+void Imagen::chequearFicha(TipoDeFicha tipo, Casilla * casilla){
 	if (tipo == FAvion) {
 		this->agregarAvionAEstado(casilla->getX(), casilla->getY(),casilla->getZ());
 	} else if (tipo == FSoldado){
