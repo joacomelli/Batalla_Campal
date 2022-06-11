@@ -48,8 +48,88 @@ void BatallaCampal::iniciarEscenarioUno(unsigned int xMaximo, unsigned int yMaxi
 	for(unsigned int x = 1; x <= xMaximo; x++){
 		for(unsigned int y = 1; y <= yMaximo; y++){
 			for(unsigned int z = 1; z <= zMaximo; z++){
-				if(x == 1){
-					this->tablero->getCasillero(x,y,z)->setTipo(Tierra);
+				if(z == 1){
+					if((y ==1) && (x <= 7)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==1) && (7 < x) && (x <= 15))){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==2) && (x <= 2)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==2)&& (2 < x) && (x <= 8)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==2)&& (8 < x) && (x <= 13)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==2)&& (13 < x) && (x <= 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==3) && (x <= 8)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==3)&& (8 < x) && (x <= 11)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==3)&& (11 < x) && (x <= 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if(y ==4){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==5) && (x <= 13)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==5)&& (13 < x) && (x <= 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==6) && (x <= 2)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==6)&& (2 < x) && (x <= 5)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==6)&& (5 < x) && (x <= 13)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==6)&& (13 < x) && (x <= 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==7)&& (2 < x)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==7)&& (2 < x) && (x <= 5)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==7)&& (5 < x) && (x <= 13)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==7)&& (13 < x) && (x <= 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==8)&& (2 < x)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==8)&& (3 == x) ){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==8)&& (4 == x) ){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==8)&& (5 == x) ){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==8)&& (5 < x) && (x <= 13)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==8)&& (13 < x) && (x <= 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==9) && (x <= 13)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==9)&& (13 < x) && (x <= 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==10) && (x <= 13)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==10)&& (13 < x) && (x <= 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==11) && (x <= 2)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==11)&& (2 < x) && (x <= 13)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==11)&& (13 < x) && (x <= 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==12) && (x <= 5)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==12)&& (5 < x) && (x <= 13)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==12)&& (13 < x) && (x <= 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==13) && (x <= 7)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==13)&& (7 < x) && (x <= 12)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==13)&& (12 < x) && (x <= 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==14) ││ (y == 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+
 				}
 				else{
 					this->tablero->getCasillero(x,y,z)->setTipo(Aire);
@@ -64,14 +144,51 @@ void BatallaCampal::iniciarEscenarioDos(unsigned int xMaximo, unsigned int yMaxi
 	for(unsigned int x = 1; x <= xMaximo; x++){
 		for(unsigned int y = 1; y <= yMaximo; y++){
 			for(unsigned int z = 1; z <= zMaximo; z++){
-				if(x == 1){
-					if(y < z){
-
-				        this->tablero->getCasillero(x,y,z)->setTipo(Tierra);
-					}
-					else{
-					    this->tablero->getCasillero(x,y,z)->setTipo(Agua);
-					}
+				if(z == 1){
+					if((y ==1) ││ (y == 2)││ (y == 3)││ (y == 4)││ (y == 12)││ (y == 13)││ (y == 14)││ (y == 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==5) && (x <= 6)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==5)&& (6 < x) && (x <= 9)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==5)&& (9 < x) && (x <= 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==6) && (x <= 6)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==6)&& (6 < x) && (x <= 9)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==6)&& (9 < x) && (x <= 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==7) && (x <= 6)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==7)&& (6 < x) && (x <= 9)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==7)&& (9 < x) && (x <= 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==8) && (x <= 6)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==8)&& (6 < x) && (x <= 9)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==8)&& (9 < x) && (x <= 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==9) && (x <= 6)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==9)&& (6 < x) && (x <= 9)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==9)&& (9 < x) && (x <= 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==10) && (x <= 6)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==10)&& (6 < x) && (x <= 9)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==10)&& (9 < x) && (x <= 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==11) && (x <= 6)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==11)&& (6 < x) && (x <= 9)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==11)&& (9 < x) && (x <= 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
 				}
 				else{
 					this->tablero->getCasillero(x,y,z)->setTipo(Aire);
@@ -81,7 +198,88 @@ void BatallaCampal::iniciarEscenarioDos(unsigned int xMaximo, unsigned int yMaxi
 	}
 }
 
-
+void BatallaCampal::iniciarEscenarioTres(unsigned int xMaximo, unsigned int yMaximo, unsigned int zMaximo){
+	this->tablero = new Tablero(xMaximo,yMaximo,zMaximo);
+	for(unsigned int x = 1; x <= xMaximo; x++){
+		for(unsigned int y = 1; y <= yMaximo; y++){
+			for(unsigned int z = 1; z <= zMaximo; z++){
+				if(z == 1){
+					if((y ==1) ││ (y == 2) ││ (y == 14)││ (y == 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==3) && (x <= 4)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==3)&& (4 < x) && (x <= 11)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==3)&& (11 < x) && (x <= 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==4) && (x <= 3)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==4)&& (3 < x) && (x <= 12)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==4)&& (12 < x) && (x <= 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==5) && (x <= 2)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==5)&& (2 < x) && (x <= 13)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==5)&& (13 < x) && (x <= 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==6) && (x <= 2)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==6)&& (2 < x) && (x <= 13)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==6)&& (13 < x) && (x <= 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==7) && (x <= 2)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==7)&& (2 < x) && (x <= 13)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==7)&& (13 < x) && (x <= 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==8) && (x <= 2)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==8)&& (2 < x) && (x <= 13)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==8)&& (13 < x) && (x <= 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==9) && (x <= 2)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==9)&& (2 < x) && (x <= 13)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==9)&& (13 < x) && (x <= 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==10) && (x <= 2)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==10)&& (2 < x) && (x <= 13)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==10)&& (13 < x) && (x <= 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==11) && (x <= 2)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==11)&& (2 < x) && (x <= 13)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==11)&& (13 < x) && (x <= 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==12) && (x <= 3)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==12)&& (3 < x) && (x <= 12)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==12)&& (12 < x) && (x <= 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==13) && (x <= 4)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+					else if((y ==13)&& (4 < x) && (x <= 11)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Tierra);}
+					else if((y ==13)&& (11 < x) && (x <= 15)){
+						this->tablero->getCasillero(x,y,z)->setTipo(Agua);}
+				}
+				else{
+					this->tablero->getCasillero(x,y,z)->setTipo(Aire);
+				}
+			}
+		}
+	}
+}
 
 //REVISAR
 Vector<unsigned int> * BatallaCampal::pedirCoordenadas(){ //va en privado creo
