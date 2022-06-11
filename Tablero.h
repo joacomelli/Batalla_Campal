@@ -39,6 +39,10 @@ public:
 
 	//PRE: -
 	//POS: Devuelve la posicion del X entre 1 y el maximo
+	Lista<Lista<Lista<Casilla *> *> *> * getCasilleros();
+	
+	//PRE: -
+	//POS: Devuelve la posicion del X entre 1 y el maximo
 	int getxMaximo();
 
 	//PRE: -
