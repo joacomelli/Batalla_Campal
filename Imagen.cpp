@@ -21,7 +21,7 @@ void Imagen::agregarFondoAEstado(){
                          this->estado,0,0); 
 }
 
-void EstadoTablero::agregarAvionAEstado(int coordenadaX, int coordenadaY, int coordenadaZ){
+void  Imagen::agregarAvionAEstado(int coordenadaX, int coordenadaY, int coordenadaZ){
 		RangedPixelToPixelCopyTransparent( this->avion, 0, this->avion.TellWidth(),
 						this->avion.TellHeight(), 0,this->estado, 1070 - coordenadaZ*40,
 						45 + coordenadaX*40,*this->avion(0,0) );
@@ -31,20 +31,19 @@ void EstadoTablero::agregarAvionAEstado(int coordenadaX, int coordenadaY, int co
 						1035 - coordenadaZ*40,*this->avion(0,0) );
 }
 
-void EstadoTablero::agregarSoldadoAEstado(int coordenadaX, int coordenadaY){
+void  Imagen::agregarSoldadoAEstado(int coordenadaX, int coordenadaY){
 		RangedPixelToPixelCopyTransparent( this->soldado, 0, this->soldado.TellWidth(),
 						this->soldado.TellHeight(), 0,this->estado, 76 + coordenadaY*40,
 						45 + coordenadaX*40,*this->soldado(0,0) );
 }
 
-void EstadoTablero::agregarBarcoAEstado(int coordenadaX, int coordenadaY){
+void  Imagen::agregarBarcoAEstado(int coordenadaX, int coordenadaY){
 		RangedPixelToPixelCopyTransparent( this->barco, 0, this->barco.TellWidth(),
 						this->barco.TellHeight(), 0,this->estado, 76+ coordenadaY*40,
 						45 + coordenadaX*40,*this->barco(0,0) );
 }
 
-//mejor un bool en vez de string pero no tengo ganas de pensar
-void EstadoTablero::agregarInactivaAEstado(int coordenadaX, int coordenadaY, int coordenadaZ){
+void  Imagen::agregarInactivaAEstado(int coordenadaX, int coordenadaY, int coordenadaZ){
 	if (coordenadaZ == 1){
 		RangedPixelToPixelCopyTransparent( this->inactiva, 0, this->inactiva.TellWidth(),
 				this->inactiva.TellHeight(), 0,this->estado, 76+ coordenadaY*40,
