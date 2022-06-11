@@ -26,7 +26,7 @@ void Imagen::agregarFondoAEstado(){
 void  Imagen::agregarAvionAEstado(int coordenadaX, int coordenadaY, int coordenadaZ){
 		RangedPixelToPixelCopyTransparent( this->avion, 0, this->avion.TellWidth(),
 						this->avion.TellHeight(), 0,this->estado, 1070 - coordenadaZ*40,
-						45 + coordenadaX*40,*this->avion(0,0) );
+						43 + coordenadaX*40,*this->avion(0,0) );
 
 		RangedPixelToPixelCopyTransparent( this->avion, 0, this->avion.TellWidth(),
 						this->avion.TellHeight(), 0,this->estado, 76 + coordenadaY*40,
@@ -52,8 +52,8 @@ void  Imagen::agregarInactivaAEstado(int coordenadaX, int coordenadaY, int coord
 				45 + coordenadaX*40,*this->inactiva(0,0) );
 	} else{
 		RangedPixelToPixelCopyTransparent( this->inactiva, 0, this->inactiva.TellWidth(),
-						this->inactiva.TellHeight(), 0,this->estado, 1070 - coordenadaZ*40,
-						45 + coordenadaX*40,*this->inactiva(0,0) );
+						this->inactiva.TellHeight(), 0,this->estado, 1072 - coordenadaZ*40,
+						46 + coordenadaX*40,*this->inactiva(0,0) );
 
 		RangedPixelToPixelCopyTransparent( this->inactiva, 0, this->inactiva.TellWidth(),
 						this->inactiva.TellHeight(), 0,this->estado, 76 + coordenadaY*40,
