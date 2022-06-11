@@ -40,6 +40,7 @@ void BatallaCampal::menuDeJuego(unsigned int * numeroDeEscenario){
 		if(numeroDeEscenario < 1 || numeroDeEscenario > NUM_MAPA_MAXIMO){
 			std::cout << "El numero de mapa ingresado no es valido. (1 a " << NUM_MAPA_MAXIMO << ")" << std::endl;
 		}
+        }
 }
 
 
