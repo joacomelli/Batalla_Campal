@@ -3,6 +3,8 @@
 
 using namespace std; 
 /////Falta armamento!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//chequear si puede usar la libreria easy y las imagenes desde la carpeta
+//hay q ver el tema de manejo de archivos
 Imagen::Imagen(){
     this->inactiva.ReadFromFile("inactiva.bmp");
     this->avion.ReadFromFile("avion.bmp");
