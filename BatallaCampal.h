@@ -114,6 +114,11 @@ public:
 	//POST: Compara si las coordendas destino estan a una casilla de distancia de las coordenadas origen que son las del soldado.
 	bool movimientoCercano(Vector<unsigned int> * origen, Vector<unsigned int> * destino);
 	
+	
+	//PRE: La coordenada debe ser valida dentro de los maximos del tablero
+	//POST: Devuelve true si la posicion no esta en los bordes del tablero, false de lo contrario.
+	bool posicionDeMisilValida(Vector<unsigned int> * posicion);
+	
 	//PRE: -
 	//POST: Lanzara un misil que destruye 27 casilleros en el tablero (3x3x3).
 	void lanzarMisil(Jugador * jugador);
