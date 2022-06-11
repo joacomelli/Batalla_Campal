@@ -73,20 +73,20 @@ void Imagen::definirMapa(string background){
 void Imagen::recorrerTablero(Tablero * tablero, Jugador * jugador){
         tablero->getCasilleros()->iniciarCursor();
         while(tablero->getCasilleros()->avanzarCursor()){
-            <Lista<Lista<Casilla *> *> * casillasPlanoXY = tablero->getCasilleros()->obtenerCursor();//PLANO XY
+            Lista<Lista<Casilla *> *> * casillasPlanoXY = tablero->getCasilleros()->obtenerCursor();//PLANO XY
             this->recorrerPlanoXY(casillasPlanoXY, jugador);
         }
     }
 
-void Imagen::recorrerPlanoXY(<Lista<Lista<Casilla *> *> * casillas, Jugador * jugador){
+void Imagen::recorrerPlanoXY(Lista<Lista<Casilla *> *> * casillas, Jugador * jugador){
         casillas->iniciarCursor();
         while(casillas->avanzarCursor()){
-            <Lista<Casilla *> * casillasRecta = casillas->obtenerCursor();
+            Lista<Casilla *> * casillasRecta = casillas->obtenerCursor();
             this->recorrerCasilla(casillasRecta, jugador);
         }
     }
 
-void Imagen::recorrerCasilla(<Lista<Casilla *> * casillas, Jugador * jugadorActual){
+void Imagen::recorrerCasilla(Lista<Casilla *> * casillas, Jugador * jugadorActual){
         casillas->iniciarCursor();
         while(casillas->avanzarCursor()){
             Casilla * casilla = casillas->obtenerCursor();
