@@ -3,8 +3,6 @@
 
 using namespace std; 
 /////Falta armamento!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-/////hay que fijarse que las funciones que ubican las imagenes y las mueven en casillas se manejan desde la casilla
-/// (0,0) q para nos es la (1,1) hay que modificar los valores antes o en las mismas funciones y cada casilla vale 40 dentro de las func 
 Imagen::Imagen(){
     this->inactiva.ReadFromFile("inactiva.bmp");
     this->avion.ReadFromFile("avion.bmp");
@@ -25,40 +23,40 @@ void Imagen::agregarFondoAEstado(){
 
 void EstadoTablero::agregarAvionAEstado(int coordenadaX, int coordenadaY, int coordenadaZ){
 		RangedPixelToPixelCopyTransparent( this->avion, 0, this->avion.TellWidth(),
-						this->avion.TellHeight(), 0,this->estado, 1030 - coordenadaZ*40,
-						85 + coordenadaX*40,*this->avion(0,0) );
+						this->avion.TellHeight(), 0,this->estado, 1070 - coordenadaZ*40,
+						45 + coordenadaX*40,*this->avion(0,0) );
 
 		RangedPixelToPixelCopyTransparent( this->avion, 0, this->avion.TellWidth(),
-						this->avion.TellHeight(), 0,this->estado, 116 + coordenadaY*40,
-						995 - coordenadaZ*40,*this->avion(0,0) );
+						this->avion.TellHeight(), 0,this->estado, 76 + coordenadaY*40,
+						1035 - coordenadaZ*40,*this->avion(0,0) );
 }
 
 void EstadoTablero::agregarSoldadoAEstado(int coordenadaX, int coordenadaY){
 		RangedPixelToPixelCopyTransparent( this->soldado, 0, this->soldado.TellWidth(),
-						this->soldado.TellHeight(), 0,this->estado, 116 + coordenadaY*40,
-						85 + coordenadaX*40,*this->soldado(0,0) );
+						this->soldado.TellHeight(), 0,this->estado, 76 + coordenadaY*40,
+						45 + coordenadaX*40,*this->soldado(0,0) );
 }
 
 void EstadoTablero::agregarBarcoAEstado(int coordenadaX, int coordenadaY){
 		RangedPixelToPixelCopyTransparent( this->barco, 0, this->barco.TellWidth(),
-						this->barco.TellHeight(), 0,this->estado, 116+ coordenadaY*40,
-						85 + coordenadaX*40,*this->barco(0,0) );
+						this->barco.TellHeight(), 0,this->estado, 76+ coordenadaY*40,
+						45 + coordenadaX*40,*this->barco(0,0) );
 }
 
 //mejor un bool en vez de string pero no tengo ganas de pensar
 void EstadoTablero::agregarInactivaAEstado(int coordenadaX, int coordenadaY, in coordenadaZ, string plano){
 	if (plano == 'XY'){
 		RangedPixelToPixelCopyTransparent( this->inactiva, 0, this->inactiva.TellWidth(),
-				this->inactiva.TellHeight(), 0,this->estado, 116+ coordenadaY*40,
-				85 + coordenadaX*40,*this->inactiva(0,0) );
+				this->inactiva.TellHeight(), 0,this->estado, 76+ coordenadaY*40,
+				45 + coordenadaX*40,*this->inactiva(0,0) );
 	} else if (plano == 'XYZ'){
 		RangedPixelToPixelCopyTransparent( this->inactiva, 0, this->inactiva.TellWidth(),
-						this->inactiva.TellHeight(), 0,this->estado, 1030 - coordenadaZ*40,
-						85 + coordenadaX*40,*this->inactiva(0,0) );
+						this->inactiva.TellHeight(), 0,this->estado, 1070 - coordenadaZ*40,
+						45 + coordenadaX*40,*this->inactiva(0,0) );
 
 		RangedPixelToPixelCopyTransparent( this->inactiva, 0, this->inactiva.TellWidth(),
-						this->inactiva.TellHeight(), 0,this->estado, 116 + coordenadaY*40,
-						995 - coordenadaZ*40,*this->inactiva(0,0) );
+						this->inactiva.TellHeight(), 0,this->estado, 76 + coordenadaY*40,
+						1035 - coordenadaZ*40,*this->inactiva(0,0) );
 	}	
 }
 
