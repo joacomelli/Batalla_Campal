@@ -672,7 +672,7 @@ void BatallaCampal::sacarCarta(Jugador * jugador){//AL final del turno
 			
 		case OtroTurno:
 			std::cout << "Otro Turno. Juega de nuevo." << std::endl;
-			jugarTurno(jugador);
+			jugarTurno(jugador, true);
 			break;
 			
 		case OtroSoldado:
