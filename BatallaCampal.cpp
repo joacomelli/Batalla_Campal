@@ -627,7 +627,7 @@ void BatallaCampal::colocarBarco(Jugador * jugador){
 
 //TERMINAR
 void BatallaCampal::jugarTurno(Jugador * jugador, bool cartasActivadas){
-	
+	mostrarEstadoTablero(jugador);
 	disparar(jugador);
 	
 	Vector<Vector<unsigned int> *> * movimiento = pedirMovimiento(jugador);
