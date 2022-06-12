@@ -62,10 +62,13 @@ void  Imagen::agregarInactivaAEstado(int coordenadaX, int coordenadaY, int coord
 }
 
 void Imagen::definirMapa(string background){
-  if (background == "Background1" || background == "Background2"  || background == "Background3"){
-    string fileName = background + ".bmp";	 
-    this->background.ReadfromFile(fileName.c_str()); 
-  } 
+  if (background == "Background1"){
+    this->background.ReadfromFile("Background1.bmp); 
+  } else if (background == "Background2"){
+    this->background.ReadfromFile("Background2.bmp); 
+  } else if (background == "Background3"){
+    this->background.ReadfromFile("Background3.bmp); 
+  }
  }
   
 
@@ -90,13 +93,13 @@ void Imagen::recorrerCasilla(Lista<Casilla *> * casillas, Jugador * jugadorActua
         casillas->iniciarCursor();
         while(casillas->avanzarCursor()){
             Casilla * casilla = casillas->obtenerCursor();
-            if((casilla->estaOcupado()) && (casilla->getFicha()->getJugador()->getNombre() == jugadorActual->getNombre())){
+            if((casilla->estaOcupado()) && (casilla->getFicha()->getJugador() == jugadorActual->getNumero())){
                	this->chequearFicha(casilla); 
             }
             else if(casilla->getEstado() == Inactiva){
-		if ((casilla->getFicha() != NULL)&& (casilla->getFicha()->getJugador()->getNombre() == jugadorActual->getNombre())){
+		if ((casilla->getFicha() != NULL) && (casilla->getFicha()->getJugador() == jugadorActual->getNumero())){
 			this->chequearFicha(casilla); 
-		} ///mostramos los soldados barcos aviones que perdio el otro jugador? x ahora no 
+		} 
 		agregarInactivaAEstado(casilla->getX(), casilla->getY(),casilla->getZ());
             }
         }
@@ -113,7 +116,7 @@ void Imagen::chequearFicha(Casilla * casilla){
 	}
 }	
 	       
-void Imagen::obtenerEstadoTablero( Tablero * tablero, Jugador *jugador){
+void Imagen::obtenerEstadoTablero(Tablero * tablero, Jugador *jugador){
   this->medidaDeEstado();
   this->agregarFondoAEstado();
   this->recorrerTablero(tablero, jugador);
