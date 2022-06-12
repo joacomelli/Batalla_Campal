@@ -66,7 +66,7 @@ void Imagen::definirMapa(string background){
 		this->background.ReadFromFile("Background1.bmp");
 	}else if (background == "Background2"){
 		this->background.ReadFromFile("Background2.bmp");
-	}else if (background == "Background2"){
+	}else if (background == "Background3"){
 		this->background.ReadFromFile("Background3.bmp");
 	}
 }
