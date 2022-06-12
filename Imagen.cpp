@@ -6,10 +6,10 @@ using namespace std;
 //chequear si puede usar la libreria easy y las imagenes desde la carpeta
 //hay q ver el tema de manejo de archivos
 Imagen::Imagen(){
-    this->inactiva.ReadFromFile("inactiva.bmp");
-    this->avion.ReadFromFile("avion.bmp");
-    this->barco.ReadFromFile("barco.bmp");
-    this->soldado.ReadFromFile("Soldado.bmp");
+    this->inactiva.ReadFromFile("imagen/inactiva.bmp");
+    this->avion.ReadFromFile("imagen/avion.bmp");
+    this->barco.ReadFromFile("imagen/barco.bmp");
+    this->soldado.ReadFromFile("imagen/Soldado.bmp");
     this->estado.SetBitDeph(24);
 }
 
@@ -63,11 +63,11 @@ void  Imagen::agregarInactivaAEstado(int coordenadaX, int coordenadaY, int coord
 
 void Imagen::definirMapa(string background){
   if (background == "Background1"){
-    this->background.ReadfromFile("Background1.bmp); 
+    this->background.ReadfromFile("imagen/Background1.bmp); 
   } else if (background == "Background2"){
-    this->background.ReadfromFile("Background2.bmp); 
+    this->background.ReadfromFile("imagen/Background2.bmp); 
   } else if (background == "Background3"){
-    this->background.ReadfromFile("Background3.bmp); 
+    this->background.ReadfromFile("imagen/Background3.bmp); 
   }
  }
   
