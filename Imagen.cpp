@@ -64,15 +64,15 @@ void  Imagen::agregarInactivaAEstado(int coordenadaX, int coordenadaY, int coord
 void Imagen::definirMapa(string background){
   if (background == "Background1"){
     this->background.ReadfromFile("imagen/Background1.bmp); 
-  } else if (background == "Background2"){
+  } 
+  if (background == "Background2"){
     this->background.ReadfromFile("imagen/Background2.bmp); 
-  } else if (background == "Background3"){
+  }
+  if (background == "Background3"){
     this->background.ReadfromFile("imagen/Background3.bmp); 
   }
  }
   
-
-//Lista<Lista<Lista<Casilla *> *> *> casillas
 void Imagen::recorrerTablero(Tablero * tablero, Jugador * jugador){
         tablero->getCasilleros()->iniciarCursor();
         while(tablero->getCasilleros()->avanzarCursor()){
