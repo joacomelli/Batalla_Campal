@@ -1,7 +1,7 @@
 #ifndef IMAGEN_H_
 #define IMAGEN_H_
 
-#include "EasyBMP.h"
+#include "imagen/EasyBMP.h"
 #include "Vector.h"
 #include "Casilla.h"
 #include "Lista.h"
@@ -20,14 +20,13 @@ class Imagen {
     BMP estado;
     void medidaDeEstado();
     void agregarFondoDeEstado(); 
-    void agregarObjetosAEstado();
     void agregarAvionAEstado(int coordenadaX, int coordenadaY, int coordenadaZ);
     void agregarBarcoAEstado(int coordenadaX, int coordenadaY);
     void agregarSoldadoAEstdo(int coordenadaX, int coordenadaY);
-    void agregarInactivaAEstdo(int coordenadaX, int coordenadaY, int coordenadaZ, std::string plano);
+    void agregarInactivaAEstdo(int coordenadaX, int coordenadaY, int coordenadaZ);
     void recorrerTablero(Tablero * tablero, Jugador * jugador);
     void recorrerPlanoXY(Lista<Lista<Casilla *> *> *casillas, Jugador * jugador);
-    void recorrerCasilla(Lista<Casilla *> casillas, Jugador * jugadorActual);
+    void recorrerCasilla(Lista<Casilla *>* casillas, Jugador * jugadorActual);
     void chequearFicha(Casilla * casilla);
 
 
