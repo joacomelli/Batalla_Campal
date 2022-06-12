@@ -62,16 +62,14 @@ void  Imagen::agregarInactivaAEstado(int coordenadaX, int coordenadaY, int coord
 }
 
 void Imagen::definirMapa(string background){
-  if (background == "Background1"){
-    this->background.ReadfromFile("imagen/Background1.bmp); 
-  } 
-  if (background == "Background2"){
-    this->background.ReadfromFile("imagen/Background2.bmp); 
-  }
-  if (background == "Background3"){
-    this->background.ReadfromFile("imagen/Background3.bmp); 
-  }
- }
+	if (background == "Background1"){
+		this->background.ReadFromFile("Background1.bmp");
+	}else if (background == "Background2"){
+		this->background.ReadFromFile("Background2.bmp");
+	}else if (background == "Background2"){
+		this->background.ReadFromFile("Background3.bmp");
+	}
+}
   
 void Imagen::recorrerTablero(Tablero * tablero, Jugador * jugador){
         tablero->getCasilleros()->iniciarCursor();
