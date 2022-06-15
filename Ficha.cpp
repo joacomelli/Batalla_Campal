@@ -1,7 +1,7 @@
 #include "Ficha.h"
 
-Ficha::Ficha(TipoDeFicha tipo, Jugador * jugador, EstadoDeFicha estado){
-	if(jugador == NULL){
+Ficha::Ficha(TipoDeFicha tipo, unsigned int jugador, EstadoDeFicha estado){
+	if(jugador == 0){
 		throw "El jugador no puede estar vacio";
 	}
 	this->tipo = tipo;
@@ -28,11 +28,11 @@ void Ficha::eliminar(){
 	this->estado = Eliminada;
 }
 
-Jugador* Ficha::getJugador(){
+unsigned int Ficha::getJugador(){
 	return this->jugador;
 }
 
-void Ficha::setJugador(Jugador *jugador) {
+void Ficha::setJugador(unsigned int jugador) {
 	this->jugador = jugador;
 }
 

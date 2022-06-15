@@ -3,7 +3,7 @@
 Jugador::Jugador(unsigned int numero, std::string nombre) {
 	this->numero = numero;
 	this->nombre = nombre;
-	this->fichas  = NULL;
+	this->fichas  = new Lista<Ficha *>;
 }
 
 Jugador::~Jugador() {
@@ -15,7 +15,7 @@ std::string& Jugador::getNombre() {
 	return this->nombre;
 }
 
-int Jugador::getNumero()  {
+unsigned int Jugador::getNumero()  {
 	return this->numero;
 }
 
@@ -27,7 +27,7 @@ void Jugador::agregarFicha(Ficha* ficha){
 	if(ficha == NULL){
 		throw "La ficha debe existir";
 	}
-	this->fichas->agregar(ficha);
+	this->fichas->agregar(ficha, 1);
 }	
 
 //REVISAR esta funcion me genera duda si solo tiene q sacar la ficha de la lista o si tambien la destruye pq el casillero va  a estar apuntando a la misma ficha
@@ -56,6 +56,18 @@ bool  Jugador::tieneLaFicha(TipoDeFicha tipo){
 	}
 	
 	return false;
+}
+
+unsigned int Jugador::cantidadDeLaFicha(TipoDeFicha tipo){
+	unsigned int contador = 0;
+	this->fichas->iniciarCursor();
+	while(this->fichas->avanzarCursor()){
+			if(this->fichas->obtenerCursor()->getTipo() == tipo){
+				contador++;
+			}
+	}
+
+	return contador;
 }
 
 

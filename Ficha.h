@@ -1,6 +1,6 @@
 #ifndef FICHA_H_
 #define FICHA_H_
-#include "Jugador.h"
+
 
 
 enum TipoDeFicha{
@@ -17,14 +17,14 @@ enum EstadoDeFicha{
 class Ficha {
 private:
 	TipoDeFicha tipo;
-	Jugador * jugador;
+	unsigned int jugador;
 	EstadoDeFicha estado;
 
 public:
 
 	//PRE: Jugador no puede ser vacio.
 	//POST: Crea la ficha con el tipo y el jugador.
-	Ficha(TipoDeFicha tipo, Jugador * jugador,EstadoDeFicha estado);
+	Ficha(TipoDeFicha tipo, unsigned int jugador,EstadoDeFicha estado);
 
 	//PRE: -
 	//POST: Elimina la ficha.
@@ -44,11 +44,11 @@ public:
 
 	//PRE: Debe existir el jugador 
 	//POST: Retorna el jugador actual.
-	Jugador* getJugador();
+	unsigned int getJugador();
 
 	//PRE:-
 	//POST: Cambia al jugador
-	void setJugador(Jugador *jugador);
+	void setJugador(unsigned int jugador);
 
 	//PRE:-
 	//POST: Devuelve el tipo

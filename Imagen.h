@@ -19,11 +19,11 @@ class Imagen {
     BMP soldado;
     BMP estado;
     void medidaDeEstado();
-    void agregarFondoDeEstado(); 
+    void agregarFondoAEstado();
     void agregarAvionAEstado(int coordenadaX, int coordenadaY, int coordenadaZ);
     void agregarBarcoAEstado(int coordenadaX, int coordenadaY);
-    void agregarSoldadoAEstdo(int coordenadaX, int coordenadaY);
-    void agregarInactivaAEstdo(int coordenadaX, int coordenadaY, int coordenadaZ);
+    void agregarSoldadoAEstado(int coordenadaX, int coordenadaY);
+    void agregarInactivaAEstado(int coordenadaX, int coordenadaY, int coordenadaZ);
     void recorrerTablero(Tablero * tablero, Jugador * jugador);
     void recorrerPlanoXY(Lista<Lista<Casilla *> *> *casillas, Jugador * jugador);
     void recorrerCasilla(Lista<Casilla *>* casillas, Jugador * jugadorActual);

@@ -26,7 +26,7 @@ public:
 
 	//PRE: El jugador debe existir.
 	//POST: Muestra el numero del jugador.
-	int getNumero();
+	unsigned int getNumero();
 	
 	//PRE: El jugador debe existir.
 	//POST: Devuelve un puntero a la lista de fichas del jugador.

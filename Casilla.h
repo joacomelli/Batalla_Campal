@@ -1,6 +1,10 @@
 #ifndef CASILLA_H_
 #define CASILLA_H_
+
+#include <iostream>
 #include "Ficha.h"
+
+
 
 enum EstadoDeCasilla{
 	Vacia,

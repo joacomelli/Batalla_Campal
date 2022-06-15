@@ -2,15 +2,12 @@
 #include <string>
 
 using namespace std; 
-/////Falta que el armamento se mueva!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//chequear si puede usar la libreria easy y las imagenes desde la carpeta
-//hay q ver el tema de manejo de archivos
 Imagen::Imagen(){
-    this->inactiva.ReadFromFile("imagen/inactiva.bmp");
-    this->avion.ReadFromFile("imagen/avion.bmp");
-    this->barco.ReadFromFile("imagen/barco.bmp");
-    this->soldado.ReadFromFile("imagen/Soldado.bmp");
-    this->estado.SetBitDeph(24);
+    this->inactiva.ReadFromFile("src/imagen/inactiva.bmp");
+    this->avion.ReadFromFile("src/imagen/avion.bmp");
+    this->barco.ReadFromFile("src/imagen/barco.bmp");
+    this->soldado.ReadFromFile("src/imagen/Soldado.bmp");
+    this->estado.SetBitDepth(24);
 }
 
 void Imagen::medidaDeEstado(){
@@ -19,7 +16,7 @@ void Imagen::medidaDeEstado(){
  
 void Imagen::agregarFondoAEstado(){
   RangedPixelToPixelCopy(this->background,0,this->background.TellWidth(),
-                         this->background.TellHeight(),0
+                         this->background.TellHeight(),0,
                          this->estado,0,0); 
 }
 
@@ -63,11 +60,11 @@ void  Imagen::agregarInactivaAEstado(int coordenadaX, int coordenadaY, int coord
 
 void Imagen::definirMapa(string background){
 	if (background == "Background1"){
-		this->background.ReadFromFile("Background1.bmp");
+		this->background.ReadFromFile("src/imagen/Background1.bmp");
 	}else if (background == "Background2"){
-		this->background.ReadFromFile("Background2.bmp");
-	}else if (background == "Background3"){
-		this->background.ReadFromFile("Background3.bmp");
+		this->background.ReadFromFile("src/imagen/Background2.bmp");
+	}else if (background == "Background2"){
+		this->background.ReadFromFile("src/imagen/Background3.bmp");
 	}
 }
   
@@ -109,15 +106,15 @@ void Imagen::chequearFicha(Casilla * casilla){
 		this->agregarAvionAEstado(casilla->getX(), casilla->getY(),casilla->getZ());
 	} else if (tipo == FSoldado){
 		this->agregarSoldadoAEstado(casilla->getX(), casilla->getY());
-	} else if (tipo == FBarco) 
+	} else if (tipo == FBarco) {
 		this->agregarBarcoAEstado(casilla->getX(), casilla->getY());
 	}
-}	
+}
 	       
 void Imagen::obtenerEstadoTablero(Tablero * tablero, Jugador *jugador){
   this->medidaDeEstado();
   this->agregarFondoAEstado();
   this->recorrerTablero(tablero, jugador);
-  string fileName = "estadoTableroDe"+ jugador->getNombre + ".bmp";
+  string fileName = "estadoTableroDe"+ jugador->getNombre() + ".bmp";
   this->estado.WriteToFile(fileName.c_str());
 }

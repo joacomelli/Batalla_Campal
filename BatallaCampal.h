@@ -95,7 +95,7 @@ public:
 	TipoDeCasilla obtenerTipoDeCasilla(unsigned int x, unsigned int y, unsigned int z);
 	
 	//PRE: Debe existir un jugador y las coordenadas validas. 
-	//POST: Devolvera true si hay un soldado de jugador en las posiciones pasadas por parametro, false si no hay un soldado. 
+	//POST: Devolvera true si hay un soldado en las posiciones pasadas por parametro, false si no hay un soldado. 
 	bool tieneUnSoldado(Jugador * jugador, unsigned int x, unsigned int y, unsigned int z);
 	
 	//PRE: Debe existir el jugador y tener minimo un soldado en el tablero. 
@@ -115,6 +115,10 @@ public:
 	//POST: Destruira las coordenadas que se les pase por consola el jugador.
 	void destruirCoordenadasDelMovimiento(Vector<Vector<unsigned int> *> * coordenadas);
 	
+	//PRE: -
+	//POST:
+	Jugador * obtenerJugador(unsigned int numeroDeJugador);
+
 	//PRE: -
 	//POST: Coloca un soldado en un posicion valida, fijandose si hay otro soldado propio o enemigo.
 	void colocarSoldado(Ficha * ficha, Vector<unsigned int> * posicion);
