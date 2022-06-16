@@ -1,6 +1,5 @@
 #include "BatallaCampal.h"
 
-
 BatallaCampal::BatallaCampal() {
 	this->tablero = NULL;
 	this->jugadores = NULL;
@@ -9,15 +8,12 @@ BatallaCampal::BatallaCampal() {
 }
 
 BatallaCampal::~BatallaCampal() {
-	
 	delete this->jugadores;
 	delete this->tablero;
 	
 }
 
-// TERMINAR
 void BatallaCampal::menuDeJuego(){
-	
 	std::cout << "Bienvenido a la BatallaCampal." << std::endl;
 	while(this->cantidadDeJugadores > MAXIMO_DE_JUGADORES || this->cantidadDeJugadores < MINIMO_DE_JUGADORES){ 
 		std::cout << "Ingrese la cantidad de jugadores que van a participar. (" << MINIMO_DE_JUGADORES << " a " << MAXIMO_DE_JUGADORES << ")" << std::endl;
@@ -332,21 +328,17 @@ void BatallaCampal::inicializarSoldados(){
 
 
 Ficha * BatallaCampal::obtenerFicha( unsigned int x, unsigned int y, unsigned int z){
-
 	return this->tablero->getCasillero(x,y,z)->getFicha();
 }
 
-EstadoDeCasilla BatallaCampal::obtenerEstadoDeCasilla(unsigned int x, unsigned int y, unsigned int z){
-	
+EstadoDeCasilla BatallaCampal::obtenerEstadoDeCasilla(unsigned int x, unsigned int y, unsigned int z){	
 	return this->tablero->getCasillero(x,y,z)->getEstado();
 }
 
 TipoDeCasilla BatallaCampal::obtenerTipoDeCasilla(unsigned int x, unsigned int y, unsigned int z){
-
 	return this->tablero->getCasillero(x,y,z)->getTipo();
 }
 
- //REVISAR
 bool BatallaCampal::movimientoCercano(Vector<unsigned int> * origen, Vector<unsigned int> * destino){
 	int distX = (origen->obtener(1) - destino->obtener(1));
 	int distY = (origen->obtener(2) - destino->obtener(2));
@@ -357,13 +349,13 @@ bool BatallaCampal::movimientoCercano(Vector<unsigned int> * origen, Vector<unsi
 	return true;
 }
 
-bool BatallaCampal::tieneUnSoldado(Jugador* jugador, unsigned int x, unsigned int y, unsigned int z){ //RECIBE VECTOR??
+bool BatallaCampal::tieneUnSoldado(Jugador* jugador, unsigned int x, unsigned int y, unsigned int z){
 	return ((obtenerFicha(x, y, z) != NULL)
 		&& (obtenerFicha(x, y, z)->getJugador() == jugador->getNumero())
 		&& (obtenerFicha(x, y, z)->getTipo() == FSoldado));
 }
 
-//REVISAR
+
 Vector<unsigned int> * BatallaCampal::pedirOrigenDelMovimiento(Jugador *jugador){
 	Vector<unsigned int> * vectorOrigen;
 	bool origenValido = false;
@@ -380,7 +372,6 @@ Vector<unsigned int> * BatallaCampal::pedirOrigenDelMovimiento(Jugador *jugador)
 	return vectorOrigen;
 }
 
-//REVISAR
 Vector<unsigned int> * BatallaCampal::pedirDestinoDelSoldado(Jugador *jugador){
 	Vector<unsigned int> * vectorDestino;
 	bool destinoValido = false;
@@ -634,9 +625,7 @@ void BatallaCampal::colocarBarco(Jugador * jugador){
 
 }
 
-//TERMINAR
 void BatallaCampal::jugarTurno(Jugador * jugador, bool cartasActivadas){
-
 	mostrarEstadoTablero(jugador);
 	disparar(jugador);
 	
@@ -681,8 +670,7 @@ void BatallaCampal::recuentoDeJugadores(){
 bool BatallaCampal::juegoTerminado(){
 	if(this->cantidadDeJugadores <= 1){
 		return true;
-	}
-	
+	}	
 	return false;
 }
 		   
