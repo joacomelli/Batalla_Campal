@@ -34,9 +34,6 @@ public:
 	//POS: Devuelve verdadero si la coordenada indicada esta en el rango entre 1 y los maximos.
 	bool existeElCasillero(unsigned int x, unsigned int y, unsigned int z);
 	
-	//DEBERIA IR EN TDA MOSTRAR PANTALLA
-	void imprimirTablero();
-
 	//PRE: -
 	//POS: Devuelve la posicion del X entre 1 y el maximo
 	Lista<Lista<Lista<Casilla *> *> *> * getCasilleros();
@@ -48,7 +45,6 @@ public:
 	//PRE: -
 	//POS:Devuelve la posicion del Y entre 1 y el maximo
 	int getyMaximo();
-
 
 	//PRE: -
 	//POS: Devuelve la posicion del Z entre 1 y el maximo
