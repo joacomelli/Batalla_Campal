@@ -25,34 +25,6 @@ Tablero::Tablero(unsigned int xMaximo, unsigned int yMaximo, unsigned int zMaxim
 	}
 }
 
-//
-// NO TIENE QUE ESTAR ACA...       MUESTRA LA PANTALLA, ------ REVISAR -----
-// REVISAR SI ES "GET ESTADO" O ES OTRO GET EL QUE HAY QUE MOSTRAR
-/*void Tablero::imprimirTablero(){
-	Casilla * casillero;
-	this->casilleros->iniciarCursor();
-	for(int x = 1; x <= this->xMaximo; x++){
-		this->casilleros->avanzarCursor();
-		Lista<Lista<Casilla *>*>* columna = this->casilleros->obtenerCursor();
-		columna->iniciarCursor();
-		for(int y = 1; y <= this->yMaximo; y++){
-			columna->avanzarCursor();
-			Lista<Casilla *>* fila = columna->obtenerCursor();
-			fila->iniciarCursor();
-			for(int z = 1; z <= this->zMaximo; z++){
-				fila->avanzarCursor();
-				if(fila->obtenerCursor()->getFicha() == NULL){
-					std::cout <<' ';
-				}else{
-					std::cout << fila->obtenerCursor()->getFicha()->getEstado();
-				}
-				std::cout <<"|";
-			}
-			std::cout << std::endl;
-	    }
-		std::cout << std::endl << std::endl;
-	}
-}*/
 
 Tablero::~Tablero() {
 	for(unsigned int x = 1; x <= this->xMaximo; x++){
