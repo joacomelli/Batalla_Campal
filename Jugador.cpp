@@ -30,9 +30,7 @@ void Jugador::agregarFicha(Ficha* ficha){
 	this->fichas->agregar(ficha, 1);
 }	
 
-//REVISAR esta funcion me genera duda si solo tiene q sacar la ficha de la lista o si tambien la destruye pq el casillero va  a estar apuntando a la misma ficha
-// si uso la funcion remover de lista.h borra la ficha a menos q implementemos q la lista de fichas del jugador son todas copias de las fichas
-// --es iniciar cursor en la nueva Lista.h
+
 void Jugador::eliminarFicha(Ficha* ficha){
 	if(ficha == NULL){
 		throw "La ficha debe existir";
