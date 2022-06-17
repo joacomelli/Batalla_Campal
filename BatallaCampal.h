@@ -85,7 +85,7 @@ public:
 	
 	//PRE: -
 	//POST: Se juegan cantidad de turnos como jugadores vivos queden.
-        void jugarRonda(bool castarActivadas);
+    void jugarRonda(bool castarActivadas);
 	
 	
 	
@@ -178,10 +178,6 @@ public:
 	//PRE: -
 	//POST: Devolvera true si el jugador actual se queda sin soldados en el tablero.
 	bool estaMuerto(Jugador * jugador);
-	
-	//PRE: Deben exisitir jugadores.
-	//POST: Cuenta la cantidad de jugadores que se encuentran jugando
-	void recuentoDeJugadores();
 
 	//PRE: -
 	//POST: Retorta true si queda un solo jugador en el juego, de lo contrario false.

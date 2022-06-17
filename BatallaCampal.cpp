@@ -322,34 +322,50 @@ void BatallaCampal::jugar(){
 	while(!juegoTerminado()){
 		jugarRonda(true);
 	}
-	std::cout << this->jugadores->obtener(1)->getNombre() << " se queda con la victoria." << std::endl << "GAME OVER" << std::endl;
+
+	bool hayUnGanador = false;
+	this->jugadores->iniciarCursor();
+	while(this->jugadores->avanzarCursor()){
+		if(!estaMuerto(this->jugadores->obtenerCursor())){
+			std::cout << this->jugadores->obtenerCursor()->getNombre() << " se queda con la victoria." << std::endl << "GAME OVER" << std::endl;
+			hayUnGanador = true;
+		}
+	}
+
+	if(!hayUnGanador){
+		std::cout << "Perdieron todos los  jugadores. GAME OVER" << std::endl;
+	}
+
 }
 
 
 void BatallaCampal::jugarTurno(Jugador * jugador, bool cartasActivadas){
+
 	mostrarEstadoTablero(jugador);
 	disparar(jugador);
 	
-	std::string respuesta = "x";
-	while(respuesta!="n" && respuesta!="s"){
-		std::cout << "Desea mover algun soldado? (s/n)" << std::endl;
-		std::cin >> respuesta;
-	}
-	
-	if(respuesta == "s"){
-		Vector<Vector<unsigned int> *> * movimiento = pedirMovimiento(jugador);
-		mover(movimiento);
-	}
+	if(!estaMuerto(jugador)){
+		std::string respuesta = "x";
+		while(respuesta!="n" && respuesta!="s"){
+			std::cout << "Desea mover algun soldado? (s/n)" << std::endl;
+			std::cin >> respuesta;
+		}
 
-	if(jugador->tieneLaFicha(FBarco)){
-		lanzarMisil(jugador);
-	}else if(jugador->tieneLaFicha(FAvion)){
-		disparar(jugador);
-		disparar(jugador);
-	}
-		 
-	if(cartasActivadas){
-		sacarCarta(jugador);
+		if(respuesta == "s"){
+			Vector<Vector<unsigned int> *> * movimiento = pedirMovimiento(jugador);
+			mover(movimiento);
+		}
+	
+		if(jugador->tieneLaFicha(FBarco)){
+			lanzarMisil(jugador);
+		}else if(jugador->tieneLaFicha(FAvion)){
+			disparar(jugador);
+			disparar(jugador);
+		}
+
+		if(cartasActivadas){
+			sacarCarta(jugador);
+		}
 	}
 }
 
@@ -362,7 +378,6 @@ void BatallaCampal::jugarRonda(bool cartasActivadas){
 	while( i<=this->cantidadDeJugadores  && !terminado){
 
 		jugarTurno( this->jugadores->obtener(i), cartasActivadas);
-		recuentoDeJugadores();
 		terminado = juegoTerminado();
 		i++;
 
@@ -764,26 +779,18 @@ bool BatallaCampal::estaMuerto(Jugador * jugador){
 }
 
 
-void BatallaCampal::recuentoDeJugadores(){
+bool BatallaCampal::juegoTerminado(){
+
+	unsigned int cantidadDeMuertos = 0;
 	this->jugadores->iniciarCursor();
-	unsigned int contador = 0;
-	while( this->jugadores->avanzarCursor()){
-		contador++;
-
+	while(this->jugadores->avanzarCursor()){
 		if( estaMuerto(this->jugadores->obtenerCursor())){
-
-			std::cout << this->jugadores->obtenerCursor()->getNombre() << " ha muerto." << std::endl;
-			this->jugadores->remover(contador);
-			(this->cantidadDeJugadores)--;
+			cantidadDeMuertos++;
 		}
 	}
-}
-
-
-bool BatallaCampal::juegoTerminado(){
-	if(this->cantidadDeJugadores <= 1){
+	if(cantidadDeMuertos >= (this->cantidadDeJugadores -1)){
 		return true;
-	}	
+	}
 	return false;
 }
 		   
