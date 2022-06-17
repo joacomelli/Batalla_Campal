@@ -65,7 +65,11 @@ public:
   //PRE: - 
   //POST: -
   Imagen();
-  
+ 
+  //PRE: - 
+  //POST: Libera los recursos.
+  ~Imagen();
+ 
   //PRE: -
   //POST: Define que imagen va a ser imagen background.
   void definirMapa(std::string background); 
@@ -73,7 +77,7 @@ public:
   //PRE: Debe existir un tablero y un jugador.
   //POST: Devuelve la imagen estado del tablero de la perspectiva del jugador.
   void obtenerEstadoTablero(Tablero * tablero,Jugador * jugador);
-
+  
 };
 
 #endif
