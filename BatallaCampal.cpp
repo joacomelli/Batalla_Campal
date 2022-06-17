@@ -752,13 +752,12 @@ void BatallaCampal::sacarCarta(Jugador * jugador){
 }
 
 
+///////VALIDACIONES DE FIN DEL JUEGO///////
 
 bool BatallaCampal::estaMuerto(Jugador * jugador){
 
 	return (jugador->cantidadDeLaFicha(FSoldado) == 0);
 }
-
-
 
 
 void BatallaCampal::recuentoDeJugadores(){
@@ -775,7 +774,8 @@ void BatallaCampal::recuentoDeJugadores(){
 		}
 	}
 }
-		   
+
+
 bool BatallaCampal::juegoTerminado(){
 	if(this->cantidadDeJugadores <= 1){
 		return true;
@@ -784,14 +784,8 @@ bool BatallaCampal::juegoTerminado(){
 }
 		   
 
+///////IMPRESIONES///////
 		  
-
-
-
-
-
-
-
 void BatallaCampal::mostrarEstadoTablero(Jugador * jugador){
 	imagen.obtenerEstadoTablero(this->tablero, jugador);
 }
