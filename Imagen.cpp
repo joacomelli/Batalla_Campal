@@ -10,6 +10,9 @@ Imagen::Imagen(){
     this->estado.SetBitDepth(24);
 }
 
+Imagen::~Imagen(){
+}
+
 void Imagen::medidaDeEstado(){
   this->estado.SetSize( this->background.TellWidth(), this->background.TellHeight()); 
 }
