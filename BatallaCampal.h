@@ -43,24 +43,19 @@ private:
 	unsigned int numeroDeMapa;
 	Imagen imagen;
 
-
 public:
 
 	//PRE:-
 	//POST: Inicializa el tablero en NULL y los jugadores en NULL
 	BatallaCampal();
 
-	//PRE:
-	//POST:
+	//PRE: - 
+	//POST: Elimina el tablero, los jugadores y la batalla campal.
 	virtual ~BatallaCampal();
 	
-	//PRE:-
-	//POST: Pedira la cantidad de jugadores.
-	void menuDeJuego();
-	
 	//PRE: -
-	//POST: 
-	void jugar();
+	//POST: Pedira la cantidad de jugadores, sus nombres, los inicializa en una lista y pide el numero de mapa.
+	void menuDeJuego();
 	
 	//PRE:-
 	//POST: Inicia el tablero en el escenario 1 pre configurado con sus maximos.
@@ -73,18 +68,24 @@ public:
 	//PRE:-
 	//POST: Inicia el tablero en el escenario 3 pre configurado con sus maximos.
 	void iniciarEscenarioTres(unsigned int xMaximo, unsigned int yMaximo, unsigned int zMaximo);
-
+	
 	//PRE:-
 	//POST: Inicializa los soldados de los jugadores.
 	void inicializarSoldados();
 	
+	
+	
 	//PRE: -
-	//POST: 
+	//POST: Se ejecuta todas las funciones de batallaCampal.
+	void jugar();
+	
+	//PRE: El jugador debe estar vivo.
+	//POST: Se juega el turno completo de cada jugador, segun las reglas del juego.
 	void jugarTurno(Jugador * jugador, bool castarActivadas);
 	
-	//PRE:
-	//POST:
-        void jugarRonda(bool );
+	//PRE: -
+	//POST: Se juegan cantidad de turnos como jugadores vivos queden.
+        void jugarRonda(bool castarActivadas);
 	
 	
 	
@@ -100,13 +101,9 @@ public:
 	//POST: Devuelve el tipo de casilla que se pasa por parametro.
 	TipoDeCasilla obtenerTipoDeCasilla(unsigned int x, unsigned int y, unsigned int z);	
 
-	//PRE: -
-	//POST:
+	//PRE: el numero de jugador debe ser mayor a 0.
+	//POST: Obtiene el jugador cuyo numero es pasado por parametro.
 	Jugador * obtenerJugador(unsigned int numeroDeJugador);
-	
-	//PRE: Debe existir un jugador y las coordenadas validas. 
-	//POST: Devolvera true si hay un soldado en las posiciones pasadas por parametro, false si no hay un soldado. 
-	bool tieneUnSoldado(Jugador * jugador, unsigned int x, unsigned int y, unsigned int z);
 	
 	//PRE: Debe existir un jugador y las coordenadas validas. 
 	//POST: Devolvera true si hay un soldado en las posiciones pasadas por parametro, false si no hay un soldado. 
@@ -114,7 +111,7 @@ public:
 
 	
 	
-	//PRE:-
+	//PRE: -
 	//POST: Pide por consola una coordenada (x,y,z) y la retorna como vector dinamico.
 	Vector<unsigned int> * pedirCoordenadas();
 	
@@ -153,9 +150,7 @@ public:
 	//POST:Pedira coordenadas (x,y,z) para que el jugador dispare y si la casilla no esta Vacia, eliminara una ficha del jugador contrario,
 	//      destruira la casilla si es tierra dejandola inactiva, de lo contrario la vaciara.
 	void disparar(Jugador * jugador);
-
-
-
+	
 	//PRE: La coordenada debe ser valida dentro de los maximos del tablero
 	//POST: Devuelve true si la posicion no esta en los bordes del tablero, false de lo contrario.
 	bool posicionDeMisilValida(Vector<unsigned int> * posicion);
@@ -175,7 +170,7 @@ public:
 	void colocarBarco(Jugador * jugador);
 	
 	//PRE: -
-	//POST: El jugador sacara una carta al finalizar el turno y ..
+	//POST: El jugador sacara una carta al finalizar el turno y se llamara a la funcion correspondiente a la carta que salga.
 	void sacarCarta(Jugador * jugador);
 	
 	
@@ -188,7 +183,7 @@ public:
 	//POST: Cuenta la cantidad de jugadores que se encuentran jugando
 	void recuentoDeJugadores();
 
-	//PRE:
+	//PRE: -
 	//POST: Retorta true si queda un solo jugador en el juego, de lo contrario false.
 	bool juegoTerminado();
 	
