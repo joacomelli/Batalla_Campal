@@ -46,7 +46,7 @@ public:
 	//POST: Retorna el jugador actual.
 	unsigned int getJugador();
 
-	//PRE:-
+	//PRE: El jugador tiene que ser mayor a 0.
 	//POST: Cambia al jugador
 	void setJugador(unsigned int jugador);
 
