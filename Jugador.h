@@ -17,7 +17,7 @@ public:
 	Jugador(unsigned int numero, std::string nombre);
 
 	//PRE:
-	//POST: Elimina al jugador.
+	//POST: Elimina al jugador y sus fichas.
 	virtual ~Jugador();
 
 	//PRE: El jugador debe existir.
@@ -40,7 +40,6 @@ public:
 	//POST: Elimina el nodo de la lista correspondiente a esa ficha.
 	void eliminarFicha(Ficha* ficha);
 	
-
 	//PRE: Debe existir la ficha
 	//POST: Devuelve True si el jugador tiene una ficha TipoDeFicha.
 	bool tieneLaFicha(TipoDeFicha tipo);
