@@ -9,7 +9,6 @@
 #include "Jugador.h"
 #include "Tablero.h"
 
-
 class Imagen {
 private:
  
