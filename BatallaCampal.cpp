@@ -1,5 +1,7 @@
 #include "BatallaCampal.h"
 
+///////INICIALIZACION DEL JUEGO///////
+
 BatallaCampal::BatallaCampal() {
 	this->tablero = NULL;
 	this->jugadores = NULL;
@@ -49,17 +51,6 @@ void BatallaCampal::menuDeJuego(){
     }else if(this->numeroDeMapa == 3){
         iniciarEscenarioTres(MAXIMO_TABLERO_X, MAXIMO_TABLERO_Y, MAXIMO_TABLERO_Z);
     }
-}
-
-
-void BatallaCampal::jugar(){
-		 
-	menuDeJuego();
-	inicializarSoldados();
-	while(!juegoTerminado()){
-		jugarRonda(true);
-	}
-	std::cout << this->jugadores->obtener(1)->getNombre() << " se queda con la victoria." << std::endl << "GAME OVER" << std::endl;
 }
 
 
@@ -319,6 +310,19 @@ void BatallaCampal::inicializarSoldados(){
 			delete coordenadas;
 		}
 	}
+}
+
+
+///////CUERPO PRINCIPAL///////
+
+void BatallaCampal::jugar(){
+		 
+	menuDeJuego();
+	inicializarSoldados();
+	while(!juegoTerminado()){
+		jugarRonda(true);
+	}
+	std::cout << this->jugadores->obtener(1)->getNombre() << " se queda con la victoria." << std::endl << "GAME OVER" << std::endl;
 }
 
 
